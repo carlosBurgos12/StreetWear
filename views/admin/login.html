@@ -9,9 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/styless.css">
+    <link rel="stylesheet" href="../../resources/css/input_style.css">
     <style>
-       
-
         .login-container {
             max-width: 800px;
             margin: 0 auto;
@@ -23,8 +22,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             /* Sombra suave */
         }
-        .login{
-            padding-top: 130px;
+
+        .login {
+            padding-top: 190px;
         }
     </style>
 </head>
@@ -41,21 +41,37 @@
 
                     <form>
                         <div class="form-group">
-                            <h5 for="username">Username</h5>
-                            
-                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                            <h5 for="username" style="color:white;">Username</h5>
+
+
+                            <main>
+                                <div>
+                               
+                                  <input type="text" label="name" placeholder="Insert your Username">
+                                </div>
+                              </main>
                             <br>
-                            
+
                         </div>
+
                         <div class="form-group">
-                            <h5 for="password">Password</h5>
+                        
+                            
+                            <h5 for="password" style="color:white;">Password</h5>
                           
-                          
-                            <input type="password" class="form-control" id="password"
-                                placeholder="Enter your password">
+                            <main>
+                                <div>
+                                 
+                                  <input type="password"  label="name" placeholder="Insert your Password">
+                                </div>
+                              </main>
+
+
+                
                         </div>
-                        <br>
-                        <button type="submit" class="btn btn-secondary btn-block">Login</button>
+                    <br><br>
+                        <button type="submit" class="btn btn-light btn-block">Login</button>
+
 
                     </form>
                 </div>
@@ -64,10 +80,11 @@
         </div>
     </div>
 
-    <!-- Enlaces a los archivos JS de Bootstrap (opcional) -->
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
