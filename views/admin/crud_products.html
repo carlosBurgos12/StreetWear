@@ -107,6 +107,7 @@
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Name</th>
+          <th scope="col">Description</th>
           <th scope="col">Price</th>
           <th scope="col">Color</th>
           <th scope="col">Actions</th>
@@ -117,6 +118,7 @@
         <tr>
           <td><img src="../../imagenes/SD_cap.jpeg" alt="Image" style="width: 100px; height: 100px;"></td>
           <td>StreetWear Drop Cap</td>
+          <td>Collaboration with New Era </td>
           <td>$35</td>
           <td>Black</td>
           <td>
@@ -152,6 +154,10 @@
               <label for="nombreProduct" class="form-label">Name</label>
               <input type="text" class="form-control" id="nombreProduct">
             </div>
+            <div class="mb-3">
+              <label for="descripcionProductoEditar" class="form-label">Description</label>
+              <textarea class="form-control" id="descripcionProductoEditar" rows="3"></textarea>
+          </div>
             <div class="mb-3">
                 <label for="precioProduct" class="form-label">Price</label>
                 <input type="text" class="form-control" id="precioProduct">
@@ -193,6 +199,10 @@
                 <input type="text" class="form-control" id="nombreProductEditar">
               </div>
               <div class="mb-3">
+                <label for="descripcionProductoEditar" class="form-label">Description</label>
+                <textarea class="form-control" id="descripcionProductoEditar" rows="3"></textarea>
+            </div>
+              <div class="mb-3">
                 <label for="precioProductEditar" class="form-label">Price</label>
                 <input type="text" class="form-control" id="precioProductEditar">
               </div>
@@ -215,7 +225,7 @@
   </div>
 
   <!--Eliminar Producto-->
-  
+
   <div class="modal fade" id="eliminarProductModal" tabindex="-1" aria-labelledby="eliminarProductModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
