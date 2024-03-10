@@ -1,0 +1,52 @@
+.navbar-brand {
+    font-family: 'Vesper Libre';
+    color: #264653;
+  }
+  .navbar-nav {
+    margin: 0 auto;
+  }
+  .custom-title {
+    font-family: 'Vesper Libre';
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #264653;
+    padding: 20px;
+    margin-top: 30px; /* */
+  }
+  .custom-text {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 1.2em; /*  */
+    margin-top: 20px; /*  */
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /*  */
+  }
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .table-header {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 40px;
+  }
+  .custom-line {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 50px; /* A */
+    display: flex;
+    justify-content: center;
+  }
+  .custom-line span {
+    flex: 1;
+  }
+  .box {
+    margin-top: 10px;
+  }

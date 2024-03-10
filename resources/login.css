@@ -1,0 +1,15 @@
+.login-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    /* Esquinas circulares */
+    background-color: #55576a;
+    /* Color del formulario */
+    padding: 70px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+.login {
+    padding-top: 190px;
+}

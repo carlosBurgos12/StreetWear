@@ -15,7 +15,8 @@ CREATE TABLE Departamento (
 CREATE TABLE Clientes (
     id_Cliente INT PRIMARY KEY,
     nombre_cliente VARCHAR(30),
-    apellido_cliente VARCHAR(50),
+    username VARCHAR(50),
+    contraseña VARCHAR(8),
     numero_cliente VARCHAR(20),
     correo_cliente VARCHAR(100),
     direccion_cliente VARCHAR(200),
