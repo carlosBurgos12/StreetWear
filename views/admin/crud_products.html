@@ -27,7 +27,7 @@
           <script>   // Asignar el evento de clic al label
             document.getElementById('home').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'home.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'home.html'; 
             });</script>
 
           <li id="Categories" class="nav-item">
@@ -37,7 +37,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Categories').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_categories.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_categories.html'; 
             });
           </script>
 
@@ -49,7 +49,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Admin').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_admin.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_admin.html'; 
             });
           </script>
           <li id="Worker" class="nav-item">
@@ -59,7 +59,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Worker').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_workers.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_workers.html'; 
             });
           </script>
           <li id="Clients" class="nav-item">
@@ -68,7 +68,7 @@
           <script> // Asignar el evento de clic al label
             document.getElementById('Clients').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_clients.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_clients.html'; 
             });</script>
           <li id="Products" class="nav-item">
             <a class="nav-link" href="#"> Products </a>
@@ -76,12 +76,13 @@
           <script> // Asignar el evento de clic al label
             document.getElementById('Products').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_products.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_products.html';
             });</script>
         </ul>
       </div>
     </div>
   </nav>
+
   <h1 class="custom-title">Products</h1>
   <p class="custom-text">Manage Products</p>
   <div class="input-group mt-3">
@@ -93,16 +94,16 @@
   </div>
 
   <div class="container">
-
-
     <br>
+    <!--Crear Producto Boton-->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearProductModal">
       <i class="fas fa-plus"></i>Create Products
     </button>
     <br>
-
+    <!--Crear Tabla-->
     <table class="table">
       <thead>
+        <!--Campos de la tabla-->
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Name</th>
@@ -111,6 +112,7 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
+
       <tbody>
         <tr>
           <td><img src="../../imagenes/SD_cap.jpeg" alt="Image" style="width: 100px; height: 100px;"></td>
@@ -134,6 +136,8 @@
     </table>
   </div>
 
+  <!--Crear Producto-->
+
   <div class="modal fade" id="crearProductModal" tabindex="-1" aria-labelledby="crearProductModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -142,6 +146,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!--Campos de Producto-->
           <form>
             <div class="mb-3">
               <label for="nombreProduct" class="form-label">Name</label>
@@ -170,6 +175,8 @@
     </div>
   </div>
 
+    <!--Editar Producto-->
+
   <div class="modal fade" id="editarProductModal" tabindex="-1" aria-labelledby="editarProductModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -179,6 +186,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!--Campos de Editar Producto-->
           <form>
             <div class="mb-3">
                 <label for="nombreProductEditar" class="form-label">Name</label>
@@ -206,6 +214,8 @@
     </div>
   </div>
 
+  <!--Eliminar Producto-->
+  
   <div class="modal fade" id="eliminarProductModal" tabindex="-1" aria-labelledby="eliminarProductModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">

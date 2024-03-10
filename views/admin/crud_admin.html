@@ -19,15 +19,17 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+
           <li id="home" class="nav-item active">
             <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
           </li>
           <script>   // Asignar el evento de clic al label
             document.getElementById('home').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'home.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'home.html';
             });</script>
 
           <li id="Categories" class="nav-item">
@@ -37,10 +39,9 @@
             // Asignar el evento de clic al label
             document.getElementById('Categories').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_categories.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_categories.html';
             });
           </script>
-
 
           <li id="Admin" class="nav-item">
             <a class="nav-link" href="#"> Admin </a>
@@ -49,9 +50,10 @@
             // Asignar el evento de clic al label
             document.getElementById('Admin').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_admin.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_admin.html';
             });
           </script>
+
           <li id="Worker" class="nav-item">
             <a class="nav-link" href="#"> Workers </a>
           </li>
@@ -59,29 +61,33 @@
             // Asignar el evento de clic al label
             document.getElementById('Worker').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_workers.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_workers.html';
             });
           </script>
+
           <li id="Clients" class="nav-item">
             <a class="nav-link" href="#"> Clients </a>
           </li>
           <script> // Asignar el evento de clic al label
             document.getElementById('Clients').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_clients.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_clients.html';
             });</script>
+
           <li id="Products" class="nav-item">
             <a class="nav-link" href="#"> Products </a>
           </li>
           <script> // Asignar el evento de clic al label
             document.getElementById('Products').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_products.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_products.html';
             });</script>
+
         </ul>
       </div>
     </div>
   </nav>
+
   <h1 class="custom-title">Admins</h1>
   <p class="custom-text">Manage Admins</p>
   <div class="input-group mt-3">
@@ -93,16 +99,16 @@
   </div>
 
   <div class="container">
-
-
     <br>
+    <!--Crear Admin Boton-->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearAdminModal">
       <i class="fas fa-plus"></i>Create Admin
     </button>
     <br>
-
+    <!--Crear la tabla-->
     <table class="table">
       <thead>
+        <!--Campos de la tabla-->
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Username</th>
@@ -132,6 +138,8 @@
     </table>
   </div>
 
+  <!--Crear Admin-->
+
   <div class="modal fade" id="crearAdminModal" tabindex="-1" aria-labelledby="crearAdminModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -139,7 +147,9 @@
           <h5 class="modal-title" id="crearAdminModalLabel">Create Admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
+          <!--Campos que contiene Admin-->
           <form>
             <div class="mb-3">
               <label for="usuarioAdmin" class="form-label">Username</label>
@@ -149,7 +159,7 @@
               <label for="nombreAdmin" class="form-label">Name</label>
               <input type="text" class="form-control" id="nombreAdmin">
             </div>
-           
+
             <div class="mb-3">
               <label for="imagenAdmin" class="form-label">Image</label>
               <input type="file" class="form-control" id="imagenAdmin">
@@ -164,6 +174,8 @@
     </div>
   </div>
 
+  <!--Editar Admin-->
+
   <div class="modal fade" id="editarAdminModal" tabindex="-1" aria-labelledby="editarAdminModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -172,7 +184,9 @@
           <h5 class="modal-title" id="editarAdminModalLabel">Edit Admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
+          <!--Campos de Editar Admin-->
           <form>
             <div class="mb-3">
               <label for="nombreAdminEditar" class="form-label">Username</label>
@@ -195,6 +209,8 @@
       </div>
     </div>
   </div>
+
+  <!--Eliminar Admin-->
 
   <div class="modal fade" id="eliminarAdminModal" tabindex="-1" aria-labelledby="eliminarAdminModalLabel"
     aria-hidden="true">

@@ -27,7 +27,7 @@
           <script>   // Asignar el evento de clic al label
             document.getElementById('home').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'home.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'home.html';
             });</script>
 
           <li id="Categories" class="nav-item">
@@ -37,7 +37,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Categories').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_categories.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_categories.html';
             });
           </script>
 
@@ -49,7 +49,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Admin').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_admin.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_admin.html';
             });
           </script>
           <li id="Worker" class="nav-item">
@@ -59,7 +59,7 @@
             // Asignar el evento de clic al label
             document.getElementById('Worker').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_workers.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_workers.html';
             });
           </script>
           <li id="Clients" class="nav-item">
@@ -68,7 +68,7 @@
           <script> // Asignar el evento de clic al label
             document.getElementById('Clients').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_clients.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_clients.html';
             });</script>
           <li id="Products" class="nav-item">
             <a class="nav-link" href="#"> Products </a>
@@ -76,7 +76,7 @@
           <script> // Asignar el evento de clic al label
             document.getElementById('Products').addEventListener('click', function () {
               // Redireccionar al usuario a la otra página
-              window.location.href = 'crud_products.html'; // Asegúrate de que 'otra_pagina.html' sea la ruta correcta
+              window.location.href = 'crud_products.html';
             });</script>
         </ul>
       </div>
@@ -93,16 +93,16 @@
   </div>
 
   <div class="container">
-
-
     <br>
+    <!--Crear Cliente Boton-->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearClientModal">
       <i class="fas fa-plus"></i>Create Clients
     </button>
     <br>
-
+    <!--Crear tabla-->
     <table class="table">
       <thead>
+        <!--Campos de la tabla-->
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Name</th>
@@ -138,7 +138,9 @@
     </table>
   </div>
 
-  <div class="modal fade" id="crearClientModal" tabindex="-1" aria-labelledby="crearClientModalLabel" aria-hidden="true">
+  <!--Crear Cliente-->
+  <div class="modal fade" id="crearClientModal" tabindex="-1" aria-labelledby="crearClientModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -146,24 +148,25 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!--Campos de Cliente-->
           <form>
             <div class="mb-3">
               <label for="nombreClient" class="form-label">Name</label>
               <input type="text" class="form-control" id="nombreClient">
             </div>
             <div class="mb-3">
-                <label for="contraseñaClient" class="form-label">Password</label>
-                <input type="text" class="form-control" id="contraseñaClient">
-              </div>
-          
-              <div class="mb-3">
-                <label for="telefonoClient" class="form-label">Phone number</label>
-                <input type="text" class="form-control" id="telefonoClient">
-              </div>
-              <div class="mb-3">
-                <label for="usernameClient" class="form-label">Username</label>
-                <input type="text" class="form-control" id="usernameClient">
-              </div>
+              <label for="contraseñaClient" class="form-label">Password</label>
+              <input type="text" class="form-control" id="contraseñaClient">
+            </div>
+
+            <div class="mb-3">
+              <label for="telefonoClient" class="form-label">Phone number</label>
+              <input type="text" class="form-control" id="telefonoClient">
+            </div>
+            <div class="mb-3">
+              <label for="usernameClient" class="form-label">Username</label>
+              <input type="text" class="form-control" id="usernameClient">
+            </div>
             <div class="mb-3">
               <label for="descripcionClient" class="form-label">Email</label>
               <textarea class="form-control" id="descripcionClient" rows="3"></textarea>
@@ -182,6 +185,8 @@
     </div>
   </div>
 
+  <!--Editar Cliente-->
+
   <div class="modal fade" id="editarClientModal" tabindex="-1" aria-labelledby="editarClientModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -191,27 +196,28 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!--Campos de Editar Cliente-->
           <form>
             <div class="mb-3">
-                <label for="nombreClientEditar" class="form-label">Name</label>
-                <input type="text" class="form-control" id="nombreClientEditar">
-              </div>
-              <div class="mb-3">
-                <label for="contraseñaClientEditar" class="form-label">Password</label>
-                <input type="text" class="form-control" id="contraseñaClientEditar">
-              </div>
-              <div class="mb-3">
-                <label for="numeroClientEditar" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="numeroClientEditar">
-              </div>
+              <label for="nombreClientEditar" class="form-label">Name</label>
+              <input type="text" class="form-control" id="nombreClientEditar">
+            </div>
+            <div class="mb-3">
+              <label for="contraseñaClientEditar" class="form-label">Password</label>
+              <input type="text" class="form-control" id="contraseñaClientEditar">
+            </div>
+            <div class="mb-3">
+              <label for="numeroClientEditar" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="numeroClientEditar">
+            </div>
             <div class="mb-3">
               <label for="usuarioClientEditar" class="form-label">Username</label>
               <input type="text" class="form-control" id="usuarioClientEditar">
             </div>
             <div class="mb-3">
-                <label for="emailClientEditar" class="form-label">Email</label>
-                <input type="text" class="form-control" id="emailClientEditar">
-              </div>
+              <label for="emailClientEditar" class="form-label">Email</label>
+              <input type="text" class="form-control" id="emailClientEditar">
+            </div>
             <div class="mb-3">
               <label for="imagenClientEditar" class="form-label">Image</label>
               <input type="file" class="form-control" id="imagenClientEditar">
@@ -225,6 +231,8 @@
       </div>
     </div>
   </div>
+
+  <!--Eliminar Cliente-->
 
   <div class="modal fade" id="eliminarClientModal" tabindex="-1" aria-labelledby="eliminarClientModalLabel"
     aria-hidden="true">
