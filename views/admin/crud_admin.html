@@ -91,22 +91,21 @@
   </nav>
 
   <h1 class="custom-title">Admins</h1>
-  <p class="custom-text">Manage Admins</p>
+  <p class="custom-text">Manage admins</p>
   <div class="input-group mt-3">
     <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
     </div>
   </div>
-  </div>
+  <br>  
 
   <div class="container">
-    <br>
     <!--Crear Admin Boton-->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearAdminModal">
-      <i class="fas fa-plus"></i>Create Admin
+      <i class="fas fa-plus"></i>Create admin
     </button>
-    <br>
+
     <!--Crear la tabla-->
     <table class="table">
       <thead>
@@ -158,6 +157,10 @@
               <input type="text" class="form-control" id="usuarioAdmin">
             </div>
             <div class="mb-3">
+              <label for="usuarioAdmin" class="form-label">Password</label>
+              <input type="password" class="form-control" id="usuarioAdmin">
+            </div>
+            <div class="mb-3">
               <label for="nombreAdmin" class="form-label">Name</label>
               <input type="text" class="form-control" id="nombreAdmin">
             </div>
@@ -195,6 +198,10 @@
               <input type="text" class="form-control" id="nombreAdminEditar">
             </div>
             <div class="mb-3">
+              <label for="nombreAdminEditar" class="form-label">Password</label>
+              <input type="password" class="form-control" id="nombreAdminEditar">
+            </div>
+            <div class="mb-3">
               <label for="nombreAdminEditar" class="form-label">Name</label>
               <input type="text" class="form-control" id="nombreAdminEditar">
             </div>
@@ -219,7 +226,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="eliminarAdminModalLabel">Delete Admin</h5>
+          <h5 class="modal-title" id="eliminarAdminModalLabel">Delete admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

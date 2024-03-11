@@ -85,20 +85,20 @@
     </div>
   </nav>
   <h1 class="custom-title">Clients</h1>
-  <p class="custom-text">Manage Clients</p>
+  <p class="custom-text">Manage clients</p>
   <div class="input-group mt-3">
     <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
     </div>
   </div>
-  </div>
+  
 
   <div class="container">
     <br>
     <!--Crear Cliente Boton-->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearClientModal">
-      <i class="fas fa-plus"></i>Create Clients
+      <i class="fas fa-plus"></i>Create clients
     </button>
     <br>
     <!--Crear tabla-->
@@ -108,7 +108,6 @@
         <tr>
           <th scope="col">Image</th>
           <th scope="col">Name</th>
-          <th scope="col">Password</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
@@ -119,7 +118,6 @@
         <tr>
           <td><img src="../../imagenes/logo_clients.png" alt="Image" style="width: 100px; height: 100px;"></td>
           <td>Jesús Cortés</td>
-          <td>lJLnw71h</td>
           <td>7581-7784</td>
           <td>jhayco</td>
           <td>jhayco12@gmail.com</td>
@@ -146,7 +144,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="crearClientModalLabel">Create Client</h5>
+          <h5 class="modal-title" id="crearClientModalLabel">Create client</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -158,7 +156,7 @@
             </div>
             <div class="mb-3">
               <label for="contraseñaClient" class="form-label">Password</label>
-              <input type="text" class="form-control" id="contraseñaClient">
+              <input type="password" class="form-control" id="contraseñaClient">
             </div>
 
             <div class="mb-3">
@@ -194,7 +192,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editarClientModalLabel">Edit Client</h5>
+          <h5 class="modal-title" id="editarClientModalLabel">Edit client</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -206,7 +204,7 @@
             </div>
             <div class="mb-3">
               <label for="contraseñaClientEditar" class="form-label">Password</label>
-              <input type="text" class="form-control" id="contraseñaClientEditar">
+              <input type="password" class="form-control" id="contraseñaClientEditar">
             </div>
             <div class="mb-3">
               <label for="numeroClientEditar" class="form-label">Phone Number</label>
@@ -241,7 +239,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="eliminarClientModalLabel">Delete Client</h5>
+          <h5 class="modal-title" id="eliminarClientModalLabel">Delete client</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
