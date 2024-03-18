@@ -56,13 +56,13 @@
                         });
                     </script>
                     <li id="Worker" class="nav-item">
-                        <a class="nav-link" href="#"> Workers </a>
+                        <a class="nav-link" href="#"> Orders </a>
                     </li>
                     <script>
                         // Asignar el evento de clic al label
                         document.getElementById('Worker').addEventListener('click', function () {
                             // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_workers.html';
+                            window.location.href = 'crud_orders.html';
                         });
                     </script>
                     <li id="Clients" class="nav-item">
@@ -86,10 +86,10 @@
         </div>
     </nav>
     <div class="box">
-        <h1 class="custom-title">Workers</h1>
-        <p class="custom-text">Manage workers</p>
+        <h1 class="custom-title">Orders</h1>
+        <p class="custom-text">Manage orders</p>
         <div class="input-group mt-3">
-            <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+            <input type="search" class="form-control" placeholder="Search" aria-label="Search"
                 aria-describedby="button-addon2">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
@@ -101,7 +101,7 @@
         <br>
         <!--Crear Trabajador Boton-->
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearWorkerModal">
-            <i class="fas fa-plus"></i>Create worker
+            <i class="fas fa-plus"></i>Create order
         </button>
         <br>
         <!--Crear tabla-->
@@ -110,16 +110,18 @@
                 <!--Campos de la tabla-->
                 <tr>
                     <th scope="col">Image</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Full Name</th>
+                    <th scope="col">Order Code</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><img src="../../imagenes/logo_workers.png" alt="Image" style="width: 100px; height: 100px;"></td>
+                    <td><img src="../../imagenes/logo_order.png" alt="Image" style="width: 100px; height: 100px;"></td>
                     <td>20240131</td>
-                    <td>Fernando Gonzalez</td>
+                    <td>StreetWear Drop Hoodie</td>
+                    <td>1</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                             data-bs-target="#editarWorkerModal">
@@ -143,23 +145,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="crearWorkerModalLabel">Create worker</h5>
+                    <h5 class="modal-title" id="crearWorkerModalLabel">Create order</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!--Campos de trabajador-->
                     <form>
                         <div class="mb-3">
-                            <label for="codeWorker" class="form-label">Code</label>
+                            <label for="codeWorker" class="form-label">Order Code</label>
+                            <input type="number" class="form-control" id="codeWorker">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codeWorker" class="form-label">Product</label>
                             <input type="text" class="form-control" id="codeWorker">
                         </div>
                         <div class="mb-3">
-                            <label for="codeWorker" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="codeWorker">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nombreWorker" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="nombreWorker">
+                            <label for="nombreWorker" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="nombreWorker">
                         </div>
                         <div class="mb-3">
                             <label for="imagenWorker" class="form-label">Image</label>
@@ -182,23 +184,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editarWorkerModalLabel">Edit worker</h5>
+                    <h5 class="modal-title" id="editarWorkerModalLabel">Edit order</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!--Campos de Editar Trabajador-->
                     <form>
                         <div class="mb-3">
-                            <label for="codeWorkerEditar" class="form-label">Code</label>
+                            <label for="codeWorkerEditar" class="form-label">Order Code</label>
+                            <input type="number" class="form-control" id="codeWorkerEditar">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codeWorkerEditar" class="form-label">Product</label>
                             <input type="text" class="form-control" id="codeWorkerEditar">
                         </div>
                         <div class="mb-3">
-                            <label for="codeWorkerEditar" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="codeWorkerEditar">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nombreWorkerEditar" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="nombreWorkerEditar">
+                            <label for="nombreWorkerEditar" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="nombreWorkerEditar">
                         </div>
                         <div class="mb-3">
                             <label for="imagenWorkerEditar" class="form-label">Image</label>
@@ -221,11 +223,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="eliminarWorkerModalLabel">Delete worker</h5>
+                    <h5 class="modal-title" id="eliminarWorkerModalLabel">Delete order</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to remove this worker?</p>
+                    <p>Are you sure you want to remove this order?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -266,12 +268,12 @@
                 window.location.href = 'crud_admin.html';
             });
         </script>
-          <p id="WorkersFooter">Workers</p>
+          <p id="WorkersFooter">Orders</p>
           <script>
             // Asignar el evento de clic al botón
             document.getElementById('WorkersFooter').addEventListener('click', function() {
                 // Redireccionar al usuario a la otra página
-                window.location.href = 'crud_workers.html'; 
+                window.location.href = 'crud_orders.html'; 
             });
         </script>
           <p id="ClientsFooter">Clients</p>
