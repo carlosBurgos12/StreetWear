@@ -83,7 +83,7 @@
                     }); </script>
 
 
-                <li id="accessores" class="nav-item">
+                <li id="accesories" class="nav-item">
                     <a class="nav-link" href="#"> Accessories </a>
                 </li>
                 <script>
@@ -91,7 +91,20 @@
                         // Cambiar la URL a la que quieres redirigir al usuario
                         window.location.href = "accessories.html";
                     }); </script>
-                    
+
+                <!-- Card 3 <a href="#" data-toggle="modal" data-target="#cartModal">
+                 <img src="../../StreetWear/imagenes/carrito_logo.png " class="card-img-top" alt="Cart" width="30" height="30">
+                </a>-->
+                <li id="cart" class="nav-item">
+                    <a class="nav-link" href="#"> Cart </a>
+                </li>
+                    <script>
+                        document.getElementById("cart").addEventListener("click", function () {
+                            // Cambiar la URL a la que quieres redirigir al usuario
+                            window.location.href = "cart.html";
+                        }); </script>
+    
+
             </ul>
         </div>
     </div>
