@@ -4,66 +4,59 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeCards();
 });
 
+/**
+ * Función para cargar cualquier plantilla necesaria, como encabezados o pies de página.
+ */
 function loadTemplate() {
-    // Función para cargar cualquier plantilla necesaria, como encabezados o pies de página.
+    // Aquí puedes agregar el código para cargar las plantillas
 }
 
+/**
+ * Función para inicializar la navegación. Añade eventos de clic a los elementos del menú.
+ */
 function initializeNavigation() {
-    document.getElementById("home").addEventListener("click", function () {
-        window.location.href = "index.html";
+    document.getElementById('home').addEventListener('click', () => {
+        window.location.href = 'index.html';
     });
 
-    document.getElementById("men").addEventListener("click", function () {
-        window.location.href = "man.html";
+    document.getElementById('men').addEventListener('click', () => {
+        window.location.href = 'man.html';
     });
 
-    document.getElementById("women").addEventListener("click", function () {
-        window.location.href = "women.html";
+    document.getElementById('women').addEventListener('click', () => {
+        window.location.href = 'women.html';
     });
 
-    document.getElementById("shoes").addEventListener("click", function () {
-        window.location.href = "shoes.html";
+    document.getElementById('shoes').addEventListener('click', () => {
+        window.location.href = 'shoes.html';
     });
 
-    document.getElementById("caps").addEventListener("click", function () {
-        window.location.href = "caps.html";
+    document.getElementById('caps').addEventListener('click', () => {
+        window.location.href = 'caps.html';
     });
 
-    document.getElementById("kids").addEventListener("click", function () {
-        window.location.href = "kids.html";
+    document.getElementById('kids').addEventListener('click', () => {
+        window.location.href = 'kids.html';
     });
 
-    document.getElementById("accesories").addEventListener("click", function () {
-        window.location.href = "accessories.html";
+    document.getElementById('accesories').addEventListener('click', () => {
+        window.location.href = 'accessories.html';
     });
 
-    document.getElementById("cart").addEventListener("click", function () {
-        window.location.href = "cart.html";
+    document.getElementById('cart').addEventListener('click', () => {
+        window.location.href = 'cart.html';
     });
 }
 
+/**
+ * Función para inicializar las tarjetas de productos. Añade eventos de clic a los botones de productos.
+ */
 function initializeCards() {
-    document.getElementById("miBoton").addEventListener("click", function () {
-        window.location.href = "product_information.html";
-    });
+    const buttons = ['miBoton', 'miBoton2', 'miBoton3', 'miBoton4', 'miBoton5', 'miBoton6'];
 
-    document.getElementById("miBoton2").addEventListener("click", function () {
-        window.location.href = "product_information.html";
-    });
-
-    document.getElementById("miBoton3").addEventListener("click", function () {
-        window.location.href = "product_information.html";
-    });
-
-    document.getElementById("miBoton4").addEventListener("click", function () {
-        window.location.href = "product_information.html";
-    });
-
-    document.getElementById("miBoton5").addEventListener("click", function () {
-        window.location.href = "product_information.html";
-    });
-
-    document.getElementById("miBoton6").addEventListener("click", function () {
-        window.location.href = "product_information.html";
+    buttons.forEach(buttonId => {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            window.location.href = 'product_information.html';
+        });
     });
 }
