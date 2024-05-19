@@ -6,9 +6,18 @@
     padding: 20px;
   }
 
-  .card {
-    border: none;
-}
+    .card {
+  
+      /* Establece un alto fijo para las cartas */
+      .card {
+        height: 300px;
+      }
+  
+      /* Establece un ancho fijo para las cartas */
+      .card {
+        width: 200px;
+      }
+    }
 
 .card .btn {
     background-color: #000;

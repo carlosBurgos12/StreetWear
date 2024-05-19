@@ -1,18 +1,27 @@
 .custom-title-accessories {
-    font-family: 'Vesper Libre';
-    color: #FFFFFF;
-    text-align: center;
-    background-color: #2d84ac;
-    padding: 20px;
+  font-family: 'Vesper Libre';
+  color: #FFFFFF;
+  text-align: center;
+  background-color: #2d84ac;
+  padding: 20px;
+}
+
+.card {
+
+  /* Establece un alto fijo para las cartas */
+  .card {
+    height: 300px;
   }
 
+  /* Establece un ancho fijo para las cartas */
   .card {
-    border: none;
+    width: 200px;
+  }
 }
 
 .card .btn {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .btn {

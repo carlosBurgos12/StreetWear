@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../../resources/css/cart.css">
     <link rel="stylesheet" href="../../resources/css/nav_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Llamada al icono de la página web -->
+    <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -109,41 +113,80 @@
     </div>
 </nav>
 
+<h1 class="custom-title-caps">CART</h1>
+
 <body>
-    <div class="container">
-        <h1>Cart</h1>
-        <div class="row">
-            <div class="col-md-8">
-                <!-- Lista de productos -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">Products</div>
-                    <div class="panel-body">
-                        <!-- Aquí puedes agregar los detalles de los productos -->
-                        <ul>
-                            <li>StreetWear Drop T-Shirt</li>
-                            <li>Nike Pants</li>
-                            <li>Nike dunk </li>
-                            <!-- ...otros productos... -->
-                        </ul>
+    <!-- Contenido principal del documento -->
+    <main>
+        <!-- Título del contenido principal -->
+        <h4 id="mainTitle"></h4>
+        <!-- Tabla para mostrar el detalle de los productos agregados al carrito de compras -->
+        <table class="table table-striped">
+            <!-- Cabeza de la tabla para mostrar los títulos de las columnas -->
+            <thead>
+                <tr>
+                    <th>PRODUCTO</th>
+                    <th>PRECIO (US$)</th>
+                    <th>CANTIDAD</th>
+                    <th>SUBTOTAL (US$)</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+            <tbody id="tableBody"></tbody>
+        </table>
+        <!-- Párrafo para mostrar el monto total a pagar -->
+        <p class="text-end">TOTAL A PAGAR (US$) <b id="pago"></b></p>
+        <!-- Párrafo para mostrar un botón que finaliza el pedido -->
+        <p class="text-end">
+            <button type="button" class="btn btn-primary" onclick="finishOrder()">
+                <i class="bi bi-credit-card-fill"></i> Finalizar pedido
+            </button>
+        </p>
+        <!-- Párrafo para mostrar un enlace a la página web principal -->
+        <p class="text-end">
+            <a href="index.html" class="btn btn-success">
+                <i class="bi bi-cart-fill"></i> Seguir comprando
+            </a>
+        </p>
+        <!-- Componente Modal para mostrar una caja de diálogo -->
+        <div class="modal fade" id="itemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <!-- Contenido del componente Modal -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalTitle">Cambiar cantidad</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!-- Resumen del carrito -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">Cart Summary</div>
-                    <div class="panel-body">
-                        <!-- Aquí puedes mostrar el total, los productos seleccionados, etc. -->
-                        <p>Total: $100</p>
-                        <button class="btn btn-primary">Complete purchase</button>
-                    </div>
+                    <!-- Formulario para actualizar cantidad -->
+                    <form id="itemForm">
+                        <div class="modal-body row">
+                            <input type="number" class="d-none" id="idDetalle" name="idDetalle">
+                            <div class="col-sm-12">
+                                <label for="cantidadProducto" class="form-label">Cantidad</label>
+                                <input id="cantidadProducto" type="number" name="cantidadProducto" min="1" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Enlace a Bootstrap JS (opcional) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </main>
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!-- Llamada al framework y librería de mensajes -->
+    <script type="text/javascript" src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!-- Llamada al controlador del sitio público -->
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/public/cart.js"></script>
 </body>
 
 </html>
