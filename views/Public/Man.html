@@ -1,4 +1,4 @@
-z<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,7 @@ z<!DOCTYPE html>
     <link rel="stylesheet" href="../../resources/css/footer.css">
     <!-- Llamada al icono de la página web -->
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
+    
     <title>Men's</title>
 </head>
 
@@ -115,14 +116,14 @@ z<!DOCTYPE html>
 
 <h1 class="custom-title-Man">MEN’S WEAR</h1>
 
-<div class="btn-group" role="group" aria-label="Button group example">
-    <button type="button" class="btn btn-outline-primary">T-Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shorts</button>
-    <button type="button" class="btn btn-outline-primary">Hoodies</button>
-    <button type="button" class="btn btn-outline-primary">Sweaters</button>
-    <button type="button" class="btn btn-outline-primary">Pants</button>
-</div>
+<div class="container mt-5">
+    <div class="row mb-3">
+        <div class="col">
+            <input type="text" id="search" class="form-control" placeholder="Search">
+        </div>
+    </div>
+
+
 
 <body class="d-flex flex-column min-vh-100">
     <div class="container flex-grow-1">
@@ -142,6 +143,8 @@ z<!DOCTYPE html>
                                     // Cambiar la URL a la que quieres redirigir al usuario
                                     window.location.href = "product_information.html";
                                 }); </script>
+                                  <button class="btn btn-primary add-to-cart" data-id="1" data-name="T-Shirt Nike" data-price="40.00" data-image="ruta_a_imagen.jpg">Add to cart</button> 
+                                
                             </script>
                         </div>
                     </div>
@@ -282,9 +285,8 @@ z<!DOCTYPE html>
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+   
+        <script src="script.js"></script>
 </body>
 
 </html>
