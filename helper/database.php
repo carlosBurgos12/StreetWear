@@ -8,9 +8,9 @@ require_once('config.php');
 class Database
 {
     // Propiedades de la clase para manejar las acciones respectivas.
-    private static $connection = null;
-    private static $statement = null;
-    private static $error = null;
+    private static $connection = null; // Conexión a la base de datos
+    private static $statement = null; // Sentencia preparada
+    private static $error = null; // Mensaje de error
 
     /*
      *   Método para ejecutar las sentencias SQL.
@@ -120,3 +120,4 @@ class Database
         return self::$error;
     }
 }
+?>
