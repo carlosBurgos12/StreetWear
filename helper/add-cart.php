@@ -2,7 +2,7 @@
 session_start();
 
 // Conexión a la base de datos
-$conn = new mysqli('localhost', 'usuario', 'contraseña', 'base_de_datos');
+$conn = new mysqli('localhost', 'root', 'contraseña', 'streetweardrop_db.sql');
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
