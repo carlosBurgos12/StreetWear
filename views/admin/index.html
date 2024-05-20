@@ -43,7 +43,12 @@
                             </main>
                         </div>
                         <br><br>
-                        <button class="btn btn-light btn-block">Login</button>
+                        <button class="btn btn-light btn-block" id="home">Login</button>
+                        <script>
+                            document.getElementById("home").addEventListener("click", function () {
+                                // Cambiar la URL a la que quieres redirigir al usuario
+                                window.location.href = "home.html";
+                            }); </script>
                     </form>
                 </div>
             </div>
