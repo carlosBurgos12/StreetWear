@@ -57,7 +57,9 @@ CREATE TABLE Categorias (
 
 INSERT INTO Categorias (id_Categoria, nombre_Categoria) VALUES
 (1, 'Ropa'),
-(2, 'Calzado');
+(2, 'Calzado'),
+(3, 'Gorras'),
+(4, 'Accesorios' );
 
 CREATE TABLE TipoProducto (
     id_TipoProducto INT PRIMARY KEY,
@@ -66,7 +68,9 @@ CREATE TABLE TipoProducto (
 
 INSERT INTO TipoProducto (id_TipoProducto, nombre_TipoProducto) VALUES
 (1, 'Camiseta'),
-(2, 'Zapatos');
+(2, 'Zapatos'),
+(3, 'Gorra'),
+(4, 'Lentes de sol');
 
 CREATE TABLE Productos (
     id_Producto INT PRIMARY KEY,
@@ -81,8 +85,9 @@ CREATE TABLE Productos (
 );
 
 INSERT INTO Productos (id_Producto, nombre_Producto, cantidad_Producto, id_Categoria, id_TipoProducto, id_Distribuidor) VALUES
-(1, 'Camiseta Negra', 50, 1, 1, 1),
-(2, 'Zapatos Deportivos', 30, 2, 2, 2);
+(1, 'Camiseta azul Nike', 50, 1, 1, 1),
+(2, 'Zapatos Nike', 30, 2, 2, 2),
+(3, 'Zapatos Jordan', 30, 2, 2, 2)
 
 CREATE TABLE DetallePedido (
     id_Pedido INT,
@@ -112,7 +117,8 @@ CREATE TABLE TipoUsuario (
 
 INSERT INTO TipoUsuario (id_TipoUsuario, nombre_TipoUsuario) VALUES
 (1, 'Administrador'),
-(2, 'Usuario regular');
+(2, 'Trabajador'),
+(3, 'Usuario regular');
 
 CREATE TABLE Usuario (
     id_Usuario INT PRIMARY KEY,
