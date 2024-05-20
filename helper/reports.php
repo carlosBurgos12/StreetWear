@@ -27,14 +27,15 @@ class Report extends FPDF
             // Se asigna el título del documento a la propiedad de la clase.
             $this->title = $title;
             // Se establece el título del documento (true = utf-8).
-            $this->setTitle('CoffeeShop - Reporte', true);
-            // Se establecen los margenes del documento (izquierdo, superior y derecho).
-            $this->setMargins(15, 15, 15);
+            $this->SetTitle('CoffeeShop - Reporte', true);
+            // Se establecen los márgenes del documento (izquierdo, superior y derecho).
+            $this->SetMargins(15, 15, 15);
             // Se añade una nueva página al documento con orientación vertical y formato carta, llamando implícitamente al método header()
-            $this->addPage('p', 'letter');
+            $this->AddPage('p', 'letter');
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
-            $this->aliasNbPages();
+            $this->AliasNbPages();
         } else {
+            // Si no hay sesión de administrador, se redirige al sitio privado.
             header('location:' . self::CLIENT_URL);
         }
     }
@@ -51,35 +52,36 @@ class Report extends FPDF
 
     /*
     *   Se sobrescribe el método de la librería para establecer la plantilla del encabezado de los reportes.
-    *   Se llama automáticamente en el método addPage()
+    *   Se llama automáticamente en el método AddPage().
     */
-    public function header()
+    public function Header()
     {
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->Image('../../images/logo.png', 15, 15, 20);
         // Se ubica el título.
-        $this->cell(20);
-        $this->setFont('Arial', 'B', 15);
-        $this->cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
+        $this->Cell(20);
+        $this->SetFont('Arial', 'B', 15);
+        $this->Cell(166, 10, $this->encodeString($this->title), 0, 1, 'C');
         // Se ubica la fecha y hora del servidor.
-        $this->cell(20);
-        $this->setFont('Arial', '', 10);
-        $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
+        $this->Cell(20);
+        $this->SetFont('Arial', '', 10);
+        $this->Cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
-        $this->ln(10);
+        $this->Ln(10);
     }
 
     /*
     *   Se sobrescribe el método de la librería para establecer la plantilla del pie de los reportes.
-    *   Se llama automáticamente en el método output()
+    *   Se llama automáticamente en el método Output().
     */
-    public function footer()
+    public function Footer()
     {
         // Se establece la posición para el número de página (a 15 milímetros del final).
-        $this->setY(-15);
+        $this->SetY(-15);
         // Se establece la fuente para el número de página.
-        $this->setFont('Arial', 'I', 8);
+        $this->SetFont('Arial', 'I', 8);
         // Se imprime una celda con el número de página.
-        $this->cell(0, 10, $this->encodeString('Página ') . $this->pageNo() . '/{nb}', 0, 0, 'C');
+        $this->Cell(0, 10, $this->encodeString('Página ') . $this->PageNo() . '/{nb}', 0, 0, 'C');
     }
 }
+?>
