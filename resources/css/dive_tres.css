@@ -1,0 +1,38 @@
+.centered-container3 {
+    display:flexbox;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0;
+    padding: 0px ; /* Reducir espacio arriba y abajo */
+
+}
+.image-container3 {
+    position: relative;
+    width: 950px; /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.image-container3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.overlay-text3 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.overlay-text3{
+    margin-bottom: 5px; /* Adjust this value to reduce the space */
+ }
+ .overlay-text3 {
+    margin-top: 5px; /* Adjust this value to reduce the space */
+ }
