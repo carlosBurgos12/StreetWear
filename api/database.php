@@ -2,8 +2,8 @@
 // Se incluyen las credenciales para conectar con la base de datos.
 require_once('config.php');
 
-/*
- *   Clase para realizar las operaciones en la base de datos.
+/**
+ * Clase para realizar las operaciones en la base de datos.
  */
 class Database
 {
@@ -12,10 +12,12 @@ class Database
     private static $statement = null;
     private static $error = null;
 
-    /*
-     *   Método para ejecutar las sentencias SQL.
-     *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
-     *   Retorno: booleano (true si la sentencia se ejecuta satisfactoriamente o false en caso contrario).
+    /**
+     * Método para ejecutar las sentencias SQL.
+     *
+     * @param string $query Sentencia SQL.
+     * @param array $values Arreglo con los valores para la sentencia SQL.
+     * @return bool true si la sentencia se ejecuta satisfactoriamente o false en caso contrario.
      */
     public static function executeRow($query, $values)
     {
@@ -33,25 +35,28 @@ class Database
         }
     }
 
-    /*
-     *   Método para obtener el valor de la llave primaria del último registro insertado.
-     *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
-     *   Retorno: numérico entero (último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario).
+    /**
+     * Método para obtener el valor de la llave primaria del último registro insertado.
+     *
+     * @param string $query Sentencia SQL.
+     * @param array $values Arreglo con los valores para la sentencia SQL.
+     * @return int Último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario.
      */
     public static function getLastRow($query, $values)
     {
         if (self::executeRow($query, $values)) {
-            $id = self::$connection->lastInsertId();
+            return self::$connection->lastInsertId();
         } else {
-            $id = 0;
+            return 0;
         }
-        return $id;
     }
 
-    /*
-     *   Método para obtener un registro de una sentencia SQL tipo SELECT.
-     *   Parámetros: $query (sentencia SQL) y $values (arreglo opcional con los valores para la sentencia SQL).
-     *   Retorno: arreglo asociativo del registro si la sentencia SQL se ejecuta satisfactoriamente o false en caso contrario.
+    /**
+     * Método para obtener un registro de una sentencia SQL tipo SELECT.
+     *
+     * @param string $query Sentencia SQL.
+     * @param array|null $values Arreglo opcional con los valores para la sentencia SQL.
+     * @return array|false Arreglo asociativo del registro si la sentencia SQL se ejecuta satisfactoriamente o false en caso contrario.
      */
     public static function getRow($query, $values = null)
     {
@@ -62,10 +67,12 @@ class Database
         }
     }
 
-    /*
-     *   Método para obtener todos los registros de una sentencia SQL tipo SELECT.
-     *   Parámetros: $query (sentencia SQL) y $values (arreglo opcional con los valores para la sentencia SQL).
-     *   Retorno: arreglo asociativo de los registros si la sentencia SQL se ejecuta satisfactoriamente o false en caso contrario.
+    /**
+     * Método para obtener todos los registros de una sentencia SQL tipo SELECT.
+     *
+     * @param string $query Sentencia SQL.
+     * @param array|null $values Arreglo opcional con los valores para la sentencia SQL.
+     * @return array|false Arreglo asociativo de los registros si la sentencia SQL se ejecuta satisfactoriamente o false en caso contrario.
      */
     public static function getRows($query, $values = null)
     {
@@ -76,10 +83,11 @@ class Database
         }
     }
 
-    /*
-     *   Método para establecer un mensaje de error personalizado al ocurrir una excepción.
-     *   Parámetros: $code (código del error) y $message (mensaje original del error).
-     *   Retorno: ninguno.
+    /**
+     * Método para establecer un mensaje de error personalizado al ocurrir una excepción.
+     *
+     * @param string $code Código del error.
+     * @param string $message Mensaje original del error.
      */
     private static function setException($code, $message)
     {
@@ -110,10 +118,10 @@ class Database
         }
     }
 
-    /*
-     *   Método para obtener un error personalizado cuando ocurre una excepción.
-     *   Parámetros: ninguno.
-     *   Retorno: error personalizado.
+    /**
+     * Método para obtener un error personalizado cuando ocurre una excepción.
+     *
+     * @return string Error personalizado.
      */
     public static function getException()
     {
