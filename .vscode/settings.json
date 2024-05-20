@@ -1,3 +1,4 @@
 {
+    // Configuración del puerto para el servidor en vivo.
     "liveServer.settings.port": 5501
 }
