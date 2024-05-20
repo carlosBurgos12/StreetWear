@@ -52,12 +52,13 @@ INSERT INTO Pedidos (id_Pedido, estado_Pedido, fecha_Registro, id_Cliente, direc
 
 CREATE TABLE Categorias (
     id_Categoria INT PRIMARY KEY,
-    nombre_Categoria VARCHAR(30)
+    nombre_Categoria VARCHAR(30),
+    imagen_Categoria VARCHAR(30)
 );
 
 INSERT INTO Categorias (id_Categoria, nombre_Categoria) VALUES
 (1, 'Ropa'),
-(2, 'Calzado'),
+(2, 'Zapatos'),
 (3, 'Gorras'),
 (4, 'Accesorios' );
 
@@ -129,6 +130,7 @@ CREATE TABLE Usuario (
     numero_Usuario VARCHAR(20),
     direccion_Usuario VARCHAR(200),
     id_TipoUsuario INT,
+    imagen_Usuario VARCHAR(30),
     FOREIGN KEY (id_TipoUsuario) REFERENCES TipoUsuario(id_TipoUsuario)
 );
 
