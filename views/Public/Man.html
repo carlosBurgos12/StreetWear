@@ -110,14 +110,13 @@
     <!-- Título de la sección -->
     <h1 class="custom-title-Man">MEN’S WEAR</h1>
 
-<div class="btn-group" role="group" aria-label="Button group example">
-    <button type="button" class="btn btn-outline-primary">T-Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shorts</button>
-    <button type="button" class="btn btn-outline-primary">Hoodies</button>
-    <button type="button" class="btn btn-outline-primary">Sweaters</button>
-    <button type="button" class="btn btn-outline-primary">Pants</button>
-</div>
+    <!-- Barra de busqueda -->
+    <div class="container mt-5">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" id="search" class="form-control" placeholder="Search">
+            </div>
+        </div>
 
 <body class="d-flex flex-column min-vh-100">
     <div class="container flex-grow-1">
@@ -137,6 +136,8 @@
                                     // Cambiar la URL a la que quieres redirigir al usuario
                                     window.location.href = "product_information.html";
                                 }); </script>
+                               <!-- Botón para agregar al carrito el producto -->
+                               <button class="btn btn-primary add-to-cart" data-id="1" data-name="T-Shirt Nike" data-price="40.00" data-image="ruta_a_imagen.jpg">Add to cart</button>
                             </script>
                         </div>
                     </div>

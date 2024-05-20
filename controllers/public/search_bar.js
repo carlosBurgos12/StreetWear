@@ -17,7 +17,7 @@ $(document).ready(function() {
                                 <div class="card-body">
                                     <h5 class="card-title">${product.nombre}</h5>
                                     <p class="card-text">$${product.precio}</p>
-                                    <button class="btn btn-primary add-to-cart" data-id="${product.id}" data-name="${product.nombre}" data-price="${product.precio}" data-image="${product.imagen}">Agregar al carrito</button>
+                                    <button class="btn btn-primary add-to-cart" data-id="${product.id}" data-name="${product.nombre}" data-price="${product.precio}" data-image="${product.imagen}">Add to cart</button>
                                 </div>
                             </div>
                         </div>

@@ -182,4 +182,5 @@ class Validator
 
     /*
     *   Método para validar la longitud de una cadena de texto.
-    *   Parámetros: $value (dato a validar), $
+    *   Parámetros: $value (dato a validar), $ */
+}
