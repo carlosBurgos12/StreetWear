@@ -87,7 +87,7 @@ CREATE TABLE Productos (
 INSERT INTO Productos (id_Producto, nombre_Producto, cantidad_Producto, id_Categoria, id_TipoProducto, id_Distribuidor) VALUES
 (1, 'Camiseta azul Nike', 50, 1, 1, 1),
 (2, 'Zapatos Nike', 30, 2, 2, 2),
-(3, 'Zapatos Jordan', 30, 2, 2, 2)
+(3, 'Zapatos Jordan', 30, 2, 2, 2);
 
 CREATE TABLE DetallePedido (
     id_Pedido INT,
@@ -139,8 +139,8 @@ ALTER TABLE Direcciones
 ADD CONSTRAINT fk_Direcciones_Clientes FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente);
 
 ALTER TABLE DetallePedido
-ADD CONSTRAINT fk_DetallePedido_Pedidos FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido),
-ADD CONSTRAINT fk_DetallePedido_Productos FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto);
+ADD CONSTRAINT fk_DetallePedido_Pedidos FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido);
+ADD SIGNATURE to fk_DetallePedido_Productos FOREIGN KEY SELECT (id_Producto) REFERENCES Productos(id_Producto);
 
 ALTER TABLE Comentarios
 ADD CONSTRAINT fk_Comentarios_Pedidos FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido);
