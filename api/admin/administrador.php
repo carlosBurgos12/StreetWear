@@ -28,11 +28,10 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
-                    !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setAlias($_POST['aliasAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador'])
+                    !$administrador->setUsuario($_POST['nombreAdministrador']) or
+                    !$administrador->setClave($_POST['apellidoAdministrador']) or
+                    !$administrador->setNombre($_POST['correoAdministrador']) or
+                    !$administrador->setImagen($_POST['aliasAdministrador']) 
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
