@@ -33,6 +33,17 @@ CREATE TABLE Distribuidores (
     telefono_Distribuidor VARCHAR(20)
 );
 
+INSERT INTO Administrador (id_Administador, nombre_Administrador, apellido_Administrador, alias_Administrador, correo_Administrador, id_Genero) VALUES
+(1, 'Andy', 'Pineda', 'Andyyyp', 'andy1@example.com', 1),
+(2, 'Carlos', 'Burgos', 'Burgos12', 'burgos@example.com', 1),
+(3, 'Denis', 'Castillo', 'HDenis12', 'denis@example.com', 1);
+
+CREATE TABLE Distribuidores (
+    id_Distribuidor INT PRIMARY KEY,
+    nombre_Distribuidor VARCHAR(50),
+    telefono_Distribuidor VARCHAR(20)
+);
+
 INSERT INTO Distribuidores (id_Distribuidor, nombre_Distribuidor, telefono_Distribuidor) VALUES
 (1, 'Distribuidor A', '123456789'),
 (2, 'Distribuidor B', '987654321');
