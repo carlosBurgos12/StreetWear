@@ -1,9 +1,9 @@
 // Constantes para establecer los elementos del formulario de editar perfil.
 const PROFILE_FORM = document.getElementById('profileForm'),
-    NOMBRE_ADMINISTRADOR = document.getElementById('nombreAdministrador'),
-    APELLIDO_ADMINISTRADOR = document.getElementById('apellidoAdministrador'),
-    CORREO_ADMINISTRADOR = document.getElementById('correoAdministrador'),
-    ALIAS_ADMINISTRADOR = document.getElementById('aliasAdministrador');
+    NOMBRE_ADMINISTRADOR = document.getElementById('nombre_Administrador'),
+    APELLIDO_ADMINISTRADOR = document.getElementById('apellido_Administrador'),
+    CORREO_ADMINISTRADOR = document.getElementById('correo_Administrador'),
+    ALIAS_ADMINISTRADOR = document.getElementById('alias_Administrador');
 // Constante para establecer la modal de cambiar contraseña.
 const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
@@ -46,7 +46,7 @@ PROFILE_FORM.addEventListener('submit', async (event) => {
     }
 });
 
-// Mètodo del evento para cuando se envía el formulario de cambiar contraseña.
+// Método del evento para cuando se envía el formulario de cambiar contraseña.
 PASSWORD_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
