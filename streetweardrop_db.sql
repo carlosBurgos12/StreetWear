@@ -51,12 +51,13 @@ INSERT INTO Pedidos (id_Pedido, estado_Pedido, fecha_Registro, id_Cliente, direc
 (2, 'Entregado', '2024-03-16', 2, '456 Street, City, Country');
 
 CREATE TABLE Categorias (
-    id_Categoria INT PRIMARY KEY,
-    nombre_Categoria VARCHAR(30),
-    imagen_Categoria VARCHAR(30)
+    idCategoria INT PRIMARY KEY,
+    nombreCategoria VARCHAR(30),
+    descripcionCategoria VARCHAR(200),
+    imagenCategoria VARCHAR(30)
 );
 
-INSERT INTO Categorias (id_Categoria, nombre_Categoria) VALUES
+INSERT INTO Categorias (idCategoria, nombreCategoria) VALUES
 (1, 'Ropa'),
 (2, 'Zapatos'),
 (3, 'Gorras'),
@@ -77,15 +78,15 @@ CREATE TABLE Productos (
     id_Producto INT PRIMARY KEY,
     nombre_Producto VARCHAR(50),
     cantidad_Producto INT,
-    id_Categoria INT,
+    idCategoria INT,
     id_TipoProducto INT,
     id_Distribuidor INT,
-    FOREIGN KEY (id_Categoria) REFERENCES Categorias(id_Categoria),
+    FOREIGN KEY (idCategoria) REFERENCES Categorias(idCategoria),
     FOREIGN KEY (id_TipoProducto) REFERENCES TipoProducto(id_TipoProducto),
     FOREIGN KEY (id_Distribuidor) REFERENCES Distribuidores(id_Distribuidor)
 );
 
-INSERT INTO Productos (id_Producto, nombre_Producto, cantidad_Producto, id_Categoria, id_TipoProducto, id_Distribuidor) VALUES
+INSERT INTO Productos (id_Producto, nombre_Producto, cantidad_Producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
 (1, 'Camiseta azul Nike', 50, 1, 1, 1),
 (2, 'Zapatos Nike', 30, 2, 2, 2),
 (3, 'Zapatos Jordan', 30, 2, 2, 2);
