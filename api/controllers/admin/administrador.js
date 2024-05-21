@@ -10,13 +10,14 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_ADMINISTRADOR = document.getElementById('idAdministrador'),
-    NOMBRE_ADMINISTRADOR = document.getElementById('nombreAdministrador'),
-    APELLIDO_ADMINISTRADOR = document.getElementById('apellidoAdministrador'),
-    CORREO_ADMINISTRADOR = document.getElementById('correoAdministrador'),
-    ALIAS_ADMINISTRADOR = document.getElementById('aliasAdministrador'),
-    CLAVE_ADMINISTRADOR = document.getElementById('claveAdministrador'),
-    CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
+    ID_USUARIO = document.getElementById('id_Usuario'),
+    USERNAME = document.getElementById('username'),
+    NOMBRE_USUARIO = document.getElementById('nombre_Usuario'),
+    CORREO_USUARIO = document.getElementById('correo_Usuario'),
+    CLAVE_USUARIO = document.getElementById('clave_Usuario'),
+    NUMERO_USUARIO = document.getElementById('numero_Usuario'),
+    DIRECCION_USUARIO = document.getElementById('direccion_Usuario');
+    IMAGEN_USUARIO = document.getElementById("imagen_Usuario")
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +44,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ID_ADMINISTRADOR.value) ? action = 'updateRow' : action = 'createRow';
+    (ID_USUARIO.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -81,15 +82,15 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.apellido_administrador}</td>
-                    <td>${row.nombre_administrador}</td>
-                    <td>${row.correo_administrador}</td>
-                    <td>${row.alias_administrador}</td>
+                    <td>${row.username}</td>
+                    <td>${row.clave_Usuario}</td>
+                    <td>${row.nombre_Usuario}</td>
+                    <td>${row.imagen_Usuario}</td>
                     <td>
-                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_administrador})">
+                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_Usuario})">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_administrador})">
+                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_Usuario})">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
