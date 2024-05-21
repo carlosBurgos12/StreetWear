@@ -10,10 +10,10 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_CATEGORIA = document.getElementById('idCategoria'),
-    NOMBRE_CATEGORIA = document.getElementById('nombreCategoria'),
-    DESCRIPCION_CATEGORIA = document.getElementById('descripcionCategoria'),
-    IMAGEN_CATEGORIA = document.getElementById('imagenCategoria');
+    ID_CATEGORIA = document.getElementById('id_Categoria'),
+    NOMBRE_CATEGORIA = document.getElementById('nombre_Categoria'),
+    DESCRIPCION_CATEGORIA = document.getElementById('descripcion_Categoria'),
+    IMAGEN_CATEGORIA = document.getElementById('imagen_Categoria');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,17 +78,17 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/categorias/${row.imagen_categoria}" height="50"></td>
-                    <td>${row.nombre_categoria}</td>
-                    <td>${row.descripcion_categoria}</td>
+                    <td><img src="${SERVER_URL}images/categorias/${row.imagen_Categoria}" height="50"></td>
+                    <td>${row.nombre_Categoria}</td>
+                    <td>${row.descripcion_Categoria}</td>
                     <td>
-                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_categoria})">
+                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_Categoria})">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_categoria})">
+                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_Categoria})">
                             <i class="bi bi-trash-fill"></i>
                         </button>
-                        <button type="button" class="btn btn-warning" onclick="openReport(${row.id_categoria})">
+                        <button type="button" class="btn btn-warning" onclick="openReport(${row.id_Categoria})">
                             <i class="bi bi-filetype-pdf"></i>
                         </button>
                     </td>
@@ -123,7 +123,7 @@ const openCreate = () => {
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idCategoria', id);
+    FORM.append('id_Categoria', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(CATEGORIA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -135,9 +135,9 @@ const openUpdate = async (id) => {
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        ID_CATEGORIA.value = ROW.id_categoria;
-        NOMBRE_CATEGORIA.value = ROW.nombre_categoria;
-        DESCRIPCION_CATEGORIA.value = ROW.descripcion_categoria;
+        ID_CATEGORIA.value = ROW.id_Categoria;
+        NOMBRE_CATEGORIA.value = ROW.nombre_Categoria;
+        DESCRIPCION_CATEGORIA.value = ROW.descripcion_Categoria;
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -179,7 +179,7 @@ const openReport = (id) => {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/admin/productos_categoria.php`);
     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-    PATH.searchParams.append('idCategoria', id);
+    PATH.searchParams.append('id_Categoria', id);
     // Se abre el reporte en una nueva pestaña.
     window.open(PATH.href);
 }
