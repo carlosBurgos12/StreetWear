@@ -30,7 +30,7 @@
                 <script>   // Asignar el evento de clic al label
                     document.getElementById('home').addEventListener('click', function () {
                         // Redireccionar al usuario a la otra página
-                        window.location.href = 'home.html'; 
+                        window.location.href = 'home.html';
                     });</script>
 
                 <li id="Categories" class="nav-item">
@@ -40,7 +40,7 @@
                     // Asignar el evento de clic al label
                     document.getElementById('Categories').addEventListener('click', function () {
                         // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_categories.html'; 
+                        window.location.href = 'crud_categories.html';
                     });
                 </script>
 
@@ -52,7 +52,7 @@
                     // Asignar el evento de clic al label
                     document.getElementById('Admin').addEventListener('click', function () {
                         // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_admin.html'; 
+                        window.location.href = 'crud_admin.html';
                     });
                 </script>
                 <li id="Worker" class="nav-item">
@@ -71,7 +71,7 @@
                 <script> // Asignar el evento de clic al label
                     document.getElementById('Clients').addEventListener('click', function () {
                         // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_clients.html'; 
+                        window.location.href = 'crud_clients.html';
                     });</script>
                 <li id="Products" class="nav-item">
                     <a class="nav-link" href="#"> Products </a>
@@ -79,7 +79,7 @@
                 <script> // Asignar el evento de clic al label
                     document.getElementById('Products').addEventListener('click', function () {
                         // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_products.html'; 
+                        window.location.href = 'crud_products.html';
                     });</script>
             </ul>
         </div>
@@ -91,7 +91,7 @@
 <body class="d-flex flex-column min-vh-100">
 
     <div class="container flex-grow-1">
-        
+
         <p class="custom-text">Manage products</p>
         <div class="input-group mt-3">
             <input type="search" class="form-control" placeholder="Search" aria-label="Search"
@@ -165,9 +165,10 @@
                         <h5 class="modal-title" id="crearProductModalLabel">Create product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <!--Campos de Producto-->
-                        <form>
+                    <form>
+                        <div class="modal-body">
+                            <!--Campos de Producto-->
+
                             <div class="mb-3">
                                 <label for="nombreProduct" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="nombreProduct">
@@ -189,12 +190,13 @@
                                 <label for="imagenProduct" class="form-label">Image</label>
                                 <input type="file" class="form-control" id="imagenProduct">
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
