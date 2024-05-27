@@ -75,9 +75,13 @@ INSERT INTO TipoProducto (id_TipoProducto, nombre_TipoProducto) VALUES
 (4, 'Lentes de sol');
 
 CREATE TABLE Productos (
-    id_Producto INT PRIMARY KEY,
-    nombre_Producto VARCHAR(50),
-    cantidad_Producto INT,
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_producto VARCHAR(50),
+    cantidad_producto INT,
+    descripcion_producto VARCHAR(200),
+    precio_producto FLOAT,
+    imagen_producto VARCHAR(30),
+    color_producto VARCHAR(30),
     idCategoria INT,
     id_TipoProducto INT,
     id_Distribuidor INT,
@@ -86,7 +90,7 @@ CREATE TABLE Productos (
     FOREIGN KEY (id_Distribuidor) REFERENCES Distribuidores(id_Distribuidor)
 );
 
-INSERT INTO Productos (id_Producto, nombre_Producto, cantidad_Producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
+INSERT INTO Productos (id_producto, nombre_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
 (1, 'Camiseta azul Nike', 50, 1, 1, 1),
 (2, 'Zapatos Nike', 30, 2, 2, 2),
 (3, 'Zapatos Jordan', 30, 2, 2, 2);
@@ -188,4 +192,4 @@ BEGIN
     INSERT INTO Comentarios (contenido, id_Pedido) VALUES ('El estado del pedido ha sido actualizado', NEW.id_Pedido);
 END;
 //
-DELIMITER ;
+DELIMITER ;
