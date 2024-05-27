@@ -1,8 +1,8 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../../helpers/validator.php');
+require_once('../helper/database.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/producto_handler.php');
+require_once('../handler/producto_handler.php');
 /*
  *	Clase para manejar el encapsulamiento de los datos de la tabla PRODUCTO.
  */
@@ -56,6 +56,20 @@ class ProductoData extends ProductoHandler
         }
     }
 
+    public function setColor($value, $min = 2, $max = 250)
+    {
+        if (!Validator::validateString($value)) {
+            $this->data_error = 'El color contiene caracteres prohibidos';
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->color = $value;
+            return true;
+        } else {
+            $this->data_error = 'El color debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
+
     public function setPrecio($value)
     {
         if (Validator::validateMoney($value)) {
@@ -80,7 +94,7 @@ class ProductoData extends ProductoHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 1000)) {
+        if (Validator::validateImageFile($file, 100)) {
             $this->imagen = Validator::getFileName();
             return true;
         } elseif (Validator::getFileError()) {
@@ -120,7 +134,9 @@ class ProductoData extends ProductoHandler
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
+
             $this->filename = $data['imagen_producto'];
+            
             return true;
         } else {
             $this->data_error = 'Producto inexistente';
