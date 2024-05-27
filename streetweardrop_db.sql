@@ -26,18 +26,7 @@ CREATE TABLE Clientes (
 INSERT INTO Clientes (id_Cliente, nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero) VALUES
 (1, 'John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1),
 (2, 'Jane', 'Doe', '0987654321', 'jane@example.com', '456 Street, City, Country', 2);
-
-CREATE TABLE Distribuidores (
-    id_Distribuidor INT PRIMARY KEY,
-    nombre_Distribuidor VARCHAR(50),
-    telefono_Distribuidor VARCHAR(20)
-);
-
-INSERT INTO Administrador (id_Administador, nombre_Administrador, apellido_Administrador, alias_Administrador, correo_Administrador, id_Genero) VALUES
-(1, 'Andy', 'Pineda', 'Andyyyp', 'andy1@example.com', 1),
-(2, 'Carlos', 'Burgos', 'Burgos12', 'burgos@example.com', 1),
-(3, 'Denis', 'Castillo', 'HDenis12', 'denis@example.com', 1);
-
+	
 CREATE TABLE Distribuidores (
     id_Distribuidor INT PRIMARY KEY,
     nombre_Distribuidor VARCHAR(50),
@@ -62,7 +51,7 @@ INSERT INTO Pedidos (id_Pedido, estado_Pedido, fecha_Registro, id_Cliente, direc
 (2, 'Entregado', '2024-03-16', 2, '456 Street, City, Country');
 
 CREATE TABLE Categorias (
-    idCategoria INT PRIMARY KEY,
+    idCategoria INT PRIMARY KEY AUTO_INCREMENT,
     nombreCategoria VARCHAR(30),
     descripcionCategoria VARCHAR(200),
     imagenCategoria VARCHAR(30)
@@ -151,10 +140,6 @@ ADD CONSTRAINT fk_Clientes_Genero FOREIGN KEY (id_Genero) REFERENCES Genero(id_G
 
 ALTER TABLE Direcciones
 ADD CONSTRAINT fk_Direcciones_Clientes FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente);
-
-ALTER TABLE DetallePedido
-ADD CONSTRAINT fk_DetallePedido_Pedidos FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido);
-ADD SIGNATURE to fk_DetallePedido_Productos FOREIGN KEY SELECT (id_Producto) REFERENCES Productos(id_Producto);
 
 ALTER TABLE Comentarios
 ADD CONSTRAINT fk_Comentarios_Pedidos FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido);
