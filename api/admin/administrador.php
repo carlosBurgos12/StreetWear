@@ -2,7 +2,6 @@
 // Se incluye la clase del modelo.
 require_once('../../api/data/administrador_data.php');
 
-
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
@@ -29,10 +28,11 @@ if (isset($_GET['action'])) {
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$administrador->setUsuario($_POST['nombreAdministrador']) or
-                    !$administrador->setClave($_POST['apellidoAdministrador']) or
-                    !$administrador->setNombre($_POST['correoAdministrador']) or
-                    !$administrador->setImagen($_POST['aliasAdministrador']) 
+                    !$administrador->setNombre($_POST['nombreAdministrador']) or
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
+                    !$administrador->setCorreo($_POST['correoAdministrador']) or
+                    !$administrador->setAlias($_POST['aliasAdministrador']) or
+                    !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
