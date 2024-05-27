@@ -1,15 +1,18 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../helper/validator.php');
+require_once('../helper/database.php');
 // Se incluye la clase padre.
-require_once('../models/handler/administrador_handler.php');
+require_once('../handler/administrador_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla USUARIO.
  */
 class AdministradorData extends AdministradorHandler
 {
-    // Atributo genérico para manejo de errores.
+    /*
+     *  Atributos adicionales.
+     */
     private $data_error = null;
+    private $filename = null;
 
     /*
      *  Métodos para validar y asignar valores de los atributos.
@@ -61,17 +64,20 @@ class AdministradorData extends AdministradorHandler
     }
 
 
-    public function setImagen($value, $min = 6, $max = 25)
+    public function setImagen($file, $filename = null)
     {
-        if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'El alias debe ser un valor alfanumérico';
+        if (Validator::validateImageFile($file, 100)) {
+            $this->imagen = Validator::getFilename();
+            return true;
+        } elseif (Validator::getFileError()) {
+            $this->data_error = Validator::getFileError();
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->alias = $value;
+        } elseif ($filename) {
+            $this->imagen = $filename;
             return true;
         } else {
-            $this->data_error = 'El alias debe tener una longitud entre ' . $min . ' y ' . $max;
-            return false;
+            $this->imagen = 'default.png';
+            return true;
         }
     }
 
@@ -79,5 +85,10 @@ class AdministradorData extends AdministradorHandler
     public function getDataError()
     {
         return $this->data_error;
+    }
+
+    public function getFilename()
+    {
+        return $this->filename;
     }
 }
