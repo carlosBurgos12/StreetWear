@@ -12,8 +12,8 @@
     <!-- Llamada al icono de la página web -->
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
     <!-- Llamada a las hojas de estilos del framework e iconos -->
-    <link type="text/css" rel="stylesheet" href="../../resources/css/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="../../resources/css/css/bootstrap-icons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/boostrap/boostrap-icons.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/boostrap/boostrap-min.css">
 </head>
 
 <body>
@@ -21,12 +21,12 @@
     <main>
         <!-- Título del contenido principal -->
         <h3 id="mainTitle"></h3>
-        <img src="../../imagenes/logo_clients.png" class="mx-auto d-block" width="200">
+        <img src="../../imagenes/logo_hoodies.png" class="mx-auto d-block" width="200">
         <!-- Formulario para iniciar sesión -->
         <form class="d-none" id="loginForm">
             <div class="row g-3">
                 <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                    <label for="alias" class="form-label">Nombre Usuario</label>
+                    <label for="alias" class="form-label">Alias</label>
                     <input id="alias" type="text" name="alias" class="form-control" required>
                 </div>
                 <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
@@ -57,7 +57,7 @@
                         required>
                 </div>
                 <div class="col-sm-12 col-md-6">
-                    <label for="aliasAdministrador" class="form-label">Usuario</label>
+                    <label for="aliasAdministrador" class="form-label">Alias</label>
                     <input id="aliasAdministrador" type="text" name="aliasAdministrador" class="form-control" required>
                 </div>
                 <div class="col-sm-12 col-md-6">
@@ -78,14 +78,14 @@
     </main>
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
-    <script type="text/javascript" src="../../js/boostrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../../js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
     <!-- Llamada al controlador general de la aplicación -->
-    <script type="text/javascript" src="../../api/controllers/admin/components.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
     <!-- Llamada al controlador del sitio privado -->
-    <script type="text/javascript" src="../../api/controllers/utils/admin.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
     <!-- Llamada al controlador de la página web -->
-    <script type="text/javascript" src="../../api/controllers/admin/index.js"></script>
+    <script type="text/javascript" src="../../controllers/admin/index.js"></script>
 </body>
 
 </html>

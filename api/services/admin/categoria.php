@@ -1,8 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('../../api/data/categoria_data.php');
-require_once('../helper/validator.php');
-
+require_once('../../models/data/categoria_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -13,31 +11,32 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (1 == 1) {
+    if (isset($_SESSION['idAdministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'searchRows':
-                $_POST = Validator::validateForm($_POST);
-                if ($result['dataset'] = $categoria->searchRows($_POST['search'])) {
+           /* case 'searchRows':
+                if (!Validator::validateSearch($_POST['search'])) {
+                    $result['error'] = Validator::getSearchError();
+                } elseif ($result['dataset'] = $categoria->searchRows()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } else {
                     $result['error'] = 'No hay coincidencias';
                 }
-                break;
+                break;*/
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$categoria->setNombre($_POST['nombreCategoria']) or
                     !$categoria->setDescripcion($_POST['descripcionCategoria']) or
-                    !$categoria->setImagen($_FILES['imagenCategoriaCrear'])
+                    !$categoria->setImagen($_FILES['imagenCategoria'])
                 ) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($categoria->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Categoría creada correctamente';
                     // Se asigna el estado del archivo después de insertar.
-                    $result['fileStatus'] = Validator::saveFile($_FILES['imagenCategoriaCrear'], $categoria::RUTA_IMAGEN);
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagenCategoria'], $categoria::RUTA_IMAGEN);
                 } else {
                     $result['error'] = 'Ocurrió un problema al crear la categoría';
                 }
@@ -80,7 +79,8 @@ if (isset($_GET['action'])) {
                 break;
             case 'deleteRow':
                 if (
-                    !$categoria->setId($_POST['idCategoria'])
+                    !$categoria->setId($_POST['idCategoria']) or
+                    !$categoria->setFilename()
                 ) {
                     $result['error'] = $categoria->getDataError();
                 } elseif ($categoria->deleteRow()) {

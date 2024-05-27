@@ -1,6 +1,7 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../../helpers/validator.php');
+require_once('../../helper/validator.php');
+
 // Se incluye la clase padre.
 require_once('../../models/handler/categoria_handler.php');
 /*
@@ -44,7 +45,7 @@ class CategoriaData extends CategoriaHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 1000)) {
+        if (Validator::validateImageFile($file, 100)) {
             $this->imagen = Validator::getFilename();
             return true;
         } elseif (Validator::getFileError()) {
@@ -78,7 +79,7 @@ class CategoriaData extends CategoriaHandler
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
-            $this->filename = $data['imagen_categoria'];
+            $this->filename = $data['imagenCategoria'];
             return true;
         } else {
             $this->data_error = 'Categoría inexistente';

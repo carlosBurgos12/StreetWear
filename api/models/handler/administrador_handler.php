@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../helper/validator.php');
+require_once('../../helper/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla administrador.
  */
