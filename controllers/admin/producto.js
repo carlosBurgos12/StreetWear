@@ -193,6 +193,7 @@ const delet = async () =>{
     const DATA = await fetchData(PRODUCTO_API, 'deleteRow', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+        sweetAlert(1, DATA.message, true);
         DELETE_MODAL.hide();
         fillTable();
     } else {
