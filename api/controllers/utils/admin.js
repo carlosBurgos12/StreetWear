@@ -11,7 +11,7 @@ MAIN.style.paddingTop = '75px';
 MAIN.style.paddingBottom = '100px';
 MAIN.classList.add('container');
 // Se establece el título de la página web.
-document.querySelector('title').textContent = 'CoffeeShop - Dashboard';
+document.querySelector('title').textContent = 'StreetWear - Dashboard';
 // Constante para establecer el elemento del título principal.
 const MAIN_TITLE = document.getElementById('mainTitle');
 MAIN_TITLE.classList.add('text-center', 'py-3');
@@ -30,55 +30,114 @@ const loadTemplate = async () => {
             // Se agrega el encabezado de la página web antes del contenido principal.
             MAIN.insertAdjacentHTML('beforebegin', `
                 <header>
-                    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-                        <div class="container">
-                            <a class="navbar-brand" href="dashboard.html">
-                                <img src="../../resources/img/logo.png" alt="CoffeeShop" width="50">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarContent">
-                                <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="producto.html">Productos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="categoria.html">Categorías</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="administrador.html">Administradores</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="profile.html">Editar perfil</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+            
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li id="home" class="nav-item active">
+                                <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
+                            </li>
+                            <script>   // Asignar el evento de clic al label
+                                document.getElementById('home').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'home.html';
+                                });</script>
+            
+                            <li id="Categories" class="nav-item">
+                                <a class="nav-link" href="#"> Categories </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Categories').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_categories.html';
+                                });
+                            </script>
+            
+            
+                            <li id="Admin" class="nav-item">
+                                <a class="nav-link" href="#"> Admin </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Admin').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_admin.html';
+                                });
+                            </script>
+                            <li id="Worker" class="nav-item">
+                                <a class="nav-link" href="#"> Orders </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Worker').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_orders.html';
+                                });
+                            </script>
+                            <li id="Clients" class="nav-item">
+                                <a class="nav-link" href="#"> Clients </a>
+                            </li>
+                            <script> // Asignar el evento de clic al label
+                                document.getElementById('Clients').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_clients.html';
+                                });</script>
+                            <li id="Products" class="nav-item">
+                                <a class="nav-link" href="#"> Products </a>
+                            </li>
+                            <script> // Asignar el evento de clic al label
+                                document.getElementById('Products').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_products.html';
+                                });</script>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
                 </header>
             `);
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
-                <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <div>
-                                <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                                <p><i class="bi bi-c-square-fill"></i> 2018-2024 Todos los derechos reservados</p>
-                            </div>
-                            <div>
-                                <p><a class="nav-link" href="../public/" target="_blank"><i class="bi bi-cart-fill"></i> Sitio público</a></p>
-                                <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
-                            </div>
-                        </div>
-                    </nav>
-                </footer>
+            <footer class="footer mt-auto py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Navigation</h5>
+                        <p>Home</p>
+    
+                        <p>Men</p>
+    
+                        <p>Women</p>
+    
+                        <p">Shoes</p>
+    
+                            <p">Caps</p>
+    
+                                <p>Kids</p>
+                                <p>Accessories</p>
+    
+    
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Talk to us</h5>
+                        <p>streetwear_support@gmail.com</p>
+                        <p>+503 7581-7784</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Follow Us</h5>
+                        <p>@StreetWear_Drop</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    
             `);
         } else {
             sweetAlert(3, DATA.error, false, 'index.html');
@@ -89,25 +148,112 @@ const loadTemplate = async () => {
             // Se agrega el encabezado de la página web antes del contenido principal.
             MAIN.insertAdjacentHTML('beforebegin', `
                 <header>
-                    <nav class="navbar fixed-top bg-body-tertiary">
-                        <div class="container">
-                            <a class="navbar-brand" href="index.html">
-                                <img src="../../resources/img/logo.png" alt="inventory" width="50">
-                            </a>
-                        </div>
-                    </nav>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+            
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li id="home" class="nav-item active">
+                                <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
+                            </li>
+                            <script>   // Asignar el evento de clic al label
+                                document.getElementById('home').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'home.html';
+                                });</script>
+            
+                            <li id="Categories" class="nav-item">
+                                <a class="nav-link" href="#"> Categories </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Categories').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_categories.html';
+                                });
+                            </script>
+            
+            
+                            <li id="Admin" class="nav-item">
+                                <a class="nav-link" href="#"> Admin </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Admin').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_admin.html';
+                                });
+                            </script>
+                            <li id="Worker" class="nav-item">
+                                <a class="nav-link" href="#"> Orders </a>
+                            </li>
+                            <script>
+                                // Asignar el evento de clic al label
+                                document.getElementById('Worker').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_orders.html';
+                                });
+                            </script>
+                            <li id="Clients" class="nav-item">
+                                <a class="nav-link" href="#"> Clients </a>
+                            </li>
+                            <script> // Asignar el evento de clic al label
+                                document.getElementById('Clients').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_clients.html';
+                                });</script>
+                            <li id="Products" class="nav-item">
+                                <a class="nav-link" href="#"> Products </a>
+                            </li>
+                            <script> // Asignar el evento de clic al label
+                                document.getElementById('Products').addEventListener('click', function () {
+                                    // Redireccionar al usuario a la otra página
+                                    window.location.href = 'crud_products.html';
+                                });</script>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
                 </header>
             `);
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
-                <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                            <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
-                        </div>
-                    </nav>
-                </footer>
+            <footer class="footer mt-auto py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Navigation</h5>
+                        <p>Home</p>
+    
+                        <p>Men</p>
+    
+                        <p>Women</p>
+    
+                        <p">Shoes</p>
+    
+                            <p">Caps</p>
+    
+                                <p>Kids</p>
+                                <p>Accessories</p>
+    
+    
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Talk to us</h5>
+                        <p>streetwear_support@gmail.com</p>
+                        <p>+503 7581-7784</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Follow Us</h5>
+                        <p>@StreetWear_Drop</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
             `);
         } else {
             location.href = 'index.html';
