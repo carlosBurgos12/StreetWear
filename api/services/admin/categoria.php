@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idAdministrador'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-           /* case 'searchRows':
+            case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
                 } elseif ($result['dataset'] = $categoria->searchRows()) {
@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['error'] = 'No hay coincidencias';
                 }
-                break;*/
+                break;
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
                 if (

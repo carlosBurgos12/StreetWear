@@ -1,5 +1,5 @@
 // Constantes para completar las rutas de la API.
-const PRODUCTO_API = 'admin/producto.php';
+const PRODUCTO_API = 'services/admin/producto.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('buscar');
 // Constantes para establecer el contenido de la tabla.

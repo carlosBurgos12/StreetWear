@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../api/helper/database.php');
+require_once('../../helper/database.php');
 /*
 *	Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
 */
@@ -20,7 +20,7 @@ class ProductoHandler
     protected $estado = null;
 
     // Constante para establecer la ruta de las imágenes.
-    const RUTA_IMAGEN = '../../api/images/productos/';
+    const RUTA_IMAGEN = '../../images/productos/';
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
