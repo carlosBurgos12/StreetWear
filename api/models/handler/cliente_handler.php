@@ -151,7 +151,8 @@ class ClienteHandler
     {
         $sql = 'SELECT id_Cliente
                 FROM Clientes
-                WHERE correo_Cliente = ?';
+                WHERE correo_Cliente = ?
+                AND id_Cliente <> ?;';
         $params = array($value);
         return Database::getRow($sql, $params);
     }
