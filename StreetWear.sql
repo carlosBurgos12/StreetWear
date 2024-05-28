@@ -12,6 +12,14 @@ CREATE TABLE administrador (
     fecha_registro datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+   CREATE TABLE orders (
+    id_order INT PRIMARY KEY AUTO_INCREMENT,
+    ordercode VARCHAR(10) NOT NULL,
+    order_product VARCHAR(100) NOT NULL,
+    nombre_order VARCHAR(20) NOT NULL,
+    amount INT NOT NULL,
+    image_order VARCHAR(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Genero (
     id_Genero INT PRIMARY KEY,
