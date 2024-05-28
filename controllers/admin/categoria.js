@@ -18,7 +18,7 @@ const NOMBRE_CATEGORIA = document.getElementById('nombreCategoriaEditar'),
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    loadTemplate();
+    // Se establece el título del contenido principal.
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
@@ -50,8 +50,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     const nom = document.getElementById('nombreCategoriaCrear').value;
     const desc = document.getElementById('descripcionCategoriaCrear').value;
+    const img = document.getElementById('imagenCategoriaCrear').value;
     FORM.append('nombreCategoria', nom);
     FORM.append('descripcionCategoria', desc);
+    console.log(img);
+    FORM.append('imagenCategoria', img);
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(CATEGORIA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -61,7 +64,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         SAVE_FORM.reset();
         document.getElementById('nombreCategoriaCrear').value = '';
         document.getElementById('descripcionCategoriaCrear').value = '';
-        document.getElementById('imagenCategoria').value = '';
+        document.getElementById('imagenCategoriaCrear').value = '';
         
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
@@ -172,7 +175,7 @@ ACTU_FORM.addEventListener('submit', async (event) => {
         SAVE_FORM.reset();
         document.getElementById('nombreCategoriaEditar').value = '';
         document.getElementById('descripcionCategoriaEditar').value = '';
-        document.getElementById('imagenCategoriaCrear').value = '';
+        document.getElementById('imagenCategoria').value = '';
         
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
@@ -198,11 +201,17 @@ const delet = async () =>{
     const DATA = await fetchData(CATEGORIA_API, 'deleteRow', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        sweetAlert(1, DATA.message, true);
+        sweetAlert(1, DATA.message, false);
+        
         ELIMINAR_MODAL.hide();
         fillTable();
     } else {
-        sweetAlert(2, DATA.error, false);
+        if (DATA.exception === 'Violación de restricción de integridad') {
+            sweetAlert(2, 'No se puede eliminar debido a que la categoria tiene varios productos', false);
+        }
+        else {
+            sweetAlert(2, DATA.error, false);
+        }
     }
 }
 

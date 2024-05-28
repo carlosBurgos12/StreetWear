@@ -135,7 +135,7 @@ class ClienteHandler
         $sql = 'UPDATE Clientes
                 SET nombre_Cliente = ?, apellido_Cliente = ?, correo_Cliente = ?, direccion_Cliente = ?, img_Cliente = ?, numero_Cliente = ?
                 WHERE id_Cliente = ?';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->direccion, $this->numero, $this->imagen, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->correo, $this->direccion, $this->imagen, $this->numero, $this->id);
         return Database::executeRow($sql, $params);
     }
 
