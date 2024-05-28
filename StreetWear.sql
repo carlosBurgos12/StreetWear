@@ -4,18 +4,19 @@ CREATE DATABASE streetweardrop_db;
 USE streetweardrop_db;
 
 CREATE TABLE administrador (
-    id_administrador int(10) UNSIGNED NOT NULL,
+    id_administrador int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre_administrador varchar(50) NOT NULL,
     apellido_administrador varchar(50) NOT NULL,
     correo_administrador varchar(100) NOT NULL,
     alias_administrador varchar(25) NOT NULL,
     clave_administrador varchar(100) NOT NULL,
+    imagen_administrador varchar(30) NOT NULL,
     fecha_registro datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 CREATE TABLE Genero (
-    id_Genero INT PRIMARY KEY,
+    id_Genero INT PRIMARY KEY AUTO_INCREMENT,
     nombre_genero VARCHAR(20)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -24,26 +25,29 @@ INSERT INTO Genero (id_Genero, nombre_genero) VALUES
 (2, 'Femenino'),
 (3, 'Otro');
 
-	CREATE TABLE Clientes (
-	    id_Cliente INT PRIMARY KEY AUTO_INCREMENT,
-	    nombre_cliente VARCHAR(30),
-	    apellido_cliente VARCHAR(50),
-	    numero_cliente VARCHAR(20),
-	    correo_cliente VARCHAR(100),
-	    direccion_cliente VARCHAR(200),
-	    img_Cliente VARCHAR(200),
-	    estado_Cliente INT,
-	    clave_cliente VARCHAR(200),
-	    id_Genero INT,
-	    FOREIGN KEY (id_Genero) REFERENCES Genero(id_Genero)
-	)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE Clientes (
+    id_Cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_Cliente VARCHAR(30),
+    apellido_Cliente VARCHAR(50),
+    numero_Cliente VARCHAR(20),
+    correo_Cliente VARCHAR(100),
+    direccion_Cliente VARCHAR(200),
+    img_Cliente VARCHAR(200),
+    estado_Cliente INT,
+    clave_Cliente VARCHAR(200),
+    id_Genero INT,
+    FOREIGN KEY (id_Genero) REFERENCES Genero(id_Genero)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO Clientes (id_Cliente, nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero) VALUES
-(1, 'John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1),
-(2, 'Jane', 'Doe', '0987654321', 'jane@example.com', '456 Street, City, Country', 2);
+
+INSERT INTO Clientes (nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero) VALUES
+('John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1),
+('Jane', 'Doe', '0987654321', 'jane@example.com', '456 Street, City, Country', 2);
+
+SELECT*FROM Clientes;
 	
 CREATE TABLE Distribuidores (
-    id_Distribuidor INT PRIMARY KEY,
+    id_Distribuidor INT PRIMARY KEY AUTO_INCREMENT,
     nombre_Distribuidor VARCHAR(50),
     telefono_Distribuidor VARCHAR(20)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -53,7 +57,7 @@ INSERT INTO Distribuidores (id_Distribuidor, nombre_Distribuidor, telefono_Distr
 (2, 'Distribuidor B', '987654321');
 
 CREATE TABLE Pedidos (
-    id_Pedido INT PRIMARY KEY,
+    id_Pedido INT PRIMARY KEY AUTO_INCREMENT, 
     estado_Pedido VARCHAR(50),
     fecha_Registro DATE,
     id_Cliente INT,
@@ -79,7 +83,7 @@ INSERT INTO Categorias (idCategoria, nombreCategoria) VALUES
 (4, 'Accesorios' );
 
 CREATE TABLE TipoProducto (
-    id_TipoProducto INT PRIMARY KEY,
+    id_TipoProducto INT PRIMARY KEY AUTO_INCREMENT,
     nombre_TipoProducto VARCHAR(30)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -111,28 +115,28 @@ INSERT INTO Productos (id_producto, nombre_producto, cantidad_producto, idCatego
 (3, 'Zapatos Jordan', 30, 2, 2, 2);
 
 CREATE TABLE DetallePedido (
-    id_Pedido INT,
+    id_Pedido INT AUTO_INCREMENT,
     id_Producto INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido),
     FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Comentarios (
-    id_Comentario INT PRIMARY KEY,
+    id_Comentario INT PRIMARY KEY AUTO_INCREMENT,
     contenido VARCHAR(200),
     id_Pedido INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Direcciones (
-    id_Direccion INT PRIMARY KEY,
+    id_Direccion INT PRIMARY KEY AUTO_INCREMENT,
     direccion VARCHAR(200),
     id_Cliente INT,
     FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE TipoUsuario (
-    id_TipoUsuario INT PRIMARY KEY,
+    id_TipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre_TipoUsuario VARCHAR(100)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -142,7 +146,7 @@ INSERT INTO TipoUsuario (id_TipoUsuario, nombre_TipoUsuario) VALUES
 (3, 'Usuario regular');
 
 CREATE TABLE Usuario (
-    id_Usuario INT PRIMARY KEY,
+    id_Usuario INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(30),
     nombre_Usuario VARCHAR(60),
     correo_Usuario VARCHAR(40),

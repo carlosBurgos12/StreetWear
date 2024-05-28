@@ -18,6 +18,7 @@ const NOMBRE_CATEGORIA = document.getElementById('nombreCategoriaEditar'),
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
+    // Se establece el título del contenido principal.
     loadTemplate();
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
@@ -172,7 +173,7 @@ ACTU_FORM.addEventListener('submit', async (event) => {
         SAVE_FORM.reset();
         document.getElementById('nombreCategoriaEditar').value = '';
         document.getElementById('descripcionCategoriaEditar').value = '';
-        document.getElementById('imagenCategoriaCrear').value = '';
+        document.getElementById('imagenCategoria').value = '';
         
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
@@ -198,11 +199,17 @@ const delet = async () =>{
     const DATA = await fetchData(CATEGORIA_API, 'deleteRow', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        sweetAlert(1, DATA.message, true);
+        sweetAlert(1, DATA.message, false);
+        
         ELIMINAR_MODAL.hide();
         fillTable();
     } else {
-        sweetAlert(2, DATA.error, false);
+        if (DATA.exception === 'Violación de restricción de integridad') {
+            sweetAlert(2, 'No se puede eliminar debido a que la categoria tiene varios productos', false);
+        }
+        else {
+            sweetAlert(2, DATA.error, false);
+        }
     }
 }
 
