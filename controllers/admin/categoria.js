@@ -18,7 +18,7 @@ const NOMBRE_CATEGORIA = document.getElementById('nombreCategoriaEditar'),
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    // Se establece el título del contenido principal.
+    loadTemplate();
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });

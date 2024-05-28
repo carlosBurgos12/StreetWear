@@ -14,308 +14,175 @@
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-               
-                <li id="home" class="nav-item active">
-                    <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
-                </li>
-                <script>   // Asignar el evento de clic al label
-                    document.getElementById('home').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'home.html'; 
-                    });</script>
-
-                <li id="Categories" class="nav-item">
-                    <a class="nav-link" href="#"> Categories </a>
-                </li>
-                <script>
-                    // Asignar el evento de clic al label
-                    document.getElementById('Categories').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_categories.html'; 
-                    });
-                </script>
-
-
-                <li id="Admin" class="nav-item">
-                    <a class="nav-link" href="#"> Admin </a>
-                </li>
-                <script>
-                    // Asignar el evento de clic al label
-                    document.getElementById('Admin').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_admin.html'; 
-                    });
-                </script>
-                <li id="Worker" class="nav-item">
-                    <a class="nav-link" href="#"> Orders </a>
-                </li>
-                <script>
-                    // Asignar el evento de clic al label
-                    document.getElementById('Worker').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_orders.html';
-                    });
-                </script>
-                <li id="Clients" class="nav-item">
-                    <a class="nav-link" href="#"> Clients </a>
-                </li>
-                <script> // Asignar el evento de clic al label
-                    document.getElementById('Clients').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_clients.html'; 
-                    });</script>
-                <li id="Products" class="nav-item">
-                    <a class="nav-link" href="#"> Products </a>
-                </li>
-                <script> // Asignar el evento de clic al label
-                    document.getElementById('Products').addEventListener('click', function () {
-                        // Redireccionar al usuario a la otra página
-                        window.location.href = 'crud_products.html'; 
-                    });</script>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<h1 class="custom-title-General">Admins</h1>
-
 <body class="d-flex flex-column min-vh-100">
-    <div class="container flex-grow-1">
+    <main>
+        <h1 class="custom-title-General">Admins</h1>
+        <div class="container flex-grow-1">
 
-        
-        <p class="custom-text">Manage admins</p>
-        <div class="input-group mt-3">
-            <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
-            </div>
-        </div>
-        <br>
 
-        <div class="container">
-            <!--Crear Admin Boton-->
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#crearAdminModal">
-                <i class="fas fa-plus"></i>Create admin
-            </button>
-
-            <!--Crear la tabla-->
-            <table class="table">
-                <thead>
-                    <!--Campos de la tabla-->
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../../imagenes/logo_usuario.png" alt="Image" style="width: 100px; height: 100px;">
-                        </td>
-                        <td>Admin1</td>
-                        <td>Carlos Burgos</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#editarAdminModal">
-                                <img src="../../imagenes/logo_editar.png" alt="" width="50px" height="50px">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#eliminarAdminModal">
-                                <img src="../../imagenes/logo_eliminar.png" alt="" width="50px" height="50px">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!--Crear Admin-->
-
-        <div class="modal fade" id="crearAdminModal" tabindex="-1" aria-labelledby="crearAdminModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="crearAdminModalLabel">Create Admin</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <p class="custom-text">Manage admins</p>
+            <form id="busqueda">
+                <div class="input-group mt-3">
+                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                        aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
                     </div>
+                </div>
+            </form>
+            <br>
 
-                    <div class="modal-body">
-                        <!--Campos que contiene Admin-->
-                        <form>
-                            <div class="mb-3">
-                                <label for="usuarioAdmin" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="usuarioAdmin">
-                            </div>
-                            <div class="mb-3">
-                                <label for="usuarioAdmin" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="usuarioAdmin">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombreAdmin" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="nombreAdmin">
-                            </div>
+            <div class="container">
+                <!--Crear Admin Boton-->
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                    data-bs-target="#crearAdminModal">
+                    <i class="fas fa-plus"></i>Create admin
+                </button>
 
-                            <div class="mb-3">
-                                <label for="imagenAdmin" class="form-label">Image</label>
-                                <input type="file" class="form-control" id="imagenAdmin">
+                <!--Crear la tabla-->
+                <table class="table">
+                    <thead>
+                        <!--Campos de la tabla-->
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="../../imagenes/logo_usuario.png" alt="Image"
+                                    style="width: 100px; height: 100px;">
+                            </td>
+                            <td>Admin1</td>
+                            <td>Carlos Burgos</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#editarAdminModal">
+                                    <img src="../../imagenes/logo_editar.png" alt="" width="50px" height="50px">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#eliminarAdminModal">
+                                    <img src="../../imagenes/logo_eliminar.png" alt="" width="50px" height="50px">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--Crear Admin-->
+
+            <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="crearAdminModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="crearAdminModalLabel">Create Admin</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="crearForm">
+                            <div class="modal-body">
+                                <!--Campos que contiene Admin-->
+
+                                <div class="mb-3">
+                                    <label for="usuarioAdmin" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="usuarioAdmin">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="usuarioAdmin" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="usuarioAdmin">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreAdmin" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="nombreAdmin">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="imagenAdmin" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="imagenAdmin">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal">Save</button>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal">Save</button>
+                </div>
+            </div>
+
+            <!--Editar Admin-->
+
+            <div class="modal fade" id="editarAdminModal" tabindex="-1" aria-labelledby="editarAdminModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editarAdminModalLabel">Edit Admin</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <!--Campos de Editar Admin-->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nombreAdminEditar" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="nombreAdminEditar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreAdminEditar" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="nombreAdminEditar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreAdminEditar" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="nombreAdminEditar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagenAdminEditar" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="imagenAdminEditar">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Eliminar Admin-->
+
+            <div class="modal fade" id="eliminarAdminModal" tabindex="-1" aria-labelledby="eliminarAdminModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="eliminarAdminModalLabel">Delete admin</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to remove this admin?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!--Editar Admin-->
-
-        <div class="modal fade" id="editarAdminModal" tabindex="-1" aria-labelledby="editarAdminModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editarAdminModalLabel">Edit Admin</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <!--Campos de Editar Admin-->
-                        <form>
-                            <div class="mb-3">
-                                <label for="nombreAdminEditar" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="nombreAdminEditar">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombreAdminEditar" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="nombreAdminEditar">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nombreAdminEditar" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="nombreAdminEditar">
-                            </div>
-                            <div class="mb-3">
-                                <label for="imagenAdminEditar" class="form-label">Image</label>
-                                <input type="file" class="form-control" id="imagenAdminEditar">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal">Save Changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Eliminar Admin-->
-
-        <div class="modal fade" id="eliminarAdminModal" tabindex="-1" aria-labelledby="eliminarAdminModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="eliminarAdminModalLabel">Delete admin</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to remove this admin?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Navigation</h5>
-                    <p id="homeFooter">Home</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('homeFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'home.html';
-                        });
-                    </script>
-                    <p id="CategoriesFooter">Categories</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('CategoriesFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_categories.html';
-                        });
-
-                    </script>
-                    <p id="AdminFooter">Admin</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('AdminFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_admin.html';
-                        });
-                    </script>
-                    <p id="WorkersFooter">Workers</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('WorkersFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_workers.html';
-                        });
-                    </script>
-                    <p id="ClientsFooter">Clients</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('ClientsFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_clients.html';
-                        });
-                    </script>
-                    <p id="ProductFooter">Products</p>
-                    <script>
-                        // Asignar el evento de clic al botón
-                        document.getElementById('ProductFooter').addEventListener('click', function () {
-                            // Redireccionar al usuario a la otra página
-                            window.location.href = 'crud_products.html';
-                        });
-                    </script>
-
-                </div>
-                <div class="col-md-4">
-                    <h5>Talk to us</h5>
-                    <p>streetwear_support@gmail.com</p>
-                    <p>+503 7581-7784</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Follow Us</h5>
-                    <p>@StreetWear_Drop</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    </main>
     <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
-        <script type="text/javascript" src="../../api/controllers/admin/administrador.js"></script>
+    <script src="../../controllers/utils/admin.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script type="text/javascript" src="../../controllers/admin/administrador.js"></script>
 
 </body>
 

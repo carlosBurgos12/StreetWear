@@ -7,14 +7,6 @@
 const USER_API = 'services/admin/administrador.php';
 // Constante para establecer el elemento del contenido principal.
 const MAIN = document.querySelector('main');
-MAIN.style.paddingTop = '75px';
-MAIN.style.paddingBottom = '100px';
-MAIN.classList.add('container');
-// Se establece el título de la página web.
-document.querySelector('title').textContent = 'StreetWear - home';
-// Constante para establecer el elemento del título principal.
-const MAIN_TITLE = document.getElementById('mainTitle');
-MAIN_TITLE.classList.add('text-center', 'py-3');
 
 /*  Función asíncrona para cargar el encabezado y pie del documento.
 *   Parámetros: ninguno.
@@ -29,55 +21,118 @@ const loadTemplate = async () => {
         if (DATA.status) {
             // Se agrega el encabezado de la página web antes del contenido principal.
             MAIN.insertAdjacentHTML('beforebegin', `
-                <header>
-                    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-                        <div class="container">
-                            <a class="navbar-brand" href="dashboard.html">
-                                <img src="../../resources/img/logo.png" alt="CoffeeShop" width="50">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarContent">
-                                <ul class="navbar-nav ms-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="producto.html">Productos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="categoria.html">Categorías</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="administrador.html">Administradores</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Cuenta: <b>${DATA.username}</b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="profile.html">Editar perfil</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#" onclick="logOut()">Cerrar sesión</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container">
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <li id="home" class="nav-item active">
+                                    <a class="nav-link" href="home.html"> Home <span class="sr-only"></span></a>
+                                </li>
+
+                                <li id="Categories" class="nav-item">
+                                    <a class="nav-link" href="crud_categories.html"> Categories </a>
+                                </li>
+
+
+                                <li id="Admin" class="nav-item">
+                                    <a class="nav-link" href="crud_admin.html"> Admin </a>
+                                </li>
+
+                                <li id="Worker" class="nav-item">
+                                    <a class="nav-link" href="crud_orders.html"> Orders </a>
+                                </li>
+
+                                <li id="Clients" class="nav-item">
+                                    <a class="nav-link" href="crud_clients.html"> Clients </a>
+                                </li>
+
+                                <li id="Products" class="nav-item">
+                                    <a class="nav-link" href="crud_products.html"> Products </a>
+                                </li>
+                                
+                            </ul>
                         </div>
-                    </nav>
-                </header>
+                    </div>
+                </nav>
+            </header>
             `);
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
-                <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <div>
-                                <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                                <p><i class="bi bi-c-square-fill"></i> 2018-2024 Todos los derechos reservados</p>
+                
+                <footer class="footer mt-auto py-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Navigation</h5>
+                                <p id="homeFooter">Home</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('homeFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'home.html';
+                                    });
+                                </script>
+                                <p id="CategoriesFooter">Categories</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('CategoriesFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'crud_categories.html';
+                                    });
+
+                                </script>
+                                <p id="AdminFooter">Admin</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('AdminFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'crud_admin.html';
+                                    });
+                                </script>
+                                <p id="WorkersFooter">Workers</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('WorkersFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'crud_workers.html';
+                                    });
+                                </script>
+                                <p id="ClientsFooter">Clients</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('ClientsFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'crud_clients.html';
+                                    });
+                                </script>
+                                <p id="ProductFooter">Products</p>
+                                <script>
+                                    // Asignar el evento de clic al botón
+                                    document.getElementById('ProductFooter').addEventListener('click', function () {
+                                        // Redireccionar al usuario a la otra página
+                                        window.location.href = 'crud_products.html';
+                                    });
+                                </script>
+
                             </div>
-                            <div>
-                                <p><a class="nav-link" href="../public/" target="_blank"><i class="bi bi-cart-fill"></i> Sitio público</a></p>
-                                <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
+                            <div class="col-md-4">
+                                <h5>Talk to us</h5>
+                                <p>streetwear_support@gmail.com</p>
+                                <p>+503 7581-7784</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Follow Us</h5>
+                                <p>@StreetWear_Drop</p>
                             </div>
                         </div>
-                    </nav>
+                    </div>
                 </footer>
             `);
         } else {
