@@ -30,7 +30,7 @@ if (isset($_GET['action'])) {
                     !$order->setProduct($_POST['order_product']) or
                     !$order->setCode($_POST['ordercode']) or
                     !$order->setAmount($_POST['amount']) or
-                    !$order->setImagen($_POST['image_order']) or
+                    !$order->setImagen($_FILES['image_order'])
                 ) {
                     $result['error'] = $order->getDataError();
                 } elseif ($order->createRow()) {
@@ -93,6 +93,7 @@ if (isset($_GET['action'])) {
                     $result['fileStatus'] = Validator::deleteFile($order::RUTA_IMAGEN, $order->getFilename());
                 } else {
                     $result['error'] = 'Ocurrió un problema al eliminar la orden';
+                }
         }
         // Se obtiene la excepción del servidor de base de datos por si ocurrió un problema.
         $result['exception'] = Database::getException();

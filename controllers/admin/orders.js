@@ -13,7 +13,7 @@ const SAVE_FORM = document.getElementById('create'),
     UPDATE_FORM = document.getElementById('update'),
     CODE_ORDERS = document.getElementById('codeOrderEditar'),
     NOMBRE_ORDER = document.getElementById('nombreOrderEditar'),
-   AMOUNT_ORDER = document.getElementById('amountOrderActualizar');
+    AMOUNT_ORDER = document.getElementById('amountOrderActualizar');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,16 +84,16 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/orders/${row.image_orders}" alt="Image" style="width: 100px; height: 100px;"></td>
+                    <td><img src="${SERVER_URL}images/orders/${row.image_order}" alt="Image" style="width: 100px; height: 100px;"></td>
                     <td>${row.order_product}</td>
                     <td>${row.ordercode}</td>
                     <td>$${row.amount}</td>
                     <td>
-                        <button type="button" class="btn btn-warning btn-sm" onclick="openDetails(${row.id_order})">
+                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarOrderModal">
                             <img src="../../imagenes/logo_editar.png" alt="" width="50px" height="50px">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="openDelete(${row.id_order})">
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarOrderModal">
                             <img src="../../imagenes/logo_eliminar.png" alt="" width="50px" height="50px">
                             <i class="fas fa-trash-alt"></i>
                         </button>
@@ -113,7 +113,7 @@ const fillTable = async (form = null) => {
 */
 let updateId;
 
-const openDetails = async (id) =>{
+const openDetails = async (id) => {
     updateId = id;
     const FORM = new FormData();
     FORM.append('id_order', id);
@@ -129,7 +129,7 @@ const openDetails = async (id) =>{
         const ROW = DATA.dataset;
         CODE_ORDERS.value = ROW.order_product;
         NOMBRE_ORDER.value = ROW.ordercode;
-       AMOUNT_ORDER.value = ROW.amount;
+        AMOUNT_ORDER.value = ROW.amount;
 
     } else {
         sweetAlert(2, DATA.error, false);
@@ -160,7 +160,7 @@ UPDATE_FORM.addEventListener('submit', async (event) => {
         CODE_ORDERS.value = '';
         AMOUNT_ORDER.value = '';
         document.getElementById('image_order').value = '';
-        
+
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -178,10 +178,10 @@ UPDATE_FORM.addEventListener('submit', async (event) => {
 let idDelete;
 const openDelete = async (id) => {
     idDelete = id;
-    DELETE_MODAL.show();    
+    DELETE_MODAL.show();
 }
 
-const delet = async () =>{
+const delet = async () => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id_order', idDelete);

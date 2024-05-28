@@ -1,8 +1,8 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../../helper/validator.php');
+require_once ('../../helper/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/orders_handler.php');
+require_once ('../../models/handler/orders_handler.php');
 /*
  *	Clase para manejar el encapsulamiento de los datos de la tabla ORDERS.
  */
@@ -62,10 +62,8 @@ class OrderData extends OrderHandler
             $this->data_error = 'La cantidad debe ser un número positivo';
             return false;
         }
-        }
     }
 
-  
     public function setImagen($file, $filename = null)
     {
         if (Validator::validateImageFile($file, 100)) {
@@ -88,7 +86,7 @@ class OrderData extends OrderHandler
         if ($data = $this->readFilename()) {
 
             $this->filename = $data['image_order'];
-            
+
             return true;
         } else {
             $this->data_error = 'Orden inexistente';
