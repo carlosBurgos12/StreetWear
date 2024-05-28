@@ -28,7 +28,7 @@ class ProductoHandler
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT id_Producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, color_producto
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, color_producto
                 FROM Productos
                 WHERE nombre_producto LIKE ? OR descripcion_producto LIKE ?
                 ORDER BY nombre_producto';
