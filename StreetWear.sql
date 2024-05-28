@@ -4,7 +4,7 @@ CREATE DATABASE streetweardrop_db;
 USE streetweardrop_db;
 
 CREATE TABLE administrador (
-    id_administrador int(10) UNSIGNED NOT NULL,
+    id_administrador int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre_administrador varchar(50) NOT NULL,
     apellido_administrador varchar(50) NOT NULL,
     correo_administrador varchar(100) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE administrador (
 
 
 CREATE TABLE Genero (
-    id_Genero INT PRIMARY KEY,
+    id_Genero INT PRIMARY KEY AUTO_INCREMENT,
     nombre_genero VARCHAR(20)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -46,7 +46,7 @@ INSERT INTO Clientes (nombre_cliente, apellido_cliente, numero_cliente, correo_c
 SELECT*FROM Clientes;
 	
 CREATE TABLE Distribuidores (
-    id_Distribuidor INT PRIMARY KEY,
+    id_Distribuidor INT PRIMARY KEY AUTO_INCREMENT,
     nombre_Distribuidor VARCHAR(50),
     telefono_Distribuidor VARCHAR(20)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -56,7 +56,7 @@ INSERT INTO Distribuidores (id_Distribuidor, nombre_Distribuidor, telefono_Distr
 (2, 'Distribuidor B', '987654321');
 
 CREATE TABLE Pedidos (
-    id_Pedido INT PRIMARY KEY,
+    id_Pedido INT PRIMARY KEY AUTO_INCREMENT, 
     estado_Pedido VARCHAR(50),
     fecha_Registro DATE,
     id_Cliente INT,
@@ -82,7 +82,7 @@ INSERT INTO Categorias (idCategoria, nombreCategoria) VALUES
 (4, 'Accesorios' );
 
 CREATE TABLE TipoProducto (
-    id_TipoProducto INT PRIMARY KEY,
+    id_TipoProducto INT PRIMARY KEY AUTO_INCREMENT,
     nombre_TipoProducto VARCHAR(30)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -114,7 +114,7 @@ INSERT INTO Productos (id_producto, nombre_producto, cantidad_producto, idCatego
 (3, 'Zapatos Jordan', 30, 2, 2, 2);
 
 CREATE TABLE DetallePedido (
-    id_Pedido INT,
+    id_Pedido INT AUTO_INCREMENT,
     id_Producto INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido),
     FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto)
@@ -128,14 +128,14 @@ CREATE TABLE Comentarios (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Direcciones (
-    id_Direccion INT PRIMARY KEY,
+    id_Direccion INT PRIMARY KEY AUTO_INCREMENT,
     direccion VARCHAR(200),
     id_Cliente INT,
     FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE TipoUsuario (
-    id_TipoUsuario INT PRIMARY KEY,
+    id_TipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nombre_TipoUsuario VARCHAR(100)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -145,7 +145,7 @@ INSERT INTO TipoUsuario (id_TipoUsuario, nombre_TipoUsuario) VALUES
 (3, 'Usuario regular');
 
 CREATE TABLE Usuario (
-    id_Usuario INT PRIMARY KEY,
+    id_Usuario INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(30),
     nombre_Usuario VARCHAR(60),
     correo_Usuario VARCHAR(40),
