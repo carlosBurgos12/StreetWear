@@ -24,16 +24,19 @@ INSERT INTO Genero (id_Genero, nombre_genero) VALUES
 (2, 'Femenino'),
 (3, 'Otro');
 
-CREATE TABLE Clientes (
-    id_Cliente INT PRIMARY KEY,
-    nombre_cliente VARCHAR(30),
-    apellido_cliente VARCHAR(50),
-    numero_cliente VARCHAR(20),
-    correo_cliente VARCHAR(100),
-    direccion_cliente VARCHAR(200),
-    id_Genero INT,
-    FOREIGN KEY (id_Genero) REFERENCES Genero(id_Genero)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+	CREATE TABLE Clientes (
+	    id_Cliente INT PRIMARY KEY AUTO_INCREMENT,
+	    nombre_cliente VARCHAR(30),
+	    apellido_cliente VARCHAR(50),
+	    numero_cliente VARCHAR(20),
+	    correo_cliente VARCHAR(100),
+	    direccion_cliente VARCHAR(200),
+	    img_Cliente VARCHAR(200),
+	    estado_Cliente INT,
+	    clave_cliente VARCHAR(200),
+	    id_Genero INT,
+	    FOREIGN KEY (id_Genero) REFERENCES Genero(id_Genero)
+	)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO Clientes (id_Cliente, nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero) VALUES
 (1, 'John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1),

@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         LOGIN_FORM.classList.remove('d-none');
         sweetAlert(4, DATA.message, true);
     } else {
-        // Se establece el título del contenido principal.
-        MAIN_TITLE.textContent = 'Registrar primer usuario';
         // Se muestra el formulario para registrar el primer usuario.
         SIGNUP_FORM.classList.remove('d-none');
         sweetAlert(4, DATA.error, true);

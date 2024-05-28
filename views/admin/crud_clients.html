@@ -20,16 +20,18 @@
 
         <div class="container flex-grow-1">
 
-
             <p class="custom-text">Manage clients</p>
-            <div class="input-group mt-3">
-                <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
-                </div>
-            </div>
+            <form id="searchForm">
 
+
+                <div class="input-group mt-3">
+                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                        aria-describedby="button-addon2" id="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Search </button>
+                    </div>
+                </div>
+            </form>
 
             <div class="container">
                 <br>
@@ -47,12 +49,12 @@
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Phone Number</th>
-                            <th scope="col">Username</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Email</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tableBody">
                         <tr>
                             <td><img src="../../imagenes/logo_clients.png" alt="Image"
                                     style="width: 100px; height: 100px;">
@@ -87,40 +89,55 @@
                             <h5 class="modal-title" id="crearClientModalLabel">Create client</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <!--Campos de Cliente-->
-                            <form>
+                        <form id="formCreate">
+
+                            <div class="modal-body">
+                                <!--Campos de Cliente-->
                                 <div class="mb-3">
                                     <label for="nombreClient" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="nombreClient">
+                                    <input type="text" class="form-control" id="nombreClient" name="nombreClient">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidoClient" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="apellidoClient" name="apellidoClient">
                                 </div>
                                 <div class="mb-3">
                                     <label for="contraseñaClient" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="contraseñaClient">
+                                    <input type="password" class="form-control" id="contraseñaClient" name="contraseñaClient">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="telefonoClient" class="form-label">Phone number</label>
-                                    <input type="text" class="form-control" id="telefonoClient">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="usernameClient" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="usernameClient">
+                                    <input type="text" class="form-control" id="telefonoClient" name="telefonoClient">
                                 </div>
                                 <div class="mb-3">
                                     <label for="emailClient" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="emailClient">
+                                    <input type="email" class="form-control" id="emailClient" name="emailClient">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="direccionCliente" class="form-label">Address</label>
+                                    <input type="tel" class="form-control" id="direccionCliente" name="direccionCliente">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="idGenero" class="form-label">Gender</label>
+                                    <select class="form-select" aria-label="idGenero" id="idGenero" name="idGenero">
+                                        <option selected>Select Gender</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Anothers</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagenClient" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="imagenClient">
+                                    <input type="file" class="form-control" id="imagenClient" name="imagenClient">
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -135,39 +152,41 @@
                             <h5 class="modal-title" id="editarClientModalLabel">Edit client</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <!--Campos de Editar Cliente-->
-                            <form>
+                        <form id="updateForm">
+
+                            <div class="modal-body">
+                                <!--Campos de Editar Cliente-->
                                 <div class="mb-3">
                                     <label for="nombreClientEditar" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="nombreClientEditar">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="contraseñaClientEditar" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="contraseñaClientEditar">
+                                    <label for="apellidoClientEditar" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="apellidoClientEditar" name="apellidoClientEditar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="numeroClientEditar" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="numeroClientEditar">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="usuarioClientEditar" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="usuarioClientEditar">
+                                    <input type="text" class="form-control" id="numeroClientEditar" name="numeroClientEditar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="emailClientEditar" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="emailClientEditar">
+                                    <input type="text" class="form-control" id="emailClientEditar" name="emailClientEditar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="direccionClienteEditar" class="form-label">Address</label>
+                                    <input type="tel" class="form-control" id="direccionClienteEditar" name="direccionClienteEditar">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagenClientEditar" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="imagenClientEditar">
+                                    <input type="file" class="form-control" id="imagenClientEditar" name="imagenClientEditar">
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Save Changes</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -187,7 +206,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" onclick="delet()">Delete</button>
                         </div>
                     </div>
                 </div>
