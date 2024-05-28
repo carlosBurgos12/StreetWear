@@ -56,6 +56,10 @@ const loadTemplate = async () => {
                                 <li id="Products" class="nav-item">
                                     <a class="nav-link" href="crud_products.html"> Products </a>
                                 </li>
+
+                                <li id="cerrarSesion" class="nav-item">
+                                    <a class="nav-link" onclick="logOut()"> Log Out </a>
+                                </li>
                                 
                             </ul>
                         </div>
@@ -65,7 +69,6 @@ const loadTemplate = async () => {
             `);
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
-                
                 <footer class="footer mt-auto py-3">
                     <div class="container">
                         <div class="row">
@@ -147,7 +150,7 @@ const loadTemplate = async () => {
                     <nav class="navbar fixed-top bg-body-tertiary">
                         <div class="container">
                             <a class="navbar-brand" href="index.html">
-                                <img src="../../resources/img/logo.png" alt="inventory" width="50">
+                                <h1>StreetWear</h1>
                             </a>
                         </div>
                     </nav>
@@ -155,14 +158,21 @@ const loadTemplate = async () => {
             `);
             // Se agrega el pie de la página web después del contenido principal.
             MAIN.insertAdjacentHTML('afterend', `
-                <footer>
-                    <nav class="navbar fixed-bottom bg-body-tertiary">
-                        <div class="container">
-                            <p><a class="nav-link" href="https://github.com/dacasoft/coffeeshop" target="_blank"><i class="bi bi-github"></i> CoffeeShop</a></p>
-                            <p><i class="bi bi-envelope-fill"></i> dacasoft@outlook.com</p>
+            <footer class="footer mt-auto py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Talk to us</h5>
+                            <p>streetwear_support@gmail.com</p>
+                            <p>+503 7581-7784</p>
                         </div>
-                    </nav>
-                </footer>
+                        <div class="col-md-6">
+                            <h5>Follow Us</h5>
+                            <p>@StreetWear_Drop</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             `);
         } else {
             location.href = 'index.html';

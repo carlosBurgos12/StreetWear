@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se direcciona a la página web de bienvenida.
         location.href = 'home.html';
     } else if (DATA.status) {
-        // Se establece el título del contenido principal.
-        MAIN_TITLE.textContent = 'Iniciar sesión';
         // Se muestra el formulario para iniciar sesión.
         LOGIN_FORM.classList.remove('d-none');
         sweetAlert(4, DATA.message, true);
