@@ -51,11 +51,8 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     const nom = document.getElementById('nombreCategoriaCrear').value;
     const desc = document.getElementById('descripcionCategoriaCrear').value;
-    const img = document.getElementById('imagenCategoriaCrear').value;
     FORM.append('nombreCategoria', nom);
     FORM.append('descripcionCategoria', desc);
-    console.log(img);
-    FORM.append('imagenCategoria', img);
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(CATEGORIA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -65,7 +62,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         SAVE_FORM.reset();
         document.getElementById('nombreCategoriaCrear').value = '';
         document.getElementById('descripcionCategoriaCrear').value = '';
-        document.getElementById('imagenCategoriaCrear').value = '';
+        document.getElementById('imagenCategoria').value = '';
         
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);

@@ -63,7 +63,7 @@ class ClienteHandler
         return Database::executeRow($sql, $params);
     }
 
-    
+
     public function readFilename()
     {
         $sql = 'SELECT img_Cliente
@@ -107,11 +107,31 @@ class ClienteHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO Clientes(nombre_Cliente, apellido_Cliente, correo_Cliente, direccion_Cliente, img_Cliente, numero_Cliente, id_Genero, clave_Cliente)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->direccion, $this->imagen, $this->numero, $this->idGenero, $this->clave);
+        $sql = 'INSERT INTO Clientes(
+                nombre_Cliente, 
+                apellido_Cliente, 
+                correo_Cliente, 
+                direccion_Cliente, 
+                img_Cliente, 
+                numero_Cliente, 
+                estado_Cliente, 
+                id_Genero, 
+                clave_Cliente
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array(
+            $this->nombre,
+            $this->apellido,
+            $this->correo,
+            $this->direccion,
+            $this->imagen,
+            $this->numero,
+            1, 
+            $this->idGenero,
+            $this->clave
+        );
         return Database::executeRow($sql, $params);
     }
+
 
     public function readAll()
     {
