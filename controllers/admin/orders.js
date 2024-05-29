@@ -11,6 +11,7 @@ const SAVE_MODAL = new bootstrap.Modal('#crearOrderModal'),
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('create'),
     UPDATE_FORM = document.getElementById('update'),
+    ID_ORDER = document.getElementById('id_order'),
     CODE_ORDERS = document.getElementById('codeOrderEditar'),
     NOMBRE_ORDER = document.getElementById('nombreOrderEditar'),
     AMOUNT_ORDER = document.getElementById('amountOrderActualizar');
@@ -46,6 +47,8 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Se verifica la acción a realizar.
     action = 'createRow';
+        // Se verifica la acción a realizar.
+        (ID_ORDER.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -90,11 +93,11 @@ const fillTable = async (form = null) => {
                     <td>$${row.amount}</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarOrderModal">
-                            <img src="../../imagenes/logo_editar.png" alt="" width="50px" height="50px">
+                            <img src="../../imagenes/logo_editar.png" alt=""  onclick="openUpdate(${row.id_order})" width="50px" height="50px">
                             <i class="fas fa-edit"></i>
                         </button>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarOrderModal">
-                            <img src="../../imagenes/logo_eliminar.png" alt="" width="50px" height="50px">
+                            <img src="../../imagenes/logo_eliminar.png" alt="" onclick="openDelete(${row.id_order})" width="50px" height="50px">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
@@ -106,21 +109,24 @@ const fillTable = async (form = null) => {
     }
 }
 
+
 /*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-let updateId;
 
-const openDetails = async (id) => {
-    updateId = id;
+
+const  openUpdate = async (id) =>{
     const FORM = new FormData();
     FORM.append('id_order', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(PRODUCTO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+
+        SAVE_MODAL.show();
+        MODAL_TITLE.textContent = 'Actualizar order';
         // Se prepara el formulario.
         UPDATE_FORM.reset();
         // Se muestra la caja de diálogo con su título.
@@ -130,6 +136,7 @@ const openDetails = async (id) => {
         CODE_ORDERS.value = ROW.order_product;
         NOMBRE_ORDER.value = ROW.ordercode;
         AMOUNT_ORDER.value = ROW.amount;
+        fillSelect(CATEGORIA_API, 'readAll', ROW.id_order);
 
     } else {
         sweetAlert(2, DATA.error, false);
@@ -183,6 +190,7 @@ const openDelete = async (id) => {
 
 const delet = async () => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
+    console.log(idDelete);
     const FORM = new FormData();
     FORM.append('id_order', idDelete);
     // Petición para obtener los datos del registro solicitado.
@@ -195,16 +203,4 @@ const delet = async () => {
     } else {
         sweetAlert(2, DATA.error, false);
     }
-}
-
-/*
-*   Función para abrir un reporte automático de productos por categoría.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-const openReport = () => {
-    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/admin/productos.php`);
-    // Se abre el reporte en una nueva pestaña.
-    window.open(PATH.href);
 }
