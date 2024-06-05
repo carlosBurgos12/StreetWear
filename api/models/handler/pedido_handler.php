@@ -15,6 +15,8 @@ class PedidoHandler
     protected $producto = null;
     protected $cantidad = null;
     protected $estado = null;
+    protected $fecha_de_inicio = null;
+    protected $direccion = null;
 
     /*
     *   ESTADOS DEL PEDIDO
@@ -62,6 +64,15 @@ class PedidoHandler
     }
 
     // Método para agregar un producto al carrito de compras.
+    public function createRowPedidos()
+    {
+        $sql = 'INSERT INTO Pedidos(estado_Pedido, id_Cliente)
+                VALUES(?, ?)';
+        $params = array($this->estado, $_SESSION['idCliente']);
+        return Database::executeRow($sql, $params);
+    }
+
+    // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
@@ -83,6 +94,63 @@ class PedidoHandler
         return Database::getRows($sql, $params);
     }
 
+    public function verCarrito()
+    {
+        $sql = 'SELECT *
+                FROM Pedidos
+                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+        $params = array($_SESSION['idCliente']);
+        return Database::getRows($sql, $params);
+    }
+
+    public function updateRowPedidos()
+    {
+        $sql = 'UPDATE Pedidos
+                SET estado_Pedido = ?, fecha_Registro = NOW(), direccion_Pedido = ?
+                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+        $params = array($this->estado, $this->direccion, $_SESSION['idCliente']);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function readAllCarrito(){
+        $sql = 'SELECT id_Pedido_Detalle, cantidad_Producto, nombre_producto, precio_producto, imagen_producto, precio_producto * cantidad_Producto AS precio_total
+                FROM DetallePedido
+                INNER JOIN Productos ON Productos.id_producto = DetallePedido.id_Producto
+                INNER JOIN Pedidos ON Pedidos.id_Pedido = DetallePedido.id_Pedido
+                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+        $params = array($_SESSION['idCliente']);
+        return Database::getRows($sql, $params);
+    }
+
+    // Método para finalizar un pedido por parte del cliente.
+    public function updateStatus()
+    {
+        $sql = 'UPDATE pedido
+                SET estado_pedido = ?
+                WHERE id_pedido = ?';
+        $params = array($this->estado, $_SESSION['idPedido']);
+        return Database::executeRow($sql, $params);
+    }
+
+    // Método para actualizar la cantidad de un producto agregado al carrito de compras.
+    public function updateDetail()
+    {
+        $sql = 'UPDATE DetallePedido
+                SET cantidad_Producto = ?
+                WHERE id_Pedido_Detalle = ?';
+        $params = array($this->cantidad, $this->id_detalle);
+        return Database::executeRow($sql, $params);
+    }
+
+    // Método para eliminar un producto que se encuentra en el carrito de compras.
+    public function deleteDetail()
+    {
+        $sql = 'DELETE FROM DetallePedido
+                WHERE id_Pedido_Detalle = ?';
+        $params = array($this->id_detalle);
+        return Database::executeRow($sql, $params);
+    }
+
     // Método para finalizar un pedido por parte del cliente.
     public function finishOrder()
     {
@@ -94,22 +162,4 @@ class PedidoHandler
         return Database::executeRow($sql, $params);
     }
 
-    // Método para actualizar la cantidad de un producto agregado al carrito de compras.
-    public function updateDetail()
-    {
-        $sql = 'UPDATE detalle_pedido
-                SET cantidad_producto = ?
-                WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
-        return Database::executeRow($sql, $params);
-    }
-
-    // Método para eliminar un producto que se encuentra en el carrito de compras.
-    public function deleteDetail()
-    {
-        $sql = 'DELETE FROM detalle_pedido
-                WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->id_detalle, $_SESSION['idPedido']);
-        return Database::executeRow($sql, $params);
-    }
 }

@@ -62,19 +62,6 @@ INSERT INTO Distribuidores (id_Distribuidor, nombre_Distribuidor, telefono_Distr
 (1, 'Distribuidor A', '123456789'),
 (2, 'Distribuidor B', '987654321');
 
-CREATE TABLE Pedidos (
-    id_Pedido INT PRIMARY KEY,
-    estado_Pedido VARCHAR(50),
-    fecha_Registro DATE,
-    id_Cliente INT,
-    direccion_Pedido VARCHAR(200),
-    FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-INSERT INTO Pedidos (id_Pedido, estado_Pedido, fecha_Registro, id_Cliente, direccion_Pedido) VALUES
-(1, 'En proceso', '2024-03-17', 1, '123 Street, City, Country'),
-(2, 'Entregado', '2024-03-16', 2, '456 Street, City, Country');
-
 CREATE TABLE Categorias (
     idCategoria INT PRIMARY KEY AUTO_INCREMENT,
     nombreCategoria VARCHAR(30),
@@ -120,8 +107,23 @@ INSERT INTO Productos (id_producto, nombre_producto, cantidad_producto, idCatego
 (2, 'Zapatos Nike', 30, 2, 2, 2),
 (3, 'Zapatos Jordan', 30, 2, 2, 2);
 
+CREATE TABLE Pedidos (
+    id_Pedido INT PRIMARY KEY AUTO_INCREMENT,
+    estado_Pedido VARCHAR(50),
+    fecha_Registro DATE,
+    id_Cliente INT,
+    direccion_Pedido VARCHAR(200),
+    FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO Pedidos (estado_Pedido, fecha_Registro, id_Cliente, direccion_Pedido) VALUES
+('En proceso', '2024-03-17', 1, '123 Street, City, Country'),
+('Entregado', '2024-03-16', 2, '456 Street, City, Country')
+('Carrito', NULL, 2, NULL);
+
 CREATE TABLE DetallePedido (
-    id_Pedido INT,
+    id_Pedido_Detalle INT,
+    cantidad_Producto INT,
     id_Producto INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido),
     FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto)
