@@ -122,7 +122,7 @@ INSERT INTO Pedidos (estado_Pedido, fecha_Registro, id_Cliente, direccion_Pedido
 ('Carrito', NULL, 2, NULL);
 
 CREATE TABLE DetallePedido (
-    id_Pedido_Detalle INT AUTO_INCREMENT,
+    id_Pedido_Detalle INT PRIMARY KEY AUTO_INCREMENT,
     cantidad_Producto INT,
     id_Pedido INT,
     id_Producto INT,
