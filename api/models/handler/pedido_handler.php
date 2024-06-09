@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../api/helper/database.php');
+require_once('../../../api/helper/database.php');
 /*
 *	Clase para manejar el comportamiento de los datos de las tablas PEDIDO y DETALLE_PEDIDO.
 */
@@ -106,18 +106,20 @@ class PedidoHandler
     public function updateRowPedidos()
     {
         $sql = 'UPDATE Pedidos
-                SET estado_Pedido = ?, fecha_Registro = NOW(), direccion_Pedido = ?
+                SET estado_Pedido = ?, fecha_Registro = NOW(), 
+                direccion_Pedido = (SELECT direccion_Cliente FROM Clientes WHERE id_Cliente = ?)
                 WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
-        $params = array($this->estado, $this->direccion, $_SESSION['idCliente']);
+        $params = array($this->estado, $_SESSION['idCliente'], $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
 
     public function readAllCarrito(){
-        $sql = 'SELECT id_Pedido_Detalle, cantidad_Producto, nombre_producto, precio_producto, imagen_producto, precio_producto * cantidad_Producto AS precio_total
+        $sql = 'SELECT DetallePedido.id_Pedido_Detalle, DetallePedido.cantidad_Producto, nombre_producto, precio_producto, precio_producto * DetallePedido.cantidad_Producto AS precio_total
                 FROM DetallePedido
                 INNER JOIN Productos ON Productos.id_producto = DetallePedido.id_Producto
                 INNER JOIN Pedidos ON Pedidos.id_Pedido = DetallePedido.id_Pedido
-                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+                INNER JOIN Clientes ON Clientes.id_Cliente = Pedidos.id_Cliente
+                WHERE Clientes.id_Cliente = ? AND estado_Pedido = "Carrito"';
         $params = array($_SESSION['idCliente']);
         return Database::getRows($sql, $params);
     }

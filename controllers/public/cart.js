@@ -1,114 +1,147 @@
-// Constante para completar la ruta de la API.
-const PEDIDO_API = 'services/public/pedido.php';
-// Constante para establecer el cuerpo de la tabla.
+// Declaraciones de constantes para los elementos del DOM
+const PEDIDO_API = 'services/public/carrito.php';
 const TABLE_BODY = document.getElementById('tableBody');
-// Constante para establecer la caja de diálogo de cambiar producto.
 const ITEM_MODAL = new bootstrap.Modal('#itemModal');
-// Constante para establecer el formulario de cambiar producto.
 const ITEM_FORM = document.getElementById('itemForm');
 
-// Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    // Llamada a la función para mostrar el encabezado y pie del documento.
-    loadTemplate();
-    // Se establece el título del contenido principal.
-    MAIN_TITLE.textContent = 'Carrito de compras';
-    // Llamada a la función para mostrar los productos del carrito de compras.
     readDetail();
 });
 
-// Método del evento para cuando se envía el formulario de cambiar cantidad de producto.
 ITEM_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(ITEM_FORM);
-    // Petición para actualizar la cantidad de producto.
-    const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    FORM.append('idDetallesPedido', idPedido);
+    const DATA = await fetchData(PEDIDO_API, 'updateRow', FORM);
     if (DATA.status) {
-        // Se actualiza la tabla para visualizar los cambios.
         readDetail();
-        // Se cierra la caja de diálogo del formulario.
         ITEM_MODAL.hide();
-        // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
     } else {
         sweetAlert(2, DATA.error, false);
     }
 });
 
-/*
-*   Función para obtener el detalle del carrito de compras.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
+let total = 0; // Variable para almacenar el total del pedido
+
 async function readDetail() {
-    // Petición para obtener los datos del pedido en proceso.
-    const DATA = await fetchData(PEDIDO_API, 'readDetail');
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    const DATA = await fetchData(PEDIDO_API, 'readAll');
     if (DATA.status) {
-        // Se inicializa el cuerpo de la tabla.
         TABLE_BODY.innerHTML = '';
-        // Se declara e inicializa una variable para calcular el importe por cada producto.
         let subtotal = 0;
-        // Se declara e inicializa una variable para sumar cada subtotal y obtener el monto final a pagar.
-        let total = 0;
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
-            subtotal = row.precio_producto * row.cantidad_producto;
+        subtotal = row.precio_producto * row.cantidad_Producto;
+        total += subtotal;
+        TABLE_BODY.innerHTML += `
+            <tr>
+                <td>${row.nombre_producto}</td>
+                <td>${row.cantidad_Producto}</td>
+                <td>${row.precio_producto}</td>
+                <td>${subtotal.toFixed(2)}</td>
+                <td>
+                    <button type="button" onclick="openUpdate(${row.id_Pedido_Detalle}, ${row.cantidad_Producto})" class="btn btn-info">
+                        <i class="bi bi-plus-slash-minus"></i>
+                    </button>
+                    <button type="button" onclick="openDelete(${row.id_Pedido_Detalle})" class="btn btn-danger">
+                        <i class="bi bi-cart-dash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+
+        });
+        document.getElementById('totalPedido').textContent = `Total: $${total.toFixed(2)}`;
+    } else {
+        const DATA0 = await fetchData(PEDIDO_API, 'verCarrito');
+
+        if (DATA0.status) {
+            TABLE_BODY.innerHTML = '';
+            let subtotal = 0;
             total += subtotal;
-            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.nombre_producto}</td>
-                    <td>${row.precio_producto}</td>
-                    <td>${row.cantidad_producto}</td>
-                    <td>${subtotal.toFixed(2)}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})" class="btn btn-info">
-                            <i class="bi bi-plus-slash-minus"></i>
-                        </button>
-                        <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger">
-                            <i class="bi bi-cart-dash"></i>
-                        </button>
+                        
                     </td>
                 </tr>
             `;
-        });
-        // Se muestra el total a pagar con dos decimales.
-        document.getElementById('pago').textContent = total.toFixed(2);
-    } else {
-        sweetAlert(4, DATA.error, false, 'index.html');
+
+            document.getElementById('totalPedido').innerHTML = `Total: $${0}`;
+        }
+        else {
+            const FORM1 = new FormData();
+            FORM1.append('estado_pedido', 'Carrito');
+            const DATA2 = await fetchData(PEDIDO_API, 'createRow', FORM1);
+
+            if (DATA2.status) {
+                TABLE_BODY.innerHTML = '';
+                let subtotal = 0;
+                    total += subtotal;
+                    TABLE_BODY.innerHTML += `
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    `;
+
+                sweetAlert(4, DATA.error, true);
+                document.getElementById('totalPedido').innerHTML = `Total: $${0}`;
+            } else {
+                sweetAlert(4, DATA.error, true);
+                document.getElementById('totalPedido').innerHTML = `Total: $${0}`;
+            }
+
+            if (DATA2 === 'Acceso denegado') {
+                await sweetAlert(4, 'Debe de iniciar sesión', true);
+                location.href = 'index.html';
+            }
+        }
     }
 }
 
-/*
-*   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
-*   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
-*   Retorno: ninguno.
-*/
-function openUpdate(id, quantity) {
-    // Se abre la caja de diálogo que contiene el formulario.
+let idPedido = 0;
+let cantidad = 0;
+
+window.openUpdate = (id, quantity) => {
     ITEM_MODAL.show();
-    // Se inicializan los campos del formulario con los datos del registro seleccionado.
-    document.getElementById('idDetalle').value = id;
-    document.getElementById('cantidadProducto').value = quantity;
+    idPedido = id;
+    document.getElementById('cant').value = quantity;
 }
 
-/*
-*   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-async function finishOrder() {
-    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
-    // Se verifica la respuesta del mensaje.
+// Definición de la función asíncrona para cancelar y cerrar el modal.
+const botonCancelar = async () => {
+    ITEM_MODAL.hide();
+
+}
+
+window.openDelete = async (id) => {
+    const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
     if (RESPONSE) {
-        // Petición para finalizar el pedido en proceso.
+        const FORM = new FormData();
+        FORM.append('idDetallesPedido', id);
+        const DATA = await fetchData(PEDIDO_API, 'deleteDetail', FORM);
+        if (DATA.status) {
+            await sweetAlert(1, DATA.message, true);
+            readDetail();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
+}
+
+window.finishOrder = async () => {
+    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
+    if (RESPONSE) {
         const DATA = await fetchData(PEDIDO_API, 'finishOrder');
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             sweetAlert(1, DATA.message, true, 'index.html');
         } else {
@@ -117,29 +150,31 @@ async function finishOrder() {
     }
 }
 
-/*
-*   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
-*   Parámetros: id (identificador del producto).
-*   Retorno: ninguno.
-*/
-async function openDelete(id) {
-    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
-    // Se verifica la respuesta del mensaje.
-    if (RESPONSE) {
-        // Se define un objeto con los datos del producto seleccionado.
-        const FORM = new FormData();
-        FORM.append('idDetalle', id);
-        // Petición para eliminar un producto del carrito de compras.
-        const DATA = await fetchData(PEDIDO_API, 'deleteDetail', FORM);
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+// Función para realizar la compra
+const comprar = async () => {
+    if (total === 0) {
+        sweetAlert(3, 'No hay productos en el carrito', false);
+    }
+    else {
+        // 1. Crear el objeto FormData
+        const FORM1 = new FormData();
+        FORM1.append('estado_pedido', 'Pendiente');
+
+        // 2. Realizar la petición para update
+        const DATA = await fetchData(PEDIDO_API, 'update', FORM1);
+
         if (DATA.status) {
-            await sweetAlert(1, DATA.message, true);
-            // Se carga nuevamente la tabla para visualizar los cambios.
-            readDetail();
+            readDetail(); // Vuelve a cargar la tabla
         } else {
-            sweetAlert(2, DATA.error, false);
+            if (DATA === 'Acceso denegado') {
+                await sweetAlert(3, 'Debes de iniciar sesión', false);
+                location.href = 'index.html';
+            }
+            else {
+                sweetAlert(3, DATA.error, false);
+
+            }
         }
+
     }
 }
-

@@ -61,7 +61,7 @@ if (isset($_GET['action'])) {
                 // Verificar si todos los datos necesarios son válidos
                 if (
                     !$pedidos->setIdDetalle($_POST['idDetallesPedido']) or
-                    !$pedidos->setCantidad($_POST['cantidad']) 
+                    !$pedidos->setCantidad($_POST['cant']) 
                 ) {
                     // Si algún dato no es válido, se asigna un mensaje de error
                     $result['error'] = $pedidos->getDataError();
@@ -80,9 +80,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 // Verificar si todos los datos necesarios son válidos
                 if (
-                    !$pedidos->setIdPedido($_POST['id_pedido']) or
-                    !$pedidos->setEstadoPedido($_POST['estado_pedido']) or
-                    !$pedidos->setDireccion($_POST['direccion_Pedido'])
+                    !$pedidos->setEstadoPedido($_POST['estado_pedido']) 
                 ) {
                     // Si algún dato no es válido, se asigna un mensaje de error
                     $result['error'] = $pedidos->getDataError();
@@ -97,7 +95,7 @@ if (isset($_GET['action'])) {
                 break;
 
             // ELIMINAR
-            case 'deleteRow':
+            case 'deleteDetail':
                 if (!$pedidos->setIdDetalle($_POST['idDetallesPedido'])) {
                     $result['error'] = $pedidos->getDataError();
                 } elseif ($pedidos->deleteDetail()) {

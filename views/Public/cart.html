@@ -15,167 +15,142 @@
     <link type="text/css" rel="stylesheet" href="../../resources/css/boostrap/boostrap-icons.css">
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-
-    <div class="container">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-
-                <li id="home" class="nav-item active">
-                    <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
-                </li>
-                <script>
-                    document.getElementById("home").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "index.html";
-                    }); </script>
-
-
-                <li id="men" class="nav-item">
-                    <a class="nav-link" href="#"> Men </a>
-                </li>
-                <script>
-                    document.getElementById("men").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "man.html";
-                    }); </script>
-
-                <li id="women" class="nav-item">
-                    <a class="nav-link" href="#"> Women </a>
-                </li>
-                <script>
-                    document.getElementById("women").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "women.html";
-                    }); </script>
-
-
-                <li id="shoes" class="nav-item">
-                    <a class="nav-link" href="#"> Shoes </a>
-                </li>
-                <script>
-                    document.getElementById("shoes").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "shoes.html";
-                    }); </script>
-
-
-                <li id="caps" class="nav-item">
-                    <a class="nav-link" href="#"> Caps </a>
-                </li>
-                <script>
-                    document.getElementById("caps").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "caps.html";
-                    }); </script>
-
-
-                <li id="kids" class="nav-item">
-                    <a class="nav-link" href="#"> Kids </a>
-                </li>
-                <script>
-                    document.getElementById("kids").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "kids.html";
-                    }); </script>
-
-
-                <li id="accesories" class="nav-item">
-                    <a class="nav-link" href="#"> Accessories </a>
-                </li>
-                <script>
-                    document.getElementById("accesories").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "accessories.html";
-                    }); </script>
-
-                <!-- Card 3 <a href="#" data-toggle="modal" data-target="#cartModal">
-                 <img src="../../StreetWear/imagenes/carrito_logo.png " class="card-img-top" alt="Cart" width="30" height="30">
-                </a>-->
-                <li id="cart" class="nav-item">
-                    <a class="nav-link" href="#"> Cart </a>
-                </li>
-                <script>
-                    document.getElementById("cart").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "cart.html";
-                    }); </script>
-
-
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<h1 class="custom-title-caps">CART</h1>
-
 <body>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li id="home" class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li id="men" class="nav-item">
+                        <a class="nav-link" href="#">Men</a>
+                    </li>
+                    <li id="women" class="nav-item">
+                        <a class="nav-link" href="#">Women</a>
+                    </li>
+                    <li id="shoes" class="nav-item">
+                        <a class="nav-link" href="#">Shoes</a>
+                    </li>
+                    <li id="caps" class="nav-item">
+                        <a class="nav-link" href="#">Caps</a>
+                    </li>
+                    <li id="kids" class="nav-item">
+                        <a class="nav-link" href="#">Kids</a>
+                    </li>
+                    <li id="accessories" class="nav-item">
+                        <a class="nav-link" href="#">Accessories</a>
+                    </li>
+                    <li id="cart" class="nav-item">
+                        <a class="nav-link" href="#">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="custom-title-caps">CART</h1>
 
     <div>
-        <div class="row" id="cart-items">
+        <div class="d-flex flex-column m-5" id="cart-items">
             <!-- Los productos del carrito se mostrarán aquí -->
+            <div class="col-10 d-flex align-items-center justify-content-center">
+
+                <table class="table table-hover table-responsive text-center"
+                    id="tablaCarrito">
+                    <!-- Cabecera de la tabla -->
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Nombre del producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Sub-total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla -->
+                    <tbody class="text-center align-middle" id="tableBody">
+
+                    </tbody>
+                </table>
+                
+            </div>
+            <!--Div boton y precio-->
+            <div class="col-lg-12 d-flex justify-content-end">
+                <!--Precio-->
+                <div class="col-lg-2 d-flex align-items-center justify-content-center me-2">
+                    <h5 id="totalPedido" class="titillium-web color-5blue"><b>Total:</b> $0</h5>
+                </div>
+                <!--Boton-->
+                <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                    <button type="button" id="comprar"
+                        class="btn text-center btn-primary titillium-web-bold bg-color-5blue text-white"
+                        onclick="comprar()"><i class="bi bi-send"></i>
+                        Comprar</button>
+                </div>
+            </div>
         </div>
+    </div>
 
-    <script>
-        $(document).ready(function () {
-            var cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            if (cart.length === 0) {
-                $('#cart-items').html('<p>No hay productos en el carrito.</p>');
-            } else {
-                cart.forEach(function (product) {
-                    var productHtml = `
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <h5 class="card-title">${product.name}</h5>
-                                <p class="card-text">$${product.price}</p>
+    <!-- Modal para actualizar contraseña-->
+    <div class="modal fade" id="itemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Encabezado del modal -->
+                <div class="modal-header d-flex justify-content-center align-items-center">
+                    <h1 class="modal-title fs-5 text-center" id="modalTitle">Modificar cantidad de zapato</h1>
+                </div>
+                <!-- Formulario para actualizar contraseña -->
+                <form id="itemForm" name="itemForm">
+                    <div class="modal-body row g-3 d-flex flex-column align-items-center">
+                        <div class="offset-col-1 col-10">
+                            <!-- Campos -->
+                            <div class="col-sm-12 col-md-12">
+                                <label for="cant" class="form-label">Cantidad:</label>
+                                <input id="cant" type="number" name="cant" class="form-control editableInput" required>
+                            </div>
+                        </div>
+                        <!-- Botones en el pie del modal -->
+                        <div class="modal-footer mt-5 d-flex justify-content-center align-items-center">
+                            <div class="contenedorBotones3 offset-lg-3 col-6">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <!-- Botón para cancelar la operación -->
+                                    <button type="button" id="cancelarBtn"
+                                        class="btn btn2 btn-primary me-2 shadow text18 titillium-web-regular col-4"
+                                        onclick="botonCancelar()">
+                                        Cancelar
+                                    </button>
+                                    <!-- Botón para actualizar el registro -->
+                                    <button type="submit" id="btnUpdate"
+                                        class="btn btn3 btn-primary shadow text18 titillium-web-regular col-4">
+                                        Actualizar
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                `;
-                    $('#cart-items').append(productHtml);
-                });
-            }
-        });
-    </script>
+                </form>
+            </div>
         </div>
-    </main>
-
-   
+    </div>
 
     <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
     <!-- Llamada al framework y librería de mensajes -->
     <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
-    <!-- Llamada al controlador general de la aplicación -->
     <script type="text/javascript" src="../../controllers/utils/components.js"></script>
-    <!-- Llamada al controlador del sitio público -->
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
-    <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controllers/public/cart.js"></script>
 </body>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
 <footer class="footer mt-auto py-3">
     <div class="container">
         <div class="row">
-            
             <div class="col-md-4">
                 <h5>Navigation</h5>
                 <p>Home</p>
@@ -186,13 +161,11 @@
                 <p>Kids</p>
                 <p>Accessories</p>
             </div>
-            
             <div class="col-md-4">
                 <h5>Talk to us</h5>
                 <p>streetwear_support@gmail.com</p>
                 <p>+503 7581-7784</p>
             </div>
-            
             <div class="col-md-4">
                 <h5>Follow Us</h5>
                 <p>@StreetWear_Drop</p>
