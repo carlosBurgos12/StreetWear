@@ -102,10 +102,10 @@ CREATE TABLE Productos (
     FOREIGN KEY (id_Distribuidor) REFERENCES Distribuidores(id_Distribuidor)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO Productos (id_producto, nombre_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
-(1, 'Camiseta azul Nike', 50, 1, 1, 1),
-(2, 'Zapatos Nike', 30, 2, 2, 2),
-(3, 'Zapatos Jordan', 30, 2, 2, 2);
+INSERT INTO Productos (id_producto, nombre_producto, precio_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
+(1, 'Camiseta azul Nike', 30, 50, 1, 1, 1),
+(2, 'Zapatos Nike', 30, 30, 2, 2, 2),
+(3, 'Zapatos Jordan', 30, 30, 2, 2, 2);
 
 CREATE TABLE Pedidos (
     id_Pedido INT PRIMARY KEY AUTO_INCREMENT,
@@ -118,12 +118,13 @@ CREATE TABLE Pedidos (
 
 INSERT INTO Pedidos (estado_Pedido, fecha_Registro, id_Cliente, direccion_Pedido) VALUES
 ('En proceso', '2024-03-17', 1, '123 Street, City, Country'),
-('Entregado', '2024-03-16', 2, '456 Street, City, Country')
+('Entregado', '2024-03-16', 2, '456 Street, City, Country'),
 ('Carrito', NULL, 2, NULL);
 
 CREATE TABLE DetallePedido (
-    id_Pedido_Detalle INT,
+    id_Pedido_Detalle INT AUTO_INCREMENT,
     cantidad_Producto INT,
+    id_Pedido INT,
     id_Producto INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido),
     FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto)
@@ -220,3 +221,25 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+INSERT INTO Clientes (
+    nombre_Cliente, 
+    apellido_Cliente, 
+    numero_Cliente, 
+    correo_Cliente, 
+    direccion_Cliente, 
+    img_Cliente, 
+    estado_Cliente, 
+    clave_Cliente, 
+    id_Genero
+) VALUES (
+    'Juan', 
+    'Pérez', 
+    '1234567890', 
+    'juan.perez@example.com', 
+    'Calle Falsa 123, Ciudad, País', 
+    'img/juan_perez.jpg', 
+    1, 
+    '$2y$10$EvtUxJ1LQK/GP3iWLxBZJu2qgJnGSn0aMlO8IdmoliEZCQrCz5vJ.', 
+    1
+);
