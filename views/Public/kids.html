@@ -2,100 +2,119 @@
 <html lang="en">
 
 <head>
+    <!-- Configuración del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="../../resources/css/css/nav_style.css">
     <link rel="stylesheet" href="../../resources/css/css/kids.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../resources/css/css/footer.css">
-    <!-- Llamada al icono de la página web -->
+    <link rel="stylesheet" href="../../resources/css/css/filter_search.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icono de la página -->
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
     <title>Kids</title>
 </head>
 
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Elementos del menú de navegación -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Opción de inicio -->
-                    <li id="home" class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
-                    </li>
-                    <!-- Script para redireccionar a la página de inicio -->
-                    <script>
-                        document.getElementById("home").addEventListener("click", function () {
-                            window.location.href = "index.html";
-                        });
-                    </script>
+<!-- Navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Elementos del menú de navegación -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <!-- Opción de inicio -->
+                <li id="home" class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                </li>
+                <!-- Script para redireccionar a la página de inicio -->
+                <script>
+                    document.getElementById("home").addEventListener("click", function () {
+                        window.location.href = "index.html";
+                    });
+                </script>
 
-                    <!-- Opciones del menú -->
-                    <li id="men" class="nav-item">
-                        <a class="nav-link" href="#">Men</a>
-                    </li>
-                    <script>
-                        document.getElementById("men").addEventListener("click", function () {
-                            window.location.href = "man.html";
-                        });
-                    </script>
+                <!-- Opciones del menú -->
+                <li id="men" class="nav-item">
+                    <a class="nav-link" href="#">Men</a>
+                </li>
+                <script>
+                    document.getElementById("men").addEventListener("click", function () {
+                        window.location.href = "man.html";
+                    });
+                </script>
 
-                    <li id="women" class="nav-item">
-                        <a class="nav-link" href="#">Women</a>
-                    </li>
-                    <script>
-                        document.getElementById("women").addEventListener("click", function () {
-                            window.location.href = "women.html";
-                        });
-                    </script>
+                <li id="women" class="nav-item">
+                    <a class="nav-link" href="#">Women</a>
+                </li>
+                <script>
+                    document.getElementById("women").addEventListener("click", function () {
+                        window.location.href = "women.html";
+                    });
+                </script>
 
-                 
-                    <li id="kids" class="nav-item">
-                        <a class="nav-link" href="#">Kids</a>
-                    </li>
-                    <script>
-                        document.getElementById("kids").addEventListener("click", function () {
-                            window.location.href = "kids.html";
-                        });
-                    </script>
 
-                    <li id="shoes" class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
-                    </li>
-                    <script>
-                        document.getElementById("shoes").addEventListener("click", function () {
-                            window.location.href = "shoes.html";
-                        });
-                    </script>
+                <li id="kids" class="nav-item">
+                    <a class="nav-link" href="#">Kids</a>
+                </li>
+                <script>
+                    document.getElementById("kids").addEventListener("click", function () {
+                        window.location.href = "kids.html";
+                    });
+                </script>
 
-                    <!-- Opción para el carrito -->
-                    <li id="cart" class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
-                    </li>
-                    <script>
-                        document.getElementById("cart").addEventListener("click", function () {
-                            window.location.href = "cart.html";
-                        });
-                    </script>
-                </ul>
-            </div>
+                <li id="shoes" class="nav-item">
+                    <a class="nav-link" href="#">Shoes</a>
+                </li>
+                <script>
+                    document.getElementById("shoes").addEventListener("click", function () {
+                        window.location.href = "shoes.html";
+                    });
+                </script>
+
+                <!-- Opción para el carrito -->
+                <li id="cart" class="nav-item">
+                    <a class="nav-link" href="#">Cart</a>
+                </li>
+                <script>
+                    document.getElementById("cart").addEventListener("click", function () {
+                        window.location.href = "cart.html";
+                    });
+                </script>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Título de la sección -->
-    <h1 class="custom-title-kids">KID'S WEAR</h1>
+<!-- Título de la sección -->
+<h1 class="custom-title-kids">KID'S WEAR</h1>
 
-    <!-- Barra de busqueda -->
-    <div class="container mt-5">
-        <div class="row mb-3">
-            <div class="col">
-                <input type="text" id="search" class="form-control" placeholder="Search">
-            </div>
-        </div>
+<!-- Barra de busqueda -->
+<input type="text" id="search" class="form-control" placeholder="Search product">
+</div>
+<div class="col-md-3">
+    <select id="category" class="form-select">
+        <option value="">All categories</option>
+        <option value="1">Clothes</option>
+        <option value="2">Shoes</option>
+        <option value="3">Caps</option>
+        <option value="4">Accessories</option>
+    </select>
+</div>
+<div class="col-md-3">
+    <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
+</div>
+<div class="col-md-3">
+    <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
+</div>
+</div>
+<div class="row" id="products">
+    <!-- Aquí se cargarán los productos -->
+</div>
 
 
 <body class="d-flex flex-column min-vh-100">

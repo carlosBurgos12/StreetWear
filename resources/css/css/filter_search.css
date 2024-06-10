@@ -1,0 +1,13 @@
+.product-card-filtersearch {
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 50%; /* Ocupa el 50% del ancho del contenedor */
+  }
+
+  .container-search {
+    display: flex; /* Activa el layout flexbox */
+    justify-content: space-around; /* Distribuye el espacio entre las barras */
+  }
+  

@@ -2,14 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/css/css/nav_style.css">
-    <link rel="stylesheet" href="../../resources/css/css/women.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../resources/css/footer.css">
-    <!-- Llamada al icono de la página web -->
-    <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
+      <!-- Configuración del documento -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Estilos CSS -->
+      <link rel="stylesheet" href="../../resources/css/css/nav_style.css">
+      <link rel="stylesheet" href="../../resources/css/css/women.css">
+      <link rel="stylesheet" href="../../resources/css/css/footer.css">
+      <link rel="stylesheet" href="../../resources/css/css/filter_search.css">
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Icono de la página -->
+      <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
     <title>Women's</title>
 </head>
 
@@ -89,13 +93,29 @@
     <!-- Título de la sección -->
     <h1 class="custom-title-women">WOMEN'S WEAR</h1>
 
-    <!-- Barra de busqueda -->
-    <div class="container mt-5">
-        <div class="row mb-3">
-            <div class="col">
-                <input type="text" id="search" class="form-control" placeholder="Search">
+
+                <!-- Barra de busqueda -->
+                <input type="text" id="search" class="form-control" placeholder="Search product">
             </div>
-        </div>
+            <div class="col-md-3">
+                <select id="category" class="form-select">
+                    <option value="">All categories</option>
+                    <option value="1">Clothes</option>
+                    <option value="2">Shoes</option>
+                    <option value="3">Caps</option>
+                    <option value="4">Accessories</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
+            </div>
+            <div class="col-md-3">
+                <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
+            </div>
+    </div>
+    <div class="row" id="products">
+        <!-- Aquí se cargarán los productos -->
+    </div>
 
 <body class="d-flex flex-column min-vh-100">
     <div class="container flex-grow-1">
