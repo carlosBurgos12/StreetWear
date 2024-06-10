@@ -1,3 +1,13 @@
+// Método del evento para cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', async () => {
+    // Llamada a la función para mostrar el encabezado y pie del documento.
+    loadTemplate();
+    // Se establece el título del contenido principal.
+    MAIN_TITLE.textContent = 'CART';
+});
+
+
+
 // Declaraciones de constantes para los elementos del DOM
 const PEDIDO_API = 'services/public/carrito.php';
 const TABLE_BODY = document.getElementById('tableBody');

@@ -17,109 +17,38 @@
     <title>Women's</title>
 </head>
 
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Elementos del menú de navegación -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Opción de inicio -->
-                    <li id="home" class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
-                    </li>
-                    <!-- Script para redireccionar a la página de inicio -->
-                    <script>
-                        document.getElementById("home").addEventListener("click", function () {
-                            window.location.href = "index.html";
-                        });
-                    </script>
-
-                    <!-- Opciones del menú -->
-                    <li id="men" class="nav-item">
-                        <a class="nav-link" href="#">Men</a>
-                    </li>
-                    <script>
-                        document.getElementById("men").addEventListener("click", function () {
-                            window.location.href = "man.html";
-                        });
-                    </script>
-
-                    <li id="women" class="nav-item">
-                        <a class="nav-link" href="#">Women</a>
-                    </li>
-                    <script>
-                        document.getElementById("women").addEventListener("click", function () {
-                            window.location.href = "women.html";
-                        });
-                    </script>
-
-                 
-                    <li id="kids" class="nav-item">
-                        <a class="nav-link" href="#">Kids</a>
-                    </li>
-                    <script>
-                        document.getElementById("kids").addEventListener("click", function () {
-                            window.location.href = "kids.html";
-                        });
-                    </script>
-
-                    <li id="shoes" class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
-                    </li>
-                    <script>
-                        document.getElementById("shoes").addEventListener("click", function () {
-                            window.location.href = "shoes.html";
-                        });
-                    </script>
-
-                    <!-- Opción para el carrito -->
-                    <li id="cart" class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
-                    </li>
-                    <script>
-                        document.getElementById("cart").addEventListener("click", function () {
-                            window.location.href = "cart.html";
-                        });
-                    </script>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Título de la sección -->
-    <h1 class="custom-title-women">WOMEN'S WEAR</h1>
-
-
-                <!-- Barra de busqueda -->
-                <input type="text" id="search" class="form-control" placeholder="Search product">
-            </div>
-            <div class="col-md-3">
-                <select id="category" class="form-select">
-                    <option value="">All categories</option>
-                    <option value="1">Clothes</option>
-                    <option value="2">Shoes</option>
-                    <option value="3">Caps</option>
-                    <option value="4">Accessories</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
-            </div>
-            <div class="col-md-3">
-                <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
-            </div>
-    </div>
-    <div class="row" id="products">
-        <!-- Aquí se cargarán los productos -->
-    </div>
-
 <body class="d-flex flex-column min-vh-100">
-    <div class="container flex-grow-1">
 
+    <main>
+        <h4 id="mainTitle"></h4>
+<br>
+<br>
+<br>
+        <div class="container flex-grow-1">
+
+            <!-- Barra de busqueda -->
+            <input type="text" id="search" class="form-control" placeholder="Search product">
+            <br><br>
+        </div>
+        <div class="col-md-3">
+            <select id="category" class="form-select">
+                <option value="">All categories</option>
+                <option value="1">Clothes</option>
+                <option value="2">Shoes</option>
+                <option value="3">Caps</option>
+                <option value="4">Accessories</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
+        </div>
+        <div class="col-md-3">
+            <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
+        </div>
+        </div>
+        <div class="row" id="products">
+            <!-- Aquí se cargarán los productos -->
+        </div>
         
 
         
@@ -274,6 +203,7 @@
             </div>
         </div>
     </footer>
+</main>
 
 
 
@@ -281,6 +211,9 @@
 
     <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <script type="text/javascript" src="../../controllers/public/women.js"></script>
 </body>
 
 </html>

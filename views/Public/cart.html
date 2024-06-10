@@ -15,174 +15,110 @@
     <link type="text/css" rel="stylesheet" href="../../resources/css/boostrap/boostrap-icons.css">
 </head>
 
-<body>
 
-     <!-- Navegación -->
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Elementos del menú de navegación -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Opción de inicio -->
-                    <li id="home" class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
-                    </li>
-                    <!-- Script para redireccionar a la página de inicio -->
-                    <script>
-                        document.getElementById("home").addEventListener("click", function () {
-                            window.location.href = "index.html";
-                        });
-                    </script>
 
-                    <!-- Opciones del menú -->
-                    <li id="men" class="nav-item">
-                        <a class="nav-link" href="#">Men</a>
-                    </li>
-                    <script>
-                        document.getElementById("men").addEventListener("click", function () {
-                            window.location.href = "man.html";
-                        });
-                    </script>
+<body class="d-flex flex-column min-vh-100">
 
-                    <li id="women" class="nav-item">
-                        <a class="nav-link" href="#">Women</a>
-                    </li>
-                    <script>
-                        document.getElementById("women").addEventListener("click", function () {
-                            window.location.href = "women.html";
-                        });
-                    </script>
+    <main>
+        <h4 id="mainTitle"></h4>
+        <br>
+        <br>
+        <br>
+        <div class="container flex-grow-1">
 
-                 
-                    <li id="kids" class="nav-item">
-                        <a class="nav-link" href="#">Kids</a>
-                    </li>
-                    <script>
-                        document.getElementById("kids").addEventListener("click", function () {
-                            window.location.href = "kids.html";
-                        });
-                    </script>
 
-                    <li id="shoes" class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
-                    </li>
-                    <script>
-                        document.getElementById("shoes").addEventListener("click", function () {
-                            window.location.href = "shoes.html";
-                        });
-                    </script>
+            <div>
+                <div class="d-flex flex-column m-5" id="cart-items">
+                    <!-- Los productos del carrito se mostrarán aquí -->
+                    <div class="col-10 d-flex align-items-center justify-content-center">
 
-                    <!-- Opción para el carrito -->
-                    <li id="cart" class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
-                    </li>
-                    <script>
-                        document.getElementById("cart").addEventListener("click", function () {
-                            window.location.href = "cart.html";
-                        });
-                    </script>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                        <table class="table table-hover table-responsive text-center" id="tablaCarrito">
+                            <!-- Cabecera de la tabla -->
+                            <thead class="thead">
+                                <tr>
+                                    <th scope="col">Nombre del producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Sub-total</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <!-- Cuerpo de la tabla -->
+                            <tbody class="text-center align-middle" id="tableBody">
 
-    <!-- Título de la sección -->
-    <h1 class="custom-title-caps">CART</h1>
+                            </tbody>
+                        </table>
 
-    <div>
-        <div class="d-flex flex-column m-5" id="cart-items">
-            <!-- Los productos del carrito se mostrarán aquí -->
-            <div class="col-10 d-flex align-items-center justify-content-center">
-
-                <table class="table table-hover table-responsive text-center"
-                    id="tablaCarrito">
-                    <!-- Cabecera de la tabla -->
-                    <thead class="thead">
-                        <tr>
-                            <th scope="col">Nombre del producto</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Sub-total</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <!-- Cuerpo de la tabla -->
-                    <tbody class="text-center align-middle" id="tableBody">
-
-                    </tbody>
-                </table>
-                
-            </div>
-            <!--Div boton y precio-->
-            <div class="col-lg-12 d-flex justify-content-end">
-                <!--Precio-->
-                <div class="col-lg-2 d-flex align-items-center justify-content-center me-2">
-                    <h5 id="totalPedido" class="titillium-web color-5blue"><b>Total:</b> $0</h5>
-                </div>
-                <!--Boton-->
-                <div class="col-lg-2 d-flex align-items-center justify-content-center">
-                    <button type="button" id="comprar"
-                        class="btn text-center btn-primary titillium-web-bold bg-color-5blue text-white"
-                        onclick="comprar()"><i class="bi bi-send"></i>
-                        Comprar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para actualizar contraseña-->
-    <div class="modal fade" id="itemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Encabezado del modal -->
-                <div class="modal-header d-flex justify-content-center align-items-center">
-                    <h1 class="modal-title fs-5 text-center" id="modalTitle">Modificar cantidad de zapato</h1>
-                </div>
-                <!-- Formulario para actualizar contraseña -->
-                <form id="itemForm" name="itemForm">
-                    <div class="modal-body row g-3 d-flex flex-column align-items-center">
-                        <div class="offset-col-1 col-10">
-                            <!-- Campos -->
-                            <div class="col-sm-12 col-md-12">
-                                <label for="cant" class="form-label">Cantidad:</label>
-                                <input id="cant" type="number" name="cant" class="form-control editableInput" required>
-                            </div>
+                    </div>
+                    <!--Div boton y precio-->
+                    <div class="col-lg-12 d-flex justify-content-end">
+                        <!--Precio-->
+                        <div class="col-lg-2 d-flex align-items-center justify-content-center me-2">
+                            <h5 id="totalPedido" class="titillium-web color-5blue"><b>Total:</b> $0</h5>
                         </div>
-                        <!-- Botones en el pie del modal -->
-                        <div class="modal-footer mt-5 d-flex justify-content-center align-items-center">
-                            <div class="contenedorBotones3 offset-lg-3 col-6">
-                                <div class="col-12 d-flex justify-content-center">
-                                    <!-- Botón para cancelar la operación -->
-                                    <button type="button" id="cancelarBtn"
-                                        class="btn btn2 btn-primary me-2 shadow text18 titillium-web-regular col-4"
-                                        onclick="botonCancelar()">
-                                        Cancelar
-                                    </button>
-                                    <!-- Botón para actualizar el registro -->
-                                    <button type="submit" id="btnUpdate"
-                                        class="btn btn3 btn-primary shadow text18 titillium-web-regular col-4">
-                                        Actualizar
-                                    </button>
-                                </div>
-                            </div>
+                        <!--Boton-->
+                        <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                            <button type="button" id="comprar"
+                                class="btn text-center btn-primary titillium-web-bold bg-color-5blue text-white"
+                                onclick="comprar()"><i class="bi bi-send"></i>
+                                Comprar</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
-    <!-- Llamada al framework y librería de mensajes -->
-    <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
-    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
-    <script type="text/javascript" src="../../controllers/public/cart.js"></script>
+            <!-- Modal para actualizar contraseña-->
+            <div class="modal fade" id="itemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="modalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <!-- Encabezado del modal -->
+                        <div class="modal-header d-flex justify-content-center align-items-center">
+                            <h1 class="modal-title fs-5 text-center" id="modalTitle">Modificar cantidad de zapato</h1>
+                        </div>
+                        <!-- Formulario para actualizar contraseña -->
+                        <form id="itemForm" name="itemForm">
+                            <div class="modal-body row g-3 d-flex flex-column align-items-center">
+                                <div class="offset-col-1 col-10">
+                                    <!-- Campos -->
+                                    <div class="col-sm-12 col-md-12">
+                                        <label for="cant" class="form-label">Cantidad:</label>
+                                        <input id="cant" type="number" name="cant" class="form-control editableInput"
+                                            required>
+                                    </div>
+                                </div>
+                                <!-- Botones en el pie del modal -->
+                                <div class="modal-footer mt-5 d-flex justify-content-center align-items-center">
+                                    <div class="contenedorBotones3 offset-lg-3 col-6">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <!-- Botón para cancelar la operación -->
+                                            <button type="button" id="cancelarBtn"
+                                                class="btn btn2 btn-primary me-2 shadow text18 titillium-web-regular col-4"
+                                                onclick="botonCancelar()">
+                                                Cancelar
+                                            </button>
+                                            <!-- Botón para actualizar el registro -->
+                                            <button type="submit" id="btnUpdate"
+                                                class="btn btn3 btn-primary shadow text18 titillium-web-regular col-4">
+                                                Actualizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+            <!-- Llamada al framework y librería de mensajes -->
+            <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
+            <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
+            <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+            <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+            <script type="text/javascript" src="../../controllers/public/cart.js"></script>
+
+    </main>
 </body>
 
 <footer class="footer mt-auto py-3">
