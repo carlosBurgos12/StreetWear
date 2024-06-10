@@ -17,43 +17,80 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <!-- Navegación -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Elementos del menú de navegación -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
+                    <!-- Opción de inicio -->
                     <li id="home" class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
                     </li>
+                    <!-- Script para redireccionar a la página de inicio -->
+                    <script>
+                        document.getElementById("home").addEventListener("click", function () {
+                            window.location.href = "index.html";
+                        });
+                    </script>
+
+                    <!-- Opciones del menú -->
                     <li id="men" class="nav-item">
                         <a class="nav-link" href="#">Men</a>
                     </li>
+                    <script>
+                        document.getElementById("men").addEventListener("click", function () {
+                            window.location.href = "man.html";
+                        });
+                    </script>
+
                     <li id="women" class="nav-item">
                         <a class="nav-link" href="#">Women</a>
                     </li>
-                    <li id="shoes" class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
-                    </li>
-                    <li id="caps" class="nav-item">
-                        <a class="nav-link" href="#">Caps</a>
-                    </li>
+                    <script>
+                        document.getElementById("women").addEventListener("click", function () {
+                            window.location.href = "women.html";
+                        });
+                    </script>
+
+                 
                     <li id="kids" class="nav-item">
                         <a class="nav-link" href="#">Kids</a>
                     </li>
-                    <li id="accessories" class="nav-item">
-                        <a class="nav-link" href="#">Accessories</a>
+                    <script>
+                        document.getElementById("kids").addEventListener("click", function () {
+                            window.location.href = "kids.html";
+                        });
+                    </script>
+
+                    <li id="shoes" class="nav-item">
+                        <a class="nav-link" href="#">Shoes</a>
                     </li>
+                    <script>
+                        document.getElementById("shoes").addEventListener("click", function () {
+                            window.location.href = "shoes.html";
+                        });
+                    </script>
+
+                    <!-- Opción para el carrito -->
                     <li id="cart" class="nav-item">
                         <a class="nav-link" href="#">Cart</a>
                     </li>
+                    <script>
+                        document.getElementById("cart").addEventListener("click", function () {
+                            window.location.href = "cart.html";
+                        });
+                    </script>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Título de la sección -->
     <h1 class="custom-title-caps">CART</h1>
 
     <div>

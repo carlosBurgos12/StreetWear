@@ -93,6 +93,7 @@ CREATE TABLE Productos (
     descripcion_producto VARCHAR(200),
     precio_producto FLOAT,
     imagen_producto VARCHAR(30),
+    talla_producto VARCHAR(10),
     color_producto VARCHAR(30),
     idCategoria INT,
     id_TipoProducto INT,
@@ -100,12 +101,29 @@ CREATE TABLE Productos (
     FOREIGN KEY (idCategoria) REFERENCES Categorias(idCategoria),
     FOREIGN KEY (id_TipoProducto) REFERENCES TipoProducto(id_TipoProducto),
     FOREIGN KEY (id_Distribuidor) REFERENCES Distribuidores(id_Distribuidor)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
 
 INSERT INTO Productos (id_producto, nombre_producto, precio_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
 (1, 'Camiseta azul Nike', 30, 50, 1, 1, 1),
 (2, 'Zapatos Nike', 30, 30, 2, 2, 2),
 (3, 'Zapatos Jordan', 30, 30, 2, 2, 2);
+
+-- Trigger funcionalidad filtrado de producto
+CREATE TABLE log_productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT,
+    accion VARCHAR(50),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto_id) REFERENCES Productos(id_producto)
+);
+
+CREATE TRIGGER after_insert_product
+AFTER INSERT ON Productos
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_productos (producto_id, accion, fecha) VALUES (NEW.id_producto, 'insertado', NOW());
+END;
+
 
 CREATE TABLE Pedidos (
     id_Pedido INT PRIMARY KEY AUTO_INCREMENT,

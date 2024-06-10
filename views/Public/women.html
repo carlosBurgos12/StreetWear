@@ -13,85 +13,89 @@
     <title>Women's</title>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Elementos del menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Opción de inicio -->
+                    <li id="home" class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                    </li>
+                    <!-- Script para redireccionar a la página de inicio -->
+                    <script>
+                        document.getElementById("home").addEventListener("click", function () {
+                            window.location.href = "index.html";
+                        });
+                    </script>
 
+                    <!-- Opciones del menú -->
+                    <li id="men" class="nav-item">
+                        <a class="nav-link" href="#">Men</a>
+                    </li>
+                    <script>
+                        document.getElementById("men").addEventListener("click", function () {
+                            window.location.href = "man.html";
+                        });
+                    </script>
 
-    <div class="container">
+                    <li id="women" class="nav-item">
+                        <a class="nav-link" href="#">Women</a>
+                    </li>
+                    <script>
+                        document.getElementById("women").addEventListener("click", function () {
+                            window.location.href = "women.html";
+                        });
+                    </script>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                 
+                    <li id="kids" class="nav-item">
+                        <a class="nav-link" href="#">Kids</a>
+                    </li>
+                    <script>
+                        document.getElementById("kids").addEventListener("click", function () {
+                            window.location.href = "kids.html";
+                        });
+                    </script>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+                    <li id="shoes" class="nav-item">
+                        <a class="nav-link" href="#">Shoes</a>
+                    </li>
+                    <script>
+                        document.getElementById("shoes").addEventListener("click", function () {
+                            window.location.href = "shoes.html";
+                        });
+                    </script>
 
-                <li id="home" class="nav-item active">
-                    <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
-                </li>
-                <script>
-                    document.getElementById("home").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "index.html";
-                    }); </script>
-
-
-                <li id="men" class="nav-item">
-                    <a class="nav-link" href="#"> Men </a>
-                </li>
-                <script>
-                    document.getElementById("men").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "man.html";
-                    }); </script>
-
-                <li id="women" class="nav-item">
-                    <a class="nav-link" href="#"> Women </a>
-                </li>
-                <script>
-                    document.getElementById("women").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "women.html";
-                    }); </script>
-
-
-               
-                <li id="kids" class="nav-item">
-                    <a class="nav-link" href="#"> Kids </a>
-                </li>
-                <script>
-                    document.getElementById("kids").addEventListener("click", function () {
-                        // Cambiar la URL a la que quieres redirigir al usuario
-                        window.location.href = "kids.html";
-                    }); </script>
-
-                <!-- Cart -->
-                <li id="cart" class="nav-item">
-                    <a class="nav-link" href="#"> Cart </a>
-                </li>
+                    <!-- Opción para el carrito -->
+                    <li id="cart" class="nav-item">
+                        <a class="nav-link" href="#">Cart</a>
+                    </li>
                     <script>
                         document.getElementById("cart").addEventListener("click", function () {
-                            // Cambiar la URL a la que quieres redirigir al usuario
                             window.location.href = "cart.html";
-                        }); </script>
-    
-
-            </ul>
+                        });
+                    </script>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<h1 class="custom-title-women">WOMEN’S WEAR</h1>
+    <!-- Título de la sección -->
+    <h1 class="custom-title-women">WOMEN'S WEAR</h1>
 
-<div class="btn-group" role="group" aria-label="Button group example">
-    <button type="button" class="btn btn-outline-primary">T-Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shirts</button>
-    <button type="button" class="btn btn-outline-primary">Shorts</button>
-    <button type="button" class="btn btn-outline-primary">Hoodies</button>
-    <button type="button" class="btn btn-outline-primary">Sweaters</button>
-    <button type="button" class="btn btn-outline-primary">Pants</button>
-</div>
+    <!-- Barra de busqueda -->
+    <div class="container mt-5">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" id="search" class="form-control" placeholder="Search">
+            </div>
+        </div>
 
 <body class="d-flex flex-column min-vh-100">
     <div class="container flex-grow-1">
