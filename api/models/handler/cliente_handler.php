@@ -114,10 +114,8 @@ class ClienteHandler
                 direccion_Cliente, 
                 img_Cliente, 
                 numero_Cliente, 
-                estado_Cliente, 
-                id_Genero, 
                 clave_Cliente
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)';
         $params = array(
             $this->nombre,
             $this->apellido,
@@ -125,8 +123,6 @@ class ClienteHandler
             $this->direccion,
             $this->imagen,
             $this->numero,
-            1, 
-            $this->idGenero,
             $this->clave
         );
         return Database::executeRow($sql, $params);

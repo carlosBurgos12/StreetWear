@@ -39,7 +39,7 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'signUp':
                 $_POST = Validator::validateForm($_POST);
-                // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
+                /*// Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
                 $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
                 // Se establece la dirección IP del servidor.
                 $ip = $_SERVER['REMOTE_ADDR'];
@@ -61,15 +61,14 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No eres humano';
                 } elseif(!isset($_POST['condicion'])) {
                     $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
-                } elseif (
+                } else*/if (
                     !$cliente->setNombre($_POST['nombreCliente']) or
                     !$cliente->setApellido($_POST['apellidoCliente']) or
                     !$cliente->setCorreo($_POST['correoCliente']) or
                     !$cliente->setDireccion($_POST['direccionCliente']) or
-                    !$cliente->setDUI($_POST['duiCliente']) or
-                    !$cliente->setNacimiento($_POST['nacimientoCliente']) or
                     !$cliente->setTelefono($_POST['telefonoCliente']) or
-                    !$cliente->setClave($_POST['claveCliente'])
+                    !$cliente->setClave($_POST['claveCliente']) or
+                    !$cliente->setImagen($_FILES['imagenCliente'])
                 ) {
                     $result['error'] = $cliente->getDataError();
                 } elseif ($_POST['claveCliente'] != $_POST['confirmarClave']) {
