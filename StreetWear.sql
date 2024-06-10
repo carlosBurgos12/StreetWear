@@ -153,7 +153,17 @@ CREATE TABLE Comentarios (
     contenido VARCHAR(200),
     id_Pedido INT,
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id_Pedido)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
+
+CREATE TABLE valoraciones (
+    id_valoraciones INT PRIMARY KEY AUTO_INCREMENT,
+    producto_id INT NOT NULL,
+    usuario_id INT DEFAULT NULL,
+    valoracion INT NOT NULL,
+    fecha_valoracion DATETIME NOT NULL,
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
+
 
 CREATE TABLE Direcciones (
     id_Direccion INT PRIMARY KEY,
