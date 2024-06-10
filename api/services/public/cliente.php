@@ -66,7 +66,7 @@ if (isset($_GET['action'])) {
                     !$cliente->setApellido($_POST['apellidoCliente']) or
                     !$cliente->setCorreo($_POST['correoCliente']) or
                     !$cliente->setDireccion($_POST['direccionCliente']) or
-                    !$cliente->setTelefono($_POST['telefonoCliente']) or
+                    !$cliente->setNumero($_POST['telefonoCliente']) or
                     !$cliente->setClave($_POST['claveCliente']) or
                     !$cliente->setImagen($_FILES['imagenCliente'])
                 ) {

@@ -18,82 +18,84 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    <main>
+        <h4 id="mainTitle"></h4>
+        <!-- Navegación -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Elementos del menú de navegación -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Opción de inicio -->
+                        <li id="home" class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                        </li>
+                        <!-- Script para redireccionar a la página de inicio -->
+                        <script>
+                            document.getElementById("home").addEventListener("click", function () {
+                                window.location.href = "index.html";
+                            });
+                        </script>
 
-    <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Elementos del menú de navegación -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <!-- Opción de inicio -->
-                    <li id="home" class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
-                    </li>
-                    <!-- Script para redireccionar a la página de inicio -->
-                    <script>
-                        document.getElementById("home").addEventListener("click", function () {
-                            window.location.href = "index.html";
-                        });
-                    </script>
+                        <!-- Opciones del menú -->
+                        <li id="men" class="nav-item">
+                            <a class="nav-link" href="#">Men</a>
+                        </li>
+                        <script>
+                            document.getElementById("men").addEventListener("click", function () {
+                                window.location.href = "man.html";
+                            });
+                        </script>
 
-                    <!-- Opciones del menú -->
-                    <li id="men" class="nav-item">
-                        <a class="nav-link" href="#">Men</a>
-                    </li>
-                    <script>
-                        document.getElementById("men").addEventListener("click", function () {
-                            window.location.href = "man.html";
-                        });
-                    </script>
-
-                    <li id="women" class="nav-item">
-                        <a class="nav-link" href="#">Women</a>
-                    </li>
-                    <script>
-                        document.getElementById("women").addEventListener("click", function () {
-                            window.location.href = "women.html";
-                        });
-                    </script>
+                        <li id="women" class="nav-item">
+                            <a class="nav-link" href="#">Women</a>
+                        </li>
+                        <script>
+                            document.getElementById("women").addEventListener("click", function () {
+                                window.location.href = "women.html";
+                            });
+                        </script>
 
 
-                    <li id="kids" class="nav-item">
-                        <a class="nav-link" href="#">Kids</a>
-                    </li>
-                    <script>
-                        document.getElementById("kids").addEventListener("click", function () {
-                            window.location.href = "kids.html";
-                        });
-                    </script>
+                        <li id="kids" class="nav-item">
+                            <a class="nav-link" href="#">Kids</a>
+                        </li>
+                        <script>
+                            document.getElementById("kids").addEventListener("click", function () {
+                                window.location.href = "kids.html";
+                            });
+                        </script>
 
-                    <li id="shoes" class="nav-item">
-                        <a class="nav-link" href="#">Shoes</a>
-                    </li>
-                    <script>
-                        document.getElementById("shoes").addEventListener("click", function () {
-                            window.location.href = "shoes.html";
-                        });
-                    </script>
+                        <li id="shoes" class="nav-item">
+                            <a class="nav-link" href="#">Shoes</a>
+                        </li>
+                        <script>
+                            document.getElementById("shoes").addEventListener("click", function () {
+                                window.location.href = "shoes.html";
+                            });
+                        </script>
 
-                    <!-- Opción para el carrito -->
-                    <li id="cart" class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
-                    </li>
-                    <script>
-                        document.getElementById("cart").addEventListener("click", function () {
-                            window.location.href = "cart.html";
-                        });
-                    </script>
-                </ul>
+                        <!-- Opción para el carrito -->
+                        <li id="cart" class="nav-item">
+                            <a class="nav-link" href="#">Cart</a>
+                        </li>
+                        <script>
+                            document.getElementById("cart").addEventListener("click", function () {
+                                window.location.href = "cart.html";
+                            });
+                        </script>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Título de la sección -->
-    <h1 class="custom-title-Man">MEN’S WEAR</h1>
+        <!-- Título de la sección -->
+        <h1 class="custom-title-Man">MEN’S WEAR</h1>
 
         <body class="d-flex flex-column min-vh-100">
             <div class="container flex-grow-1">
@@ -116,170 +118,166 @@
             <div class="col-md-3">
                 <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
             </div>
-    </div>
-    <div class="row" id="products">
-        <!-- Aquí se cargarán los productos -->
-    </div>
-
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Card 1 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/ShirtBlueNike.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">T-Shirt Nike</h5>
-                        <!-- <a href="#" class="btn btn-primary">$40</a> -->
-                        <button id="miBoton" class="btn btn-primary">$40</button>
-                        <script>
-                            document.getElementById("miBoton").addEventListener("click", function () {
-                                // Cambiar la URL a la que quieres redirigir al usuario
-                                window.location.href = "product_information.html";
-                            }); </script>
-                        <!-- Botón para agregar al carrito el producto -->
-                        <button class="btn btn-primary add-to-cart" data-id="1" data-name="T-Shirt Nike"
-                            data-price="40.00" data-image="ruta_a_imagen.jpg">Add to cart</button>
-                        </script>
-                    </div>
-                </div>
+            </div>
+            <div class="row" id="products">
+                <!-- Aquí se cargarán los productos -->
             </div>
 
-            <!-- Card 2 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/hoodie_SD.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Streetwear Hoodie</h5>
-                        <button id="miBoton2" class="btn btn-primary">$45</button>
-                        <!-- Script para redireccionar a la página de información del producto -->
-                        <script>                               
+            <div class="container mt-5">
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/ShirtBlueNike.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">T-Shirt Nike</h5>
+                                <!-- <a href="#" class="btn btn-primary">$40</a> -->
+                                <button id="miBoton" class="btn btn-primary">$40</button>
+                                <script>
+                                    document.getElementById("miBoton").addEventListener("click", function () {
+                                        // Cambiar la URL a la que quieres redirigir al usuario
+                                        window.location.href = "product_information.html";
+                                    }); </script>
+                                <!-- Botón para agregar al carrito el producto -->
+                                <button class="btn btn-primary add-to-cart" data-id="1" data-name="T-Shirt Nike"
+                                    data-price="40.00" data-image="ruta_a_imagen.jpg">Add to cart</button>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/hoodie_SD.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Streetwear Hoodie</h5>
+                                <button id="miBoton2" class="btn btn-primary">$45</button>
+                                <!-- Script para redireccionar a la página de información del producto -->
+                                <script>
                                     document.getElementById("miBoton2").addEventListener("click", function () {
-                                    window.location.href = "product_information2.html";
-                                });
-                        </script>
+                                        window.location.href = "product_information2.html";
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/BlackHoodieNike.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Hoodie Nike</h5>
+                                <button id="miBoton3" class="btn btn-primary">$70</button>
+                                <!-- Script para redireccionar a la página de información del producto -->
+                                <script>
+                                    document.getElementById("miBoton3").addEventListener("click", function () {
+                                        window.location.href = "product_information3.html";
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segunda fila de tarjetas -->
+                <div class="row mt-5">
+                    <!-- Card 4 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/ShirtBlueNike.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">T-Shirt Nike</h5>
+                                <button id="miBoton4" class="btn btn-primary">$40</button>
+                                <!-- Script para redireccionar a la página de información del producto -->
+                                <script>
+                                    document.getElementById("miBoton4").addEventListener("click", function () {
+                                        window.location.href = "product_information.html";
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/hoodie_SD.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Streetwear Hoodie</h5>
+                                <button id="miBoton5" class="btn btn-primary">$45</button>
+                                <!-- Script para redireccionar a la página de información del producto -->
+                                <script>
+                                    document.getElementById("miBoton5").addEventListener("click", function () {
+                                        window.location.href = "product_information2.html";
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../../imagenes/mens_clothing/BlackHoodieNike.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Hoodie Nike</h5>
+                                <button id="miBoton6" class="btn btn-primary">$70</button>
+                                <!-- Script para redireccionar a la página de información del producto -->
+                                <script>
+                                    document.getElementById("miBoton6").addEventListener("click", function () {
+                                        window.location.href = "product_information3.html";
+                                    });
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/BlackHoodieNike.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Hoodie Nike</h5>
-                        <button id="miBoton3" class="btn btn-primary">$70</button>
-                        <!-- Script para redireccionar a la página de información del producto -->
-                        <script>
-                            document.getElementById("miBoton3").addEventListener("click", function () {
-                                window.location.href = "product_information3.html";
-                            });
-                        </script>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <footer class="footer mt-auto py-3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <h5>Navigation</h5>
+                            <p>Home</p>
+                            <p>Men</p>
+                            <p>Women</p>
+                            <p>Shoes</p>
+                            <p>Caps</p>
+                            <p>Kids</p>
+                            <p>Accessories</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h5>Talk to us</h5>
+                            <p>streetwear_support@gmail.com</p>
+                            <p>+503 7581-7784</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h5>Follow Us</h5>
+                            <p>@StreetWear_Drop</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Segunda fila de tarjetas -->
-        <div class="row mt-5">
-            <!-- Card 4 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/ShirtBlueNike.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">T-Shirt Nike</h5>
-                        <button id="miBoton4" class="btn btn-primary">$40</button>
-                        <!-- Script para redireccionar a la página de información del producto -->
-                        <script>
-                            document.getElementById("miBoton4").addEventListener("click", function () {
-                                window.location.href = "product_information.html";
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 5 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/hoodie_SD.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Streetwear Hoodie</h5>
-                        <button id="miBoton5" class="btn btn-primary">$45</button>
-                        <!-- Script para redireccionar a la página de información del producto -->
-                        <script>
-                            document.getElementById("miBoton5").addEventListener("click", function () {
-                                window.location.href = "product_information2.html";
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 6 -->
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="../../imagenes/mens_clothing/BlackHoodieNike.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Hoodie Nike</h5>
-                        <button id="miBoton6" class="btn btn-primary">$70</button>
-                        <!-- Script para redireccionar a la página de información del producto -->
-                        <script>
-                            document.getElementById("miBoton6").addEventListener("click", function () {
-                                window.location.href = "product_information3.html";
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4">
-                    <h5>Navigation</h5>
-                    <p>Home</p>
-                    <p>Men</p>
-                    <p>Women</p>
-                    <p>Shoes</p>
-                    <p>Caps</p>
-                    <p>Kids</p>
-                    <p>Accessories</p>
-                </div>
-
-                <div class="col-md-4">
-                    <h5>Talk to us</h5>
-                    <p>streetwear_support@gmail.com</p>
-                    <p>+503 7581-7784</p>
-                </div>
-
-                <div class="col-md-4">
-                    <h5>Follow Us</h5>
-                    <p>@StreetWear_Drop</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-
-
-
-
-
-    <script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="search.js"></script>
-
+            </footer>
+    </main>
 </body>
+
+<script type="text/javascript" src="../../resources/css/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../../resources/css/js/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="search.js"></script>
+<script type="text/javascript" src="../../controllers/utils/public.js"></script>
+<script type="text/javascript" src="../../controllers/public/man.js"></script>
 
 </html>

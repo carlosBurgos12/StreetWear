@@ -41,16 +41,7 @@ class ClienteData extends ClienteHandler
         }
     }
 
-    public function setTelefono($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->numero = $value;
-            return true;
-        } else {
-            $this->data_error = 'El identificador de la categoría es incorrecto';
-            return false;
-        }
-    }
+   
 
     public function setApellido($value, $min = 2, $max = 50)
     {
