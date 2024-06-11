@@ -117,12 +117,14 @@ CREATE TABLE log_productos (
     FOREIGN KEY (producto_id) REFERENCES Productos(id_producto)
 );
 
+DELIMITER //
 CREATE TRIGGER after_insert_product
 AFTER INSERT ON Productos
 FOR EACH ROW
 BEGIN
     INSERT INTO log_productos (producto_id, accion, fecha) VALUES (NEW.id_producto, 'insertado', NOW());
 END;
+DELIMITER ;
 
 
 CREATE TABLE Pedidos (
@@ -157,11 +159,11 @@ CREATE TABLE Comentarios (
 
 CREATE TABLE valoraciones (
     id_valoraciones INT PRIMARY KEY AUTO_INCREMENT,
-    producto_id INT NOT NULL,
-    usuario_id INT DEFAULT NULL,
+    id_producto INT NOT NULL,
+    id_Usuario INT DEFAULT NULL,
     valoracion INT NOT NULL,
     fecha_valoracion DATETIME NOT NULL,
-    FOREIGN KEY (producto_id) REFERENCES productos(id)
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
 
 
