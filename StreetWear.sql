@@ -210,27 +210,75 @@ ALTER TABLE Usuario
 ADD CONSTRAINT fk_Usuario_TipoUsuario FOREIGN KEY (id_TipoUsuario) REFERENCES TipoUsuario(id_TipoUsuario);
 
 DELIMITER //
-CREATE TRIGGER actualizar_stock_producto
+
+CREATE TRIGGER trg_after_insert_detallepedido
 AFTER INSERT ON DetallePedido
 FOR EACH ROW
 BEGIN
+    DECLARE cantidad_actual INT;
+
+    -- Obtener la cantidad actual del producto
+    SELECT cantidad_producto INTO cantidad_actual
+    FROM Productos
+    WHERE id_producto = NEW.id_Producto;
+
+    -- Verificar si hay suficiente stock
+    IF cantidad_actual < NEW.cantidad_Producto THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede realizar la operación: Stock insuficiente.';
+    ELSE
+        UPDATE Productos
+        SET cantidad_producto = cantidad_producto - NEW.cantidad_Producto
+        WHERE id_producto = NEW.id_Producto;
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER trg_after_delete_detallepedido
+AFTER DELETE ON DetallePedido
+FOR EACH ROW
+BEGIN
     UPDATE Productos
-    SET cantidad_Producto = cantidad_Producto - 1
-    WHERE id_Producto = NEW.id_Producto;
+    SET cantidad_producto = cantidad_producto + OLD.cantidad_Producto
+    WHERE id_producto = OLD.id_Producto;
 END;
 //
 DELIMITER ;
 
 DELIMITER //
-CREATE TRIGGER trg_actualizar_cantidad_producto
-AFTER INSERT ON DetallePedido
+
+CREATE TRIGGER trg_after_update_detallepedido
+AFTER UPDATE ON DetallePedido
 FOR EACH ROW
 BEGIN
-    UPDATE Productos 
-    SET cantidad_Producto = cantidad_Producto - 1 
-    WHERE id_Producto = NEW.id_Producto;
-END//
+    DECLARE diff INT;
+    DECLARE cantidad_actual INT;
+
+    SET diff = OLD.cantidad_Producto - NEW.cantidad_Producto;
+
+    -- Obtener la cantidad actual del producto
+    SELECT cantidad_producto INTO cantidad_actual
+    FROM Productos
+    WHERE id_producto = NEW.id_Producto;
+
+    -- Verificar si hay suficiente stock en caso de que se necesite disminuir la cantidad
+    IF diff < 0 AND cantidad_actual < ABS(diff) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede realizar la operación: Stock insuficiente.';
+    ELSE
+        UPDATE Productos
+        SET cantidad_producto = cantidad_producto + diff
+        WHERE id_producto = NEW.id_Producto;
+    END IF;
+END;
+//
+
 DELIMITER ;
+
 
 DELIMITER //
 CREATE TRIGGER revisar_cliente_insert

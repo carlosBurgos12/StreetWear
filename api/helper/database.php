@@ -102,6 +102,9 @@ class Database
             case '42S22':
                 self::$error = 'Columna no encontrada';
                 break;
+            case '45000':
+                self::$error = 'No se puede realizar la operación: Stock insuficiente.';
+                break;
             case '23000':
                 self::$error = 'Violación de restricción de integridad';
                 break;
@@ -120,4 +123,3 @@ class Database
         return self::$error;
     }
 }
-?>
