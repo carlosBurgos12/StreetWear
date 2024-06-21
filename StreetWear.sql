@@ -71,9 +71,21 @@ CREATE TABLE Categorias (
 
 INSERT INTO Categorias (idCategoria, nombreCategoria) VALUES
 (1, 'Ropa'),
-(2, 'Zapatos'),
+(2, 'Zapatos'),a
 (3, 'Gorras'),
 (4, 'Accesorios' );
+
+CREATE TABLE Secciones (
+idSeccion INT PRIMARY KEY AUTO_INCREMENT,
+nombreSeccion VARCHAR(30),
+descripcionSeccion VARCHAR(200),
+imagenSeccion VARCHAR(30)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
+
+INSERT INTO Secciones (idSeccion, nombreSeccion) VALUES
+(1, 'Hombres'),
+(2, 'Mujeres'),
+(3, 'Ninos');s
 
 CREATE TABLE TipoProducto (
     id_TipoProducto INT PRIMARY KEY,
