@@ -71,7 +71,7 @@ CREATE TABLE Categorias (
 
 INSERT INTO Categorias (idCategoria, nombreCategoria) VALUES
 (1, 'Ropa'),
-(2, 'Zapatos'),a
+(2, 'Zapatos'),
 (3, 'Gorras'),
 (4, 'Accesorios' );
 
@@ -85,7 +85,7 @@ imagenSeccion VARCHAR(30)
 INSERT INTO Secciones (idSeccion, nombreSeccion) VALUES
 (1, 'Hombres'),
 (2, 'Mujeres'),
-(3, 'Ninos');s
+(3, 'Ninos');
 
 CREATE TABLE TipoProducto (
     id_TipoProducto INT PRIMARY KEY,
