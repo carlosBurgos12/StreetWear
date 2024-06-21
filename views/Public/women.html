@@ -19,8 +19,30 @@
 <body class="d-flex flex-column min-vh-100">
 
     <main>
-        <div class="container flex-grow-1" id="product-detail">
-            <!-- Aquí se cargarán los detalles del producto -->
+        <h4 id="mainTitle"></h4>
+        <br><br><br>
+        <div class="container flex-grow-1">
+            <!-- Barra de busqueda -->
+            <input type="text" id="search" class="form-control" placeholder="Search product">
+            <br><br>
+        </div>
+        <div class="col-md-3">
+            <select id="category" class="form-select">
+                <option value="">All categories</option>
+                <option value="1">Clothes</option>
+                <option value="2">Shoes</option>
+                <option value="3">Caps</option>
+                <option value="4">Accessories</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
+        </div>
+        <div class="col-md-3">
+            <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
+        </div>
+        <div class="row" id="products">
+            <!-- Aquí se cargarán los productos -->
         </div>
     </main>
 
