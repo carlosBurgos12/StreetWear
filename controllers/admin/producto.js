@@ -15,6 +15,7 @@ const SAVE_FORM = document.getElementById('create'),
     NOMBRE_PRODUCTO = document.getElementById('nombreProductEditar'),
     DESCRIPCION_PRODUCTO = document.getElementById('descripcionProductActualizar'),
     PRECIO_PRODUCTO = document.getElementById('precioProductEditar');
+    ID_CATEGORIA = document.getElementById('idCategoriaEditar')
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
