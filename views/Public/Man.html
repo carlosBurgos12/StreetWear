@@ -15,6 +15,10 @@
     <!-- Icono de la página -->
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
     <title>Men's</title>
+    <style>
+        .producto { display: inline-block; margin: 20px; padding: 20px; border: 1px solid #ccc; }
+        .producto img { width: 100px; height: 100px; }
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -44,6 +48,28 @@
         </div>
         <div class="row" id="idProducto">
             <!-- Aquí se cargarán los productos -->
+            <div id="productos"></div>
+            <script>
+                async function cargarProductos() {
+                    const response = await fetch('productos.php');
+                    const productos = await response.json();
+
+                    const contenedorProductos = document.getElementById('productos');
+                    productos.forEach(producto => {
+                        const productoDiv = document.createElement('div');
+                        productoDiv.classList.add('producto');
+                        productoDiv.innerHTML = `
+                            <img src="${producto.imagen_producto}" alt="${producto.nombre_producto}">
+                            <h2>${producto.nombre_producto}</h2>
+                            <p>${producto.descripcion_producto}</p>
+                            <p>$${producto.precio_producto}</p>
+                            <a href="product_information.html?id=${producto.id_producto}">Ver más</a>
+                        `;
+                        contenedorProductos.appendChild(productoDiv);
+                    });
+                }
+                cargarProductos();
+            </script>
         </div>
     </main>
 
@@ -54,6 +80,7 @@
     <script type="text/javascript" src="../../controllers/utils/components.js"></script>
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
     <script type="text/javascript" src="../../controllers/public/detail.js"></script>
+    <script type="text/javascript" src="../../controllers/public/man.js"></script>
 </body>
 
 </html>
