@@ -14,8 +14,7 @@ const SAVE_FORM = document.getElementById('create'),
     COLOR_PRODUCTO = document.getElementById('colorProductEditar'),
     NOMBRE_PRODUCTO = document.getElementById('nombreProductEditar'),
     DESCRIPCION_PRODUCTO = document.getElementById('descripcionProductActualizar'),
-    PRECIO_PRODUCTO = document.getElementById('precioProductEditar'),
-    CATEGORIA_PRODUCTO = document.getElementById('categoriaProductEditar');
+    PRECIO_PRODUCTO = document.getElementById('precioProductEditar');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,7 +90,6 @@ const fillTable = async (form = null) => {
                     <td>${row.descripcion_producto}</td>
                     <td>$${row.precio_producto}</td>
                     <td>${row.color_producto}</td>
-                    <td>${row.categoria_producto}</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" onclick="openDetails(${row.id_producto})">
                             <img src="../../imagenes/logo_editar.png" alt="" width="50px" height="50px">
@@ -135,7 +133,6 @@ const openDetails = async (id) =>{
         DESCRIPCION_PRODUCTO.value = ROW.descripcion_producto;
         PRECIO_PRODUCTO.value = ROW.precio_producto;
         COLOR_PRODUCTO.value = ROW.color_producto;
-        CATEGORIA_PRODUCTO.value = ROW.categoria_producto;
 
     } else {
         sweetAlert(2, DATA.error, false);
@@ -155,7 +152,6 @@ UPDATE_FORM.addEventListener('submit', async (event) => {
     FORM.append('descripcionProductoEditar', DESCRIPCION_PRODUCTO.value);
     FORM.append('colorProduct', COLOR_PRODUCTO.value);
     FORM.append('precioProduct', PRECIO_PRODUCTO.value);
-    FORM.append('categoriaProduct', CATEGORIA_PRODUCTO.value);
 
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(PRODUCTO_API, action, FORM);
@@ -168,7 +164,6 @@ UPDATE_FORM.addEventListener('submit', async (event) => {
         DESCRIPCION_PRODUCTO.value = '';
         COLOR_PRODUCTO.value = '';
         PRECIO_PRODUCTO.value = '';
-        CATEGORIA_PRODUCTO.value = '';
         document.getElementById('imagen').value = '';
         
         // Se muestra un mensaje de éxito.
