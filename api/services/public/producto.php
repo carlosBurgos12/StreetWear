@@ -28,6 +28,13 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Producto inexistente';
             }
             break;
+        case 'readAll':
+            if ($result['dataset'] = $producto->readAll()) {
+                $result['status'] = 1;
+            } else {
+                $result['error'] = 'No existen productos para mostrar';
+            }
+            break;
         default:
             $result['error'] = 'Acción no disponible';
     }
