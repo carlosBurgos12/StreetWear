@@ -174,6 +174,7 @@ const comprar = async () => {
         const DATA = await fetchData(PEDIDO_API, 'update', FORM1);
 
         if (DATA.status) {
+            await sweetAlert(1, 'Se ha comprado con exito, espera tu paquete', false);
             readDetail(); // Vuelve a cargar la tabla
         } else {
             if (DATA === 'Acceso denegado') {

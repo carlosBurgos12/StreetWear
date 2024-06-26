@@ -26,25 +26,22 @@
             <!-- Barra de busqueda -->
             <input type="text" id="search" class="form-control" placeholder="Search product">
             <br><br>
+            <div class="col-md-12 justify-content-center align-items-center d-flex">
+                <select id="category" class="form-select col-8">
+                    <option value="">All categories</option>
+                    <option value="1">Clothes</option>
+                    <option value="2">Shoes</option>
+                    <option value="3">Caps</option>
+                    <option value="4">Accessories</option>
+                </select>
+            </div>
         </div>
-        <div class="col-md-3">
-            <select id="category" class="form-select">
-                <option value="">All categories</option>
-                <option value="1">Clothes</option>
-                <option value="2">Shoes</option>
-                <option value="3">Caps</option>
-                <option value="4">Accessories</option>
-            </select>
-        </div>
-        <div class="col-md-3">
-            <input type="number" id="minPrice" class="form-control" placeholder="Minimium price">
-        </div>
-        <div class="col-md-3">
-            <input type="number" id="maxPrice" class="form-control" placeholder="Maximum price">
-        </div>
-        <div class="row" id="idProducto">
+        
+        <div class="row m-4" id="idProducto">
             <!-- Aquí se cargarán los productos -->
-            <div id="productos"></div>
+            <div id="productos" class="row justify-content-center align-items-center">
+
+            </div>
 
         </div>
     </main>

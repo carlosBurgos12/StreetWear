@@ -21,7 +21,7 @@ async function cargarProductos() {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             CONTENEDOR.innerHTML += `
-            <div class="producto">
+            <div class="producto col-3 m-3 border card">
                 <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="${row.nombre_producto}">
                 <h2>${row.nombre_producto}</h2>
                 <p>${row.descripcion_producto}</p>

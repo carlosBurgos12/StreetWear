@@ -54,7 +54,7 @@ class ProductoHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, color_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, color_producto, cantidad_producto
                 FROM Productos
                 WHERE id_producto = ?';
         $params = array($this->id);

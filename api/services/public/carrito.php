@@ -17,6 +17,24 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
                 // Acción para agregar un producto al carrito de compras.
+                case 'createDetallePedido':
+                    // Validar y procesar los datos del formulario para crear un nuevo registro
+                    $_POST = Validator::validateForm($_POST);
+                    // Verificar si todos los datos necesarios son válidos
+                    if (
+                        !$pedidos->setProducto($_POST['producto']) or
+                        !$pedidos->setCantidad($_POST['cantidad'])
+                    ) {
+                        // Si algún dato no es válido, se asigna un mensaje de error
+                        $result['error'] = $pedidos->getDataError();
+                    } elseif ($result['dataset'] = $pedidos->createDetail()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Se ha creado correctamente el detalle pedido';
+                    } else {
+                        $result['error'] = 'ERROR no se pudo agregar';
+                    }
+                    break;
+    
             // CREAR
             case 'createRow':
                 $_POST = Validator::validateForm($_POST);
