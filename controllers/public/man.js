@@ -28,6 +28,7 @@ async function cargarProductos() {
                 <p>$${row.precio_producto}</p>
                 <a href="product_information.html?id=${row.id_producto}">Ver más</a>
             </div>
+            </div>
         `;
         });
     } else {
