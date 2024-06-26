@@ -46,9 +46,32 @@ CREATE TABLE Clientes (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-INSERT INTO Clientes (nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero) VALUES
-('John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1),
-('Jane', 'Doe', '0987654321', 'jane@example.com', '456 Street, City, Country', 2);
+INSERT INTO Clientes (
+    nombre_Cliente, 
+    apellido_Cliente, 
+    numero_Cliente, 
+    correo_Cliente, 
+    direccion_Cliente, 
+    img_Cliente, 
+    estado_Cliente, 
+    clave_Cliente, 
+    id_Genero
+) VALUES (
+    'Juan', 
+    'Pérez', 
+    '1234567890', 
+    'juan.perez@example.com', 
+    'Calle Falsa 123, Ciudad, País', 
+    'img/juan_perez.jpg', 
+    1, 
+    '$2y$10$EvtUxJ1LQK/GP3iWLxBZJu2qgJnGSn0aMlO8IdmoliEZCQrCz5vJ.', 
+    1
+);
+
+
+INSERT INTO Clientes (nombre_cliente, apellido_cliente, numero_cliente, correo_cliente, direccion_cliente, id_Genero, Clave_cliente) VALUES
+('John', 'Doe', '1234567890', 'john@example.com', '123 Street, City, Country', 1, '$2y$10$EvtUxJ1LQK/GP3iWLxBZJu2qgJnGSn0aMlO8IdmoliEZCQrCz5vJ.'),
+('Jane', 'Doe', '0987654321', 'jane@example.com', '456 Street, City, Country', 2, '$2y$10$EvtUxJ1LQK/GP3iWLxBZJu2qgJnGSn0aMlO8IdmoliEZCQrCz5vJ.');
 
 SELECT*FROM Clientes;
 	
@@ -115,10 +138,10 @@ CREATE TABLE Productos (
     FOREIGN KEY (id_Distribuidor) REFERENCES Distribuidores(id_Distribuidor)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=UTF8_UNICODE_CI;
 
-INSERT INTO Productos (id_producto, nombre_producto, precio_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
-(1, 'Camiseta azul Nike', 30, 50, 1, 1, 1),
-(2, 'Zapatos Nike', 30, 30, 2, 2, 2),
-(3, 'Zapatos Jordan', 30, 30, 2, 2, 2);
+INSERT INTO Productos (id_producto, nombre_producto, descripcion_producto, precio_producto, cantidad_producto, idCategoria, id_TipoProducto, id_Distribuidor) VALUES
+(1, 'Camiseta azul Nike', 'Buenos zapatos', 30, 50, 1, 1, 1),
+(2, 'Zapatos Nike', 'Buenos zapatos', 30, 30, 2, 2, 2),
+(3, 'Zapatos Jordan', 'Buenos zapatos', 30, 30, 2, 2, 2);
 
 -- Trigger funcionalidad filtrado de producto
 CREATE TABLE log_productos (
@@ -151,6 +174,7 @@ CREATE TABLE Pedidos (
 INSERT INTO Pedidos (estado_Pedido, fecha_Registro, id_Cliente, direccion_Pedido) VALUES
 ('En proceso', '2024-03-17', 1, '123 Street, City, Country'),
 ('Entregado', '2024-03-16', 2, '456 Street, City, Country'),
+('Carrito', NULL, 1, NULL),
 ('Carrito', NULL, 2, NULL);
 
 CREATE TABLE DetallePedido (
@@ -311,25 +335,3 @@ BEGIN
 END;
 //
 DELIMITER ;
-
-INSERT INTO Clientes (
-    nombre_Cliente, 
-    apellido_Cliente, 
-    numero_Cliente, 
-    correo_Cliente, 
-    direccion_Cliente, 
-    img_Cliente, 
-    estado_Cliente, 
-    clave_Cliente, 
-    id_Genero
-) VALUES (
-    'Juan', 
-    'Pérez', 
-    '1234567890', 
-    'juan.perez@example.com', 
-    'Calle Falsa 123, Ciudad, País', 
-    'img/juan_perez.jpg', 
-    1, 
-    '$2y$10$EvtUxJ1LQK/GP3iWLxBZJu2qgJnGSn0aMlO8IdmoliEZCQrCz5vJ.', 
-    1
-);
