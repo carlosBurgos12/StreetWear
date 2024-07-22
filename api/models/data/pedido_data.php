@@ -111,4 +111,12 @@ class PedidoData extends PedidoHandler
     {
         return $this->data_error;
     }
+
+    public function getOrderDetails($pedidoId)
+{
+    $sql = 'SELECT nombre_producto, cantidad_Producto, precio_producto FROM detalles_pedido WHERE pedido_id = ?';
+    $params = array($pedidoId);
+    return Database::getRows($sql, $params);
+}
+
 }

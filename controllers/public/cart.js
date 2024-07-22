@@ -189,3 +189,16 @@ const comprar = async () => {
 
     }
 }
+// Función para finalizar el pedido y generar el PDF
+window.finishOrder = async () => {
+    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
+    if (RESPONSE) {
+        const DATA = await fetchData(PEDIDO_API, 'finishOrder');
+        if (DATA.status) {
+            await sweetAlert(1, DATA.message, true);
+            window.location.href = 'generate_invoice.php'; // Redirige a la generación del PDF
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
+}
