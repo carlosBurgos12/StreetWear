@@ -1,6 +1,7 @@
 <?php
-require('fpdf/fpdf.php');
-
+require('fpdf185/fpdf.php');
+// Se incluye la clase con las plantillas para generar reportes.
+require_once('../../helpers/report.php');
 // Obtener los detalles del pedido desde la base de datos
 require_once('../../models/data/pedido_data.php');
 $pedidos = new PedidoData;

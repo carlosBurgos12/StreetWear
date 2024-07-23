@@ -40,9 +40,9 @@ async function readDetail() {
         TABLE_BODY.innerHTML = '';
         let subtotal = 0;
         DATA.dataset.forEach(row => {
-        subtotal = row.precio_producto * row.cantidad_Producto;
-        total += subtotal;
-        TABLE_BODY.innerHTML += `
+            subtotal = row.precio_producto * row.cantidad_Producto;
+            total += subtotal;
+            TABLE_BODY.innerHTML += `
             <tr>
                 <td>${row.nombre_producto}</td>
                 <td>${row.cantidad_Producto}</td>
@@ -90,8 +90,8 @@ async function readDetail() {
             if (DATA2.status) {
                 TABLE_BODY.innerHTML = '';
                 let subtotal = 0;
-                    total += subtotal;
-                    TABLE_BODY.innerHTML += `
+                total += subtotal;
+                TABLE_BODY.innerHTML += `
                         <tr>
                             <td></td>
                             <td></td>
@@ -147,14 +147,13 @@ window.openDelete = async (id) => {
         }
     }
 }
-// Función para finalizar el pedido y generar el PDF
+// Función para finalizar el pedido
 window.finishOrder = async () => {
     const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
     if (RESPONSE) {
         const DATA = await fetchData(PEDIDO_API, 'finishOrder');
         if (DATA.status) {
             sweetAlert(1, DATA.message, true, 'index.html');
-            
         } else {
             sweetAlert(2, DATA.error, false);
         }
@@ -177,7 +176,10 @@ const comprar = async () => {
 
         if (DATA.status) {
             await sweetAlert(1, 'Se ha comprado con exito, espera tu paquete', false);
-            window.location.href = 'invoice.php'; // Redirige a la generación del PDF
+            // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+            const PATH = new URL(`${SERVER_URL}reports/admin/productos.php`);
+            // Se abre el reporte en una nueva pestaña.
+            window.open(PATH.href);
             readDetail(); // Vuelve a cargar la tabla
         } else {
             if (DATA === 'Acceso denegado') {
