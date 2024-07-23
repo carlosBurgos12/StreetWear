@@ -147,18 +147,20 @@ window.openDelete = async (id) => {
         }
     }
 }
-
+// Función para finalizar el pedido y generar el PDF
 window.finishOrder = async () => {
     const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
     if (RESPONSE) {
         const DATA = await fetchData(PEDIDO_API, 'finishOrder');
         if (DATA.status) {
             sweetAlert(1, DATA.message, true, 'index.html');
+            
         } else {
             sweetAlert(2, DATA.error, false);
         }
     }
 }
+
 
 // Función para realizar la compra
 const comprar = async () => {
@@ -175,6 +177,7 @@ const comprar = async () => {
 
         if (DATA.status) {
             await sweetAlert(1, 'Se ha comprado con exito, espera tu paquete', false);
+            window.location.href = 'invoice.php'; // Redirige a la generación del PDF
             readDetail(); // Vuelve a cargar la tabla
         } else {
             if (DATA === 'Acceso denegado') {
@@ -187,18 +190,5 @@ const comprar = async () => {
             }
         }
 
-    }
-}
-// Función para finalizar el pedido y generar el PDF
-window.finishOrder = async () => {
-    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
-    if (RESPONSE) {
-        const DATA = await fetchData(PEDIDO_API, 'finishOrder');
-        if (DATA.status) {
-            await sweetAlert(1, DATA.message, true);
-            window.location.href = 'invoice.php'; // Redirige a la generación del PDF
-        } else {
-            sweetAlert(2, DATA.error, false);
-        }
     }
 }
