@@ -33,12 +33,12 @@ class PedidoHandler
     public function getOrder()
     {
         $this->estado = 'Pendiente';
-        $sql = 'SELECT id_pedido
-                FROM pedido
-                WHERE estado_pedido = ? AND id_cliente = ?';
+        $sql = 'SELECT id_Pedido
+                FROM pedidos
+                WHERE estado_Pedido = ? AND id_Cliente = ?';
         $params = array($this->estado, $_SESSION['idCliente']);
         if ($data = Database::getRow($sql, $params)) {
-            $_SESSION['idPedido'] = $data['id_pedido'];
+            $_SESSION['idPedido'] = $data['id_Pedido'];
             return true;
         } else {
             return false;
@@ -51,8 +51,8 @@ class PedidoHandler
         if ($this->getOrder()) {
             return true;
         } else {
-            $sql = 'INSERT INTO pedido(direccion_pedido, id_cliente)
-                    VALUES((SELECT direccion_cliente FROM cliente WHERE id_cliente = ?), ?)';
+            $sql = 'INSERT INTO pedidos(direccion_Pedido, id_Cliente)
+                    VALUES((SELECT direccion_Cliente FROM clientes WHERE id_Cliente = ?), ?)';
             $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla pedido.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
@@ -76,9 +76,9 @@ class PedidoHandler
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO DetallePedido(cantidad_Producto, id_Pedido, id_Producto)
-                VALUES(?, (SELECT id_Pedido FROM Pedidos where id_Cliente = ? AND estado_Pedido = "Carrito"), ?)';
-        $params = array($this->cantidad, $_SESSION['idCliente'], $this->producto);
+        $sql = 'INSERT INTO detallepedido(cantidad_Producto, id_Pedido, id_Producto)
+                VALUES(?, ?, ?)';
+        $params = array($this->cantidad, $_SESSION['idPedido'], $this->producto);
         return Database::executeRow($sql, $params);
     }
 
@@ -98,17 +98,17 @@ class PedidoHandler
     {
         $sql = 'SELECT *
                 FROM Pedidos
-                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+                WHERE id_Cliente = ? AND estado_Pedido = "Pendiente"';
         $params = array($_SESSION['idCliente']);
         return Database::getRows($sql, $params);
     }
 
-    public function updateRowPedidos()
+    public function updateRowPedido()
     {
         $sql = 'UPDATE Pedidos
                 SET estado_Pedido = ?, fecha_Registro = NOW(), 
                 direccion_Pedido = (SELECT direccion_Cliente FROM Clientes WHERE id_Cliente = ?)
-                WHERE id_Cliente = ? AND estado_Pedido = "Carrito"';
+                WHERE id_Cliente = ? AND estado_Pedido = "Pendiente"';
         $params = array($this->estado, $_SESSION['idCliente'], $_SESSION['idCliente']);
         return Database::executeRow($sql, $params);
     }
@@ -119,8 +119,8 @@ class PedidoHandler
                 INNER JOIN Productos ON Productos.id_producto = DetallePedido.id_Producto
                 INNER JOIN Pedidos ON Pedidos.id_Pedido = DetallePedido.id_Pedido
                 INNER JOIN Clientes ON Clientes.id_Cliente = Pedidos.id_Cliente
-                WHERE Clientes.id_Cliente = ? AND estado_Pedido = "Carrito"';
-        $params = array($_SESSION['idCliente']);
+                WHERE Pedidos.id_Pedido = ? AND estado_Pedido = "Pendiente"';
+        $params = array($_SESSION['idPedido']);
         return Database::getRows($sql, $params);
     }
 

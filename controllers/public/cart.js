@@ -175,11 +175,11 @@ const comprar = async () => {
         const DATA = await fetchData(PEDIDO_API, 'update', FORM1);
 
         if (DATA.status) {
+                        // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+                        const PATH = new URL(`${SERVER_URL}reports/public/invoice.php`);
+                        // Se abre el reporte en una nueva pestaña.
+                        window.open(PATH.href);
             await sweetAlert(1, 'Se ha comprado con exito, espera tu paquete', false);
-            // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-            const PATH = new URL(`${SERVER_URL}reports/public/invoice.php`);
-            // Se abre el reporte en una nueva pestaña.
-            window.open(PATH.href);
             readDetail(); // Vuelve a cargar la tabla
         } else {
             if (DATA === 'Acceso denegado') {

@@ -51,7 +51,7 @@ class PedidoData extends PedidoHandler
     // Método para establecer la dirección de entrega del pedido.
     public function setDireccion($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 100)) {
+        if (Validator::validateAlphanumeric($value)) {
             $this->direccion = $value;
             return true;
         } else {
@@ -111,12 +111,5 @@ class PedidoData extends PedidoHandler
     {
         return $this->data_error;
     }
-
-    public function getOrderDetails($pedidoId)
-{
-    $sql = 'SELECT nombre_producto, cantidad_Producto, precio_producto FROM detalles_pedido WHERE pedido_id = ?';
-    $params = array($pedidoId);
-    return Database::getRows($sql, $params);
-}
 
 }
