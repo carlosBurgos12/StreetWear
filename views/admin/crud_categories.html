@@ -16,17 +16,12 @@
 
 <body class="d-flex flex-column min-vh-100">
     <main>
-
         <h1 class="custom-title-General">Categories</h1>
 
         <div class="container flex-grow-1">
-
-
             <div class="box">
-
                 <p class="custom-text">Manage categories</p>
                 <form id="searchForm">
-
                     <div class="input-group mt-3">
                         <input type="search" class="form-control" id="search" name="search" placeholder="Search"
                             aria-label="Search" aria-describedby="button-addon2">
@@ -35,7 +30,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
 
             <div class="container">
@@ -43,8 +37,14 @@
                 <!--Crear Categoria Boton-->
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#crearCategoriaModal">
-                    <i class="fas fa-plus"></i>Create category
+                    <i class="fas fa-plus"></i> Create category
                 </button>
+                
+                <!-- Generar Reporte de Categorías Botón -->
+                <button id="generateReport" class="btn btn-danger mb-3">
+                    <i class="fas fa-file-pdf"></i> Generate Categories Report
+                </button>
+                
                 <br>
                 <!--Crear Tabla-->
                 <table class="table">
@@ -92,7 +92,6 @@
                         <form id="formCreate">
                             <div class="modal-body">
                                 <!--Campos de Categoria-->
-
                                 <div class="mb-3">
                                     <label for="nombreCategoriaCrear" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="nombreCategoriaCrear">
@@ -105,7 +104,6 @@
                                     <label for="imagenCategoria" class="form-label">Image</label>
                                     <input type="file" class="form-control" id="imagenCategoria" name="imagenCategoria">
                                 </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -179,7 +177,12 @@
     <script src="../../controllers/utils/components.js"></script>
     <script src="../../controllers/admin/categoria.js"></script>
 
-
+    <script>
+        document.getElementById('generateReport').addEventListener('click', function() {
+            // Redirigir al script PHP para generar el reporte
+            window.location.href = '../../reports/admin/reporte_categorias.php';
+        });
+    </script>
 </body>
 
 </html>

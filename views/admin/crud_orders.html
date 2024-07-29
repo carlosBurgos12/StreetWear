@@ -14,8 +14,6 @@
     <link type="image/png" rel="icon" href="../../imagenes/Logo_streetwear.jpg">
 </head>
 
-
-
 <body class="d-flex flex-column min-vh-100">
     <main>
         <h1 class="custom-title-General">Orders</h1>
@@ -23,7 +21,6 @@
 
             <p class="custom-text">Manage orders</p>
             <form id="buscar">
-
                 <div class="input-group mt-3">
                     <input type="search" id="search" name="search" class="form-control" placeholder="Search"
                         aria-label="Search" aria-describedby="button-addon2">
@@ -33,19 +30,23 @@
                 </div>
             </form>
 
-
             <div class="container">
                 <br>
-                <!--Crear Order Boton-->
+                <!-- Botón para generar el reporte -->
+                <a href="generar_reporte_ordenes.php" class="btn btn-danger mb-3">
+                    <i class="fas fa-file-pdf"></i> Generate Orders Report
+                </a>
+                <br>
+                <!-- Crear Order Boton -->
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#crearOrderModal">
                     <i class="fas fa-plus"></i>Create order
                 </button>
                 <br>
-                <!--Crear Tabla-->
+                <!-- Crear Tabla -->
                 <table class="table">
                     <thead>
-                        <!--Campos de la tabla-->
+                        <!-- Campos de la tabla -->
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Order Code</th>
@@ -80,7 +81,7 @@
                 </table>
             </div>
 
-            <!--Crear Order-->
+            <!-- Crear Order -->
 
             <div class="modal fade" id="crearOrderModal" tabindex="-1" aria-labelledby="crearProductModalLabel"
                 aria-hidden="true">
@@ -92,8 +93,7 @@
                         </div>
                         <form id="create">
                             <div class="modal-body">
-                                <!--Campos de order-->
-
+                                <!-- Campos de order -->
                                 <div class="mb-3">
                                     <label for="ordercode" class="form-label">Order code</label>
                                     <input type="text" class="form-control" id="ordercode" name="ordercode">
@@ -111,7 +111,6 @@
                                     <label for="image_order" class="form-label">Image</label>
                                     <input type="file" class="form-control" id="image_order" name="image_order">
                                 </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -122,7 +121,7 @@
                 </div>
             </div>
 
-            <!--Editar Order-->
+            <!-- Editar Order -->
 
             <div class="modal fade" id="editarOrderModal" tabindex="-1" aria-labelledby="editarOrderModalLabel"
                 aria-hidden="true">
@@ -133,15 +132,14 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form id="update">
-
                             <div class="modal-body">
-                                <!--Campos de Editar Producto-->
+                                <!-- Campos de Editar Producto -->
                                 <div class="mb-3">
                                     <label for="codeOrderEditar" class="form-label">Code Order</label>
                                     <input type="number" class="form-control" id="codeOrderEditar">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nombreOrderEditar" class="form-label"> Producto</label>
+                                    <label for="nombreOrderEditar" class="form-label"> Product</label>
                                     <input type="text" class="form-control" id="nombreOrderEditar">
                                 </div>
                                 <div class="mb-3">
@@ -158,12 +156,11 @@
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
 
-            <!--Eliminar Order-->
+            <!-- Eliminar Order -->
 
             <div class="modal fade" id="eliminarOrderModal" tabindex="-1" aria-labelledby="eliminarOrderModalLabel"
                 aria-hidden="true">
@@ -183,7 +180,7 @@
                     </div>
                 </div>
             </div>
-   
+
         </div>
     </main>
 
@@ -195,4 +192,4 @@
 
 </body>
 
-</html>2
+</html>

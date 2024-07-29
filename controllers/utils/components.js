@@ -65,7 +65,7 @@ const sweetAlert = async (type, text, timer, url = null) => {
         closeOnClickOutside: false,
         closeOnEsc: false,
         button: {
-            text: 'Aceptar'
+            text: 'Accept'
         }
     };
     // Se verifica el uso del temporizador.
