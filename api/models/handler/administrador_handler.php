@@ -42,9 +42,9 @@ class AdministradorHandler
                 FROM administrador
                 WHERE id_administrador = ?';
         $params = array($_SESSION['idAdministrador']);
-        if (!($data = Database::getRow($sql, $params))) {
-            return false;
-        } elseif (password_verify($password, $data['clave_administrador'])) {
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['clave_administrador'])) {
             return true;
         } else {
             return false;

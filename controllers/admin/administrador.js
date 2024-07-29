@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
 const ADMINISTRADOR_API = 'services/admin/administrador.php';
 // Constante para establecer el formulario de buscar.
-const SEARCH_FORM = document.getElementById('searchForm');
+const SEARCH_FORM = document.getElementById('busqueda');
 // Constantes para establecer los elementos de la tabla.
 const TABLE_BODY = document.getElementById('tableBody'),
     ROWS_FOUND = document.getElementById('rowsFound');
@@ -9,7 +9,7 @@ const TABLE_BODY = document.getElementById('tableBody'),
 const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
     MODAL_TITLE = document.getElementById('modalTitle');
 // Constantes para establecer los elementos del formulario de guardar.
-const SAVE_FORM = document.getElementById('saveForm'),
+const SAVE_FORM = document.getElementById('crearForm'),
     ID_ADMINISTRADOR = document.getElementById('idAdministrador'),
     NOMBRE_ADMINISTRADOR = document.getElementById('nombreAdministrador'),
     APELLIDO_ADMINISTRADOR = document.getElementById('apellidoAdministrador'),
@@ -22,8 +22,9 @@ const SAVE_FORM = document.getElementById('saveForm'),
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
+    // Se establece el título del contenido principal.
     // Llamada a la función para llenar la tabla con los registros existentes.
-    fillTable();
+    //fillTable();
 });
 
 // Método del evento para cuando se envía el formulario de buscar.
