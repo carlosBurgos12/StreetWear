@@ -42,7 +42,35 @@
                     data-bs-target="#crearProductModal">
                     <i class="fas fa-plus"></i>Create products
                 </button>
+                
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                data-bs-target="#crearGrafico">
+                <i class="fas fa-plus"></i>Generar grafico
+            </button>   
                 <br>
+                
+              <!-- Componente Modal para mostrar un gráfico -->
+<div class="modal fade" id="chartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="chartTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="chartTitle">Gráfico de productos con más existencias</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- Contenedor para mostrar el gráfico -->
+        <div class="modal-body" id="chartContainer">
+            <!-- Aquí se agregará el canvas para el gráfico -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
                 <!--Crear Tabla-->
                 <table class="table">
                     <thead>
