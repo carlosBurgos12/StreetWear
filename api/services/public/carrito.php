@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     session_start();
     
     // Se instancia la clase correspondiente.
-    $pedidos = new PedidoData;
+    $pedido = new PedidoData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'error' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
@@ -21,13 +21,15 @@ if (isset($_GET['action'])) {
                     // Validar y procesar los datos del formulario para crear un nuevo registro
                     $_POST = Validator::validateForm($_POST);
                     // Verificar si todos los datos necesarios son válidos
-                    if (
-                        !$pedidos->setProducto($_POST['producto']) or
-                        !$pedidos->setCantidad($_POST['cantidad'])
+                    if (!$pedido->startOrder()) {
+                        $result['error'] = 'Ocurrió un problema al iniciar el pedido';
+                    } elseif (
+                        !$pedido->setProducto($_POST['producto']) or
+                        !$pedido->setCantidad($_POST['cantidad'])
                     ) {
                         // Si algún dato no es válido, se asigna un mensaje de error
-                        $result['error'] = $pedidos->getDataError();
-                    } elseif ($result['dataset'] = $pedidos->createDetail()) {
+                        $result['error'] = $pedido->getDataError();
+                    } elseif ($result['dataset'] = $pedido->createDetail()) {
                         $result['status'] = 1;
                         $result['message'] = 'Se ha creado correctamente el detalle pedido';
                     } else {
@@ -40,11 +42,11 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 // Verificar si todos los datos necesarios son válidos
                 if (
-                    !$pedidos->setEstadoPedido($_POST['estado_pedido'])
+                    !$pedido->setEstadoPedido($_POST['estado_pedido'])
                 ) {
                     // Si algún dato no es válido, se asigna un mensaje de error
-                    $result['error'] = $pedidos->getDataError();
-                } elseif ($pedidos->createRowPedidos()) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->createRowPedido()) {
                     // Si se crea el registro correctamente, se establece el estado como éxito y se crea un mensaje
                     $result['status'] = 1;
                     $result['message'] = 'Carrito creado correctamente';
@@ -56,7 +58,7 @@ if (isset($_GET['action'])) {
 
             // LEER TODOS
             case 'readAll':
-                if ($result['dataset'] = $pedidos->readAllCarrito()) {
+                if ($result['dataset'] = $pedido->readAllCarrito()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
@@ -65,7 +67,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'verCarrito':
-                if ($result['dataset'] = $pedidos->verCarrito()) {
+                if ($result['dataset'] = $pedido->verCarrito()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
@@ -78,12 +80,12 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 // Verificar si todos los datos necesarios son válidos
                 if (
-                    !$pedidos->setIdDetalle($_POST['idDetallesPedido']) or
-                    !$pedidos->setCantidad($_POST['cant']) 
+                    !$pedido->setIdDetalle($_POST['idDetallesPedido']) or
+                    !$pedido->setCantidad($_POST['cant']) 
                 ) {
                     // Si algún dato no es válido, se asigna un mensaje de error
-                    $result['error'] = $pedidos->getDataError();
-                } elseif ($pedidos->updateDetail()) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->updateDetail()) {
                     // Si se actualiza el registro correctamente, se establece el estado como éxito y se crea un mensaje
                     $result['status'] = 1;
                     $result['message'] = 'Carrito actualizado correctamente';
@@ -98,11 +100,11 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 // Verificar si todos los datos necesarios son válidos
                 if (
-                    !$pedidos->setEstadoPedido($_POST['estado_pedido']) 
+                    !$pedido->setEstadoPedido($_POST['estado_pedido']) 
                 ) {
                     // Si algún dato no es válido, se asigna un mensaje de error
-                    $result['error'] = $pedidos->getDataError();
-                } elseif ($pedidos->updateRowPedidos()) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->updateRowPedido()) {
                     // Si se actualiza el registro correctamente, se establece el estado como éxito y se crea un mensaje
                     $result['status'] = 1;
                     $result['message'] = 'Estado del pedido actualizado correctamente';
@@ -114,9 +116,9 @@ if (isset($_GET['action'])) {
 
             // ELIMINAR
             case 'deleteDetail':
-                if (!$pedidos->setIdDetalle($_POST['idDetallesPedido'])) {
-                    $result['error'] = $pedidos->getDataError();
-                } elseif ($pedidos->deleteDetail()) {
+                if (!$pedido->setIdDetalle($_POST['idDetallesPedido'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Carrito eliminado correctamente';
                 } else {
