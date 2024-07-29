@@ -9,6 +9,8 @@ class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
     const CLIENT_URL = 'http://localhost/streetwear/views/admin/';
+    // Constante para definir la ruta de las vistas del sitio público.
+    const INVOICE_URL = 'http://localhost/streetwear/views/public/';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 

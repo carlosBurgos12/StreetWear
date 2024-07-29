@@ -1,50 +1,53 @@
 <?php
+require_once('api/libraries/fpdf185/fpdf.php');
+// Se incluye la clase con las plantillas para generar reportes.
 require_once('../../helpers/report.php');
+// Obtener los detalles del pedido desde la base de datos
+require_once('../../models/data/pedido_data.php');
+$pedidos = new PedidoData;
+$pedidoId = $_SESSION['pedido_id']; // Asume que el ID del pedido se guarda en la sesión
 
-$pdf = new Report;
+$detallesPedido = $pedidos->getOrderDetails($pedidoId); // Obtén los detalles del pedido
 
-// Verifica si se ha proporcionado un ID de pedido
-if (isset($_GET['idOrder'])) {
-    require_once('../../models/data/order_data.php');
-    require_once('../../models/data/cliente_data.php');
-    
-    $order = new OrderData;
-    $cliente = new ClienteData;
-    
-    if ($order->setId($_GET['idOrder']) && $orderDetails = $order->readOne()) {
-        $cliente->setId($orderDetails['id_Cliente']);
-        $clientDetails = $cliente->readOne();
+// Crear un nuevo PDF
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial', 'B', 12);
 
-        // Inicia el reporte PDF
-        $pdf->startReport('Factura para el Pedido ' . $orderDetails['ordercode']);
-        
-        // Agrega detalles del cliente
-        if ($clientDetails) {
-            $pdf->setFont('Arial', 'B', 12);
-            $pdf->cell(0, 10, 'Detalles del Cliente', 0, 1);
-            $pdf->setFont('Arial', '', 11);
-            $pdf->cell(0, 10, 'Nombre: ' . $clientDetails['nombre_Cliente'] . ' ' . $clientDetails['apellido_Cliente'], 0, 1);
-            $pdf->cell(0, 10, 'Correo: ' . $clientDetails['correo_Cliente'], 0, 1);
-            $pdf->cell(0, 10, 'Teléfono: ' . $clientDetails['numero_Cliente'], 0, 1);
-            $pdf->cell(0, 10, 'Dirección: ' . $clientDetails['direccion_Cliente'], 0, 1);
-            $pdf->ln(10);
-        }
-        
-        // Agrega detalles del pedido
-        $pdf->setFont('Arial', 'B', 12);
-        $pdf->cell(0, 10, 'Detalles del Pedido', 0, 1);
-        $pdf->setFont('Arial', '', 11);
-        $pdf->cell(0, 10, 'Código de Pedido: ' . $orderDetails['ordercode'], 0, 1);
-        $pdf->cell(0, 10, 'Producto: ' . $orderDetails['order_product'], 0, 1);
-        $pdf->cell(0, 10, 'Monto: $' . number_format($orderDetails['amount'], 2), 0, 1);
-        $pdf->ln(10);
-        
-        // Genera el PDF
-        $pdf->output('I', 'factura.pdf');
-    } else {
-        print('Pedido no encontrado');
-    }
-} else {
-    print('No se proporcionó ID de pedido');
+// Encabezado del documento
+$pdf->Cell(0, 10, 'Factura de Compra', 0, 1, 'C');
+$pdf->Ln(10);
+
+// Información del cliente
+$pdf->Cell(0, 10, 'Cliente: ' . $_SESSION['nombre_Cliente'], 0, 1);
+$pdf->Cell(0, 10, 'Email: ' . $_SESSION['correo_Cliente'], 0, 1);
+$pdf->Ln(10);
+
+// Encabezado de la tabla de detalles del pedido
+$pdf->Cell(40, 10, 'Producto', 1);
+$pdf->Cell(30, 10, 'Cantidad', 1);
+$pdf->Cell(30, 10, 'Precio Unitario', 1);
+$pdf->Cell(30, 10, 'Sub-total', 1);
+$pdf->Ln();
+
+// Detalles del pedido
+$total = 0;
+foreach ($detallesPedido as $detalle) {
+    $subtotal = $detalle['precio_producto'] * $detalle['cantidad_Producto'];
+    $total += $subtotal;
+
+    $pdf->Cell(40, 10, $detalle['nombre_producto'], 1);
+    $pdf->Cell(30, 10, $detalle['cantidad_Producto'], 1);
+    $pdf->Cell(30, 10, '$' . number_format($detalle['precio_producto'], 2), 1);
+    $pdf->Cell(30, 10, '$' . number_format($subtotal, 2), 1);
+    $pdf->Ln();
 }
+
+// Total
+$pdf->Cell(100, 10, 'Total', 1);
+$pdf->Cell(30, 10, '$' . number_format($total, 2), 1);
+$pdf->Ln();
+
+// Salida del PDF
+$pdf->Output('D', 'Factura_' . $pedidoId . '.pdf');
 ?>
